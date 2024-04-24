@@ -1,0 +1,166 @@
+﻿@using TheCreation.Models
+@model UserVotedDetail
+@{
+    ViewBag.Title = "User_Vote_Dtail";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>创作者投票</title>
+    <link href="~/Content/投票活动/1.css" rel="stylesheet" />
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .moreload {
+            width: 800px;
+            height: auto;
+            margin: 0 auto;
+            overflow: hidden;
+            text-align: left;
+            background: #fff;
+            padding: 5px;
+        }
+
+            .moreload ul.list {
+                overflow: hidden;
+            }
+
+                .moreload ul.list li {
+                    width: 150px;
+                    height: 250px;
+                    margin: 20px;
+                    float: left;
+                }
+
+                    .moreload ul.list li img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                .moreload ul.list p {
+                    text-align: center;
+                }
+
+            .moreload .more {
+                overflow: hidden;
+                padding: 10px;
+                text-align: center;
+            }
+
+                .moreload .more a {
+                    display: block;
+                    width: 100px;
+                    padding: 8px 0;
+                    color: #fff;
+                    margin: 0 auto;
+                    background: #333;
+                    text-align: center;
+                    border-radius: 3px;
+                }
+
+                    .moreload .more a:hover {
+                        text-decoration: none;
+                        background: red;
+                        color: #fff;
+                    }
+
+        .sub .toupiao {
+            display: block;
+            background: #9d1012;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+            text-align: center;
+            border-radius: 20px
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="product-details">
+            <h1>@Model.vote.Title</h1>
+            <br />
+            <br />
+            <p style="margin-left:10px">@Model.vote.Content</p>
+        </div>
+        <div class="product-image">
+            <img src="@Model.vote.ImgUrl" alt="Omar Dsoky">
+            <div class="info">
+                <h2 style="color:white;margin-top:50px;">@Model.vote.Title</h2>
+                <p style="margin-left:130px;">@Model.vote.Content</p>
+            </div>
+        </div>
+    </div>
+    <div class="moreload">
+        <div class="hidden">
+            <div class="mainWarp">
+                <div class="Contentbox">
+                    <div id="con_two_1">
+                        <ul>
+                            @foreach (var item in Model.users)
+                            {
+                                <li>
+                                    <a href="@Url.Action("DisPlaySingleUserVote","Vote",new { id=item.UsersId,vid=Model.vote.VoteId})" target="_blank"><img src="@item.HeadUrl" style="width: 160px;height: 160px;" /></a>
+                                    <div class="sub">
+                                        <p class="name">@item.UsersName</p>
+                                        <p class="num"> @Html.Action("get_UserVoted_Count", "Vote", new { rid = item.UsersId, vid = Model.vote.VoteId }) </p>
+                                        <a class="toupiao" href="@Url.Action("SubmitVoteByReferenceId","Vote",new {vid=Model.vote.VoteId,reference_id=item.UsersId.ToString() })">投票</a>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="list">数据加载中，请稍后...</ul>
+        <div class="more"><a href="javascript:;" onClick="moreload.loadMore();">加载更多</a></div>
+    </div>
+
+    <script src="~/Scripts/投票活动/3.js"></script>
+    <script>
+        var _content = []; //临时存储li循环内容
+        var moreload = {
+            _default: 8, //默认显示图片个数
+            _loading: 4, //每次点击按钮后加载的个数
+            init: function () {
+                var lis = $(".moreload .hidden li");
+                $(".moreload ul.list").html("");
+                for (var n = 0; n < moreload._default; n++) {
+                    lis.eq(n).appendTo(".moreload ul.list");
+                }
+                $(".moreload ul.list img").each(function () {
+                    $(this).attr('src', $(this).attr('realSrc'));
+                })
+                for (var i = moreload._default; i < lis.length; i++) {
+                    _content.push(lis.eq(i));
+                }
+                $(".moreload .hidden").html("");
+            },
+            loadMore: function () {
+                var mLis = $(".moreload ul.list li").length;
+                for (var i = 0; i < moreload._loading; i++) {
+                    var target = _content.shift();
+                    if (!target) {
+                        $('.moreload .more').html("<p>全部加载完毕...</p>");
+                        break;
+                    }
+                    $(".moreload ul.list").append(target);
+                    $(".moreload ul.list img").eq(mLis + i).each(function () {
+                        $(this).attr('src', $(this).attr('realSrc'));
+                    });
+                }
+            }
+        }
+        moreload.init();
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,1783 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TheCreationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="AdminId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AdminName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sex" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="BirthDay" Type="DateTime" Precision="3" />
+    <Property Name="EntryTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AdminType" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EveryImg" Relationship="Self.FK__EveryImg__AdminI__47B19113" FromRole="Admin" ToRole="EveryImg" />
+    <NavigationProperty Name="PublicMsg" Relationship="Self.FK__PublicMsg__Sende__68336F3E" FromRole="Admin" ToRole="PublicMsg" />
+    <NavigationProperty Name="SysMsg" Relationship="Self.FK__SysMsg__SenderId__6B0FDBE9" FromRole="Admin" ToRole="SysMsg" />
+    <NavigationProperty Name="Vote" Relationship="Self.FK__Vote__AdminID__0E7913B7" FromRole="Admin" ToRole="Vote" />
+  </EntityType>
+  <EntityType Name="Applys">
+    <Key>
+      <PropertyRef Name="ApplysId" />
+    </Key>
+    <Property Name="ApplysId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ApplysDescrib" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ApplysDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ApplysState" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DealerId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Applys__UsersId__02E7657A" FromRole="Applys" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="AuthenApply">
+    <Key>
+      <PropertyRef Name="AuthenId" />
+    </Key>
+    <Property Name="AuthenId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreateType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PriceRange" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuthenApplyState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Describe" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DealerId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__AuthenApp__Users__06B7F65E" FromRole="AuthenApply" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Blog">
+    <Key>
+      <PropertyRef Name="BlogID" />
+    </Key>
+    <Property Name="BlogID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PublisherID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BlogType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PublishDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Title" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BlogContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CoverImg" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Describe" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ViewCount" Type="Int64" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Blog__PublisherI__37661AB1" FromRole="Blog" ToRole="Users" />
+    <NavigationProperty Name="BlogComment" Relationship="Self.FK__BlogComme__BlogI__5125ECB4" FromRole="Blog" ToRole="BlogComment" />
+  </EntityType>
+  <EntityType Name="BlogComment">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CommenterID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BlogID" Type="Int64" Nullable="false" />
+    <Property Name="Content" Type="String" MaxLength="220" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CommentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Blog" Relationship="Self.FK__BlogComme__BlogI__5125ECB4" FromRole="BlogComment" ToRole="Blog" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__BlogComme__Comme__5031C87B" FromRole="BlogComment" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Collect">
+    <Key>
+      <PropertyRef Name="CollectId" />
+    </Key>
+    <Property Name="CollectId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductionId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Production" Relationship="Self.FK__Collect__Product__09946309" FromRole="Collect" ToRole="Production" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Collect__UsersId__0A888742" FromRole="Collect" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CommentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CommentContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CommenterId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductionId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Comments__Commen__592635D8" FromRole="Comments" ToRole="Users" />
+    <NavigationProperty Name="Production" Relationship="Self.FK__Comments__Produc__5A1A5A11" FromRole="Comments" ToRole="Production" />
+    <NavigationProperty Name="Reply" Relationship="Self.FK__Reply__CommentId__4B2D1C3C" FromRole="Comments" ToRole="Reply" />
+  </EntityType>
+  <EntityType Name="Creator">
+    <Key>
+      <PropertyRef Name="CreatorId" />
+    </Key>
+    <Property Name="CreatorId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CertificationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatorCredit" Type="Int32" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CreatorLevel" Type="Int32" Nullable="false" />
+    <Property Name="FinishedCount" Type="Int32" Nullable="false" />
+    <Property Name="GoodRate" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="EfctCmpltCnt" Type="Int32" Nullable="false" />
+    <Property Name="PriceRange" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Creator__PriceRa__173876EA" FromRole="Creator" ToRole="Users" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__CreatorI__40257DE4" FromRole="Creator" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Evaluate">
+    <Key>
+      <PropertyRef Name="EvaluateId" />
+    </Key>
+    <Property Name="EvaluateId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EvaluateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Evaluate__OrderI__15FA39EE" FromRole="Evaluate" ToRole="Orders" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Evaluate__UsersI__150615B5" FromRole="Evaluate" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="EveryImg">
+    <Key>
+      <PropertyRef Name="ImgId" />
+    </Key>
+    <Property Name="ImgId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UploadDate" Type="DateTime" Precision="3" />
+    <Property Name="ImgUrl" Type="String" MaxLength="160" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AdminID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Admin" Relationship="Self.FK__EveryImg__AdminI__47B19113" FromRole="EveryImg" ToRole="Admin" />
+  </EntityType>
+  <EntityType Name="Focus">
+    <Key>
+      <PropertyRef Name="FocusId" />
+    </Key>
+    <Property Name="FocusId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FocusedUserId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Focus__FocusedUs__0E591826" FromRole="Focus" ToRole="Users" />
+    <NavigationProperty Name="Users1" Relationship="Self.FK__Focus__UsersId__0D64F3ED" FromRole="Focus" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="likeIt">
+    <Key>
+      <PropertyRef Name="LikeId" />
+    </Key>
+    <Property Name="LikeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductionId" Type="Int64" Nullable="false" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Production" Relationship="Self.FK__likeIt__Producti__25276EE5" FromRole="likeIt" ToRole="Production" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__likeIt__UsersId__261B931E" FromRole="likeIt" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="OrderApply">
+    <Key>
+      <PropertyRef Name="ApplyId" />
+    </Key>
+    <Property Name="ApplyId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="QOrderId" Type="Int32" Nullable="false" />
+    <Property Name="ApplyDescrib" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ApplyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ApplyState" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__OrderAppl__QOrde__7F16D496" FromRole="OrderApply" ToRole="Orders" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__OrderAppl__Users__7E22B05D" FromRole="OrderApply" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatorId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="total_amt" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="BuyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FinishDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OrderState" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="NeedDescrib" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ActualFinishDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Creator" Relationship="Self.FK__Orders__CreatorI__40257DE4" FromRole="Orders" ToRole="Creator" />
+    <NavigationProperty Name="Evaluate" Relationship="Self.FK__Evaluate__OrderI__15FA39EE" FromRole="Orders" ToRole="Evaluate" />
+    <NavigationProperty Name="OrderApply" Relationship="Self.FK__OrderAppl__QOrde__7F16D496" FromRole="Orders" ToRole="OrderApply" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Orders__UsersId__3F3159AB" FromRole="Orders" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="PersonMsg">
+    <Key>
+      <PropertyRef Name="PMId" />
+    </Key>
+    <Property Name="PMId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MsgDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SebderID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReceptID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MsgContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__PearsonMs__Recep__2D12A970" FromRole="PersonMsg" ToRole="Users" />
+    <NavigationProperty Name="Users1" Relationship="Self.FK__PearsonMs__Sebde__2C1E8537" FromRole="PersonMsg" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Production">
+    <Key>
+      <PropertyRef Name="ProductionId" />
+    </Key>
+    <Property Name="ProductionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PublisherNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductionName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PublishDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProductionContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductionType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ViewCount" Type="Int64" Nullable="false" />
+    <Property Name="LikeCount" Type="Int32" Nullable="false" />
+    <Property Name="CommentCount" Type="Int32" Nullable="false" />
+    <Property Name="Tag" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ImgUrl" Type="String" MaxLength="160" FixedLength="false" Unicode="false" />
+    <Property Name="HotCount" Type="Int32" Nullable="false" />
+    <Property Name="Describe" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Collect" Relationship="Self.FK__Collect__Product__09946309" FromRole="Production" ToRole="Collect" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK__Comments__Produc__5A1A5A11" FromRole="Production" ToRole="Comments" />
+    <NavigationProperty Name="likeIt" Relationship="Self.FK__likeIt__Producti__25276EE5" FromRole="Production" ToRole="likeIt" />
+    <NavigationProperty Name="Users" Relationship="TheCreationModel.production_Primarykey" FromRole="Production" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="PublicMsg">
+    <Key>
+      <PropertyRef Name="PublicMsgId" />
+    </Key>
+    <Property Name="PublicMsgId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SenderId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PublicMsgContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SendTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Admin" Relationship="Self.FK__PublicMsg__Sende__68336F3E" FromRole="PublicMsg" ToRole="Admin" />
+  </EntityType>
+  <EntityType Name="RcptAddress">
+    <Key>
+      <PropertyRef Name="AddID" />
+    </Key>
+    <Property Name="AddID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RcptName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IsDefault" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__RcptAddre__Users__0638D371" FromRole="RcptAddress" ToRole="Users" />
+    <NavigationProperty Name="ShopOrder" Relationship="Self.FK__ShopOrder__AddID__0A096455" FromRole="RcptAddress" ToRole="ShopOrder" />
+  </EntityType>
+  <EntityType Name="Reply">
+    <Key>
+      <PropertyRef Name="ReplyId" />
+    </Key>
+    <Property Name="ReplyId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CommentId" Type="Int64" Nullable="false" />
+    <Property Name="ReplyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ReplyContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK__Reply__CommentId__4B2D1C3C" FromRole="Reply" ToRole="Comments" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Reply__UsersId__4A38F803" FromRole="Reply" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="ShopCart">
+    <Key>
+      <PropertyRef Name="CartID" />
+    </Key>
+    <Property Name="CartID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubID" Type="Int64" Nullable="false" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddCount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SProductSubClass" Relationship="Self.FK__ShopCart__SubID__157B1701" FromRole="ShopCart" ToRole="SProductSubClass" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__ShopCart__UsersI__166F3B3A" FromRole="ShopCart" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="ShopEvaluate">
+    <Key>
+      <PropertyRef Name="EvaluateID" />
+    </Key>
+    <Property Name="EvaluateID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OrderID" Type="Int64" Nullable="false" />
+    <Property Name="Content" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EvaDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EvaImg1" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="EvaImg2" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="EvaImg3" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="EvaImg4" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="EvaImg5" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ShopOrder" Relationship="Self.FK__ShopEvalu__Order__129EAA56" FromRole="ShopEvaluate" ToRole="ShopOrder" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__ShopEvalu__Users__11AA861D" FromRole="ShopEvaluate" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="ShopInfoMore">
+    <Key>
+      <PropertyRef Name="IMID" />
+    </Key>
+    <Property Name="IMID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int64" Nullable="false" />
+    <Property Name="Imgurl1" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Imgurl2" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Imgurl3" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Imgurl4" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Imgurl5" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Imgurl6" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Imgurl7" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ShopProduct" Relationship="Self.FK__ShopInfoM__Produ__007FFA1B" FromRole="ShopInfoMore" ToRole="ShopProduct" />
+  </EntityType>
+  <EntityType Name="ShopOrder">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddID" Type="Int64" Nullable="false" />
+    <Property Name="BuyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BuyState" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TotAmt" Type="Decimal" Precision="15" Scale="3" Nullable="false" />
+    <Property Name="PayMethod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SendBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="RcptAddress" Relationship="Self.FK__ShopOrder__AddID__0A096455" FromRole="ShopOrder" ToRole="RcptAddress" />
+    <NavigationProperty Name="ShopEvaluate" Relationship="Self.FK__ShopEvalu__Order__129EAA56" FromRole="ShopOrder" ToRole="ShopEvaluate" />
+    <NavigationProperty Name="ShopOrderDetail" Relationship="Self.FK__ShopOrder__Order__0DD9F539" FromRole="ShopOrder" ToRole="ShopOrderDetail" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__ShopOrder__Users__0915401C" FromRole="ShopOrder" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="ShopOrderDetail">
+    <Key>
+      <PropertyRef Name="ODetailID" />
+    </Key>
+    <Property Name="ODetailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int64" Nullable="false" />
+    <Property Name="BuyCount" Type="Int32" Nullable="false" />
+    <Property Name="BuyPrice" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+    <Property Name="SubID" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="ShopOrder" Relationship="Self.FK__ShopOrder__Order__0DD9F539" FromRole="ShopOrderDetail" ToRole="ShopOrder" />
+    <NavigationProperty Name="SProductSubClass" Relationship="Self.FK__ShopOrder__SubID__0ECE1972" FromRole="ShopOrderDetail" ToRole="SProductSubClass" />
+  </EntityType>
+  <EntityType Name="ShopProduct">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TypeID" Type="Int32" Nullable="false" />
+    <Property Name="TagId" Type="Int32" Nullable="false" />
+    <Property Name="Describe" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="ImgUrl" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+    <Property Name="LeftCount" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="ShopInfoMore" Relationship="Self.FK__ShopInfoM__Produ__007FFA1B" FromRole="ShopProduct" ToRole="ShopInfoMore" />
+    <NavigationProperty Name="ShopProductTag" Relationship="Self.FK__ShopProdu__TagId__7DA38D70" FromRole="ShopProduct" ToRole="ShopProductTag" />
+    <NavigationProperty Name="ShopProductType" Relationship="Self.FK__ShopProdu__TypeI__7CAF6937" FromRole="ShopProduct" ToRole="ShopProductType" />
+    <NavigationProperty Name="SProductSubClass" Relationship="Self.FK__SProductS__Produ__035C66C6" FromRole="ShopProduct" ToRole="SProductSubClass" />
+  </EntityType>
+  <EntityType Name="ShopProductTag">
+    <Key>
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="TagId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TagName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ShopProduct" Relationship="Self.FK__ShopProdu__TagId__7DA38D70" FromRole="ShopProductTag" ToRole="ShopProduct" />
+  </EntityType>
+  <EntityType Name="ShopProductType">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ShopProduct" Relationship="Self.FK__ShopProdu__TypeI__7CAF6937" FromRole="ShopProductType" ToRole="ShopProduct" />
+  </EntityType>
+  <EntityType Name="SProductSubClass">
+    <Key>
+      <PropertyRef Name="SubID" />
+    </Key>
+    <Property Name="SubID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int64" Nullable="false" />
+    <Property Name="PStyleDescribe" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="LeftCount" Type="Int64" Nullable="false" />
+    <Property Name="MiniImg" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+    <NavigationProperty Name="ShopCart" Relationship="Self.FK__ShopCart__SubID__157B1701" FromRole="SProductSubClass" ToRole="ShopCart" />
+    <NavigationProperty Name="ShopOrderDetail" Relationship="Self.FK__ShopOrder__SubID__0ECE1972" FromRole="SProductSubClass" ToRole="ShopOrderDetail" />
+    <NavigationProperty Name="ShopProduct" Relationship="Self.FK__SProductS__Produ__035C66C6" FromRole="SProductSubClass" ToRole="ShopProduct" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="SysMsg">
+    <Key>
+      <PropertyRef Name="SysMsgId" />
+    </Key>
+    <Property Name="SysMsgId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SenderId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReceptId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SysMsgContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SendTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Admin" Relationship="Self.FK__SysMsg__SenderId__6B0FDBE9" FromRole="SysMsg" ToRole="Admin" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__SysMsg__ReceptId__6C040022" FromRole="SysMsg" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="LabelId" />
+    </Key>
+    <Property Name="LabelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LabelName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LabelType" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="LabelImg" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UsersId" />
+    </Key>
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsersName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Birth" Type="DateTime" Precision="3" />
+    <Property Name="UsersLevel" Type="Int32" Nullable="false" />
+    <Property Name="Credit" Type="Int32" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="OrderCount" Type="Int32" Nullable="false" />
+    <Property Name="ChargebackCount" Type="Int32" Nullable="false" />
+    <Property Name="Hobby" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CreatorId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="HeadUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Exp" Type="Int32" Nullable="false" />
+    <Property Name="RegisteDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Applys" Relationship="Self.FK__Applys__UsersId__02E7657A" FromRole="Users" ToRole="Applys" />
+    <NavigationProperty Name="AuthenApply" Relationship="Self.FK__AuthenApp__Users__06B7F65E" FromRole="Users" ToRole="AuthenApply" />
+    <NavigationProperty Name="Blog" Relationship="Self.FK__Blog__PublisherI__37661AB1" FromRole="Users" ToRole="Blog" />
+    <NavigationProperty Name="BlogComment" Relationship="Self.FK__BlogComme__Comme__5031C87B" FromRole="Users" ToRole="BlogComment" />
+    <NavigationProperty Name="Collect" Relationship="Self.FK__Collect__UsersId__0A888742" FromRole="Users" ToRole="Collect" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK__Comments__Commen__592635D8" FromRole="Users" ToRole="Comments" />
+    <NavigationProperty Name="Creator" Relationship="Self.FK__Creator__PriceRa__173876EA" FromRole="Users" ToRole="Creator" />
+    <NavigationProperty Name="Evaluate" Relationship="Self.FK__Evaluate__UsersI__150615B5" FromRole="Users" ToRole="Evaluate" />
+    <NavigationProperty Name="Focus" Relationship="Self.FK__Focus__FocusedUs__0E591826" FromRole="Users" ToRole="Focus" />
+    <NavigationProperty Name="Focus1" Relationship="Self.FK__Focus__UsersId__0D64F3ED" FromRole="Users" ToRole="Focus" />
+    <NavigationProperty Name="likeIt" Relationship="Self.FK__likeIt__UsersId__261B931E" FromRole="Users" ToRole="likeIt" />
+    <NavigationProperty Name="OrderApply" Relationship="Self.FK__OrderAppl__Users__7E22B05D" FromRole="Users" ToRole="OrderApply" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__UsersId__3F3159AB" FromRole="Users" ToRole="Orders" />
+    <NavigationProperty Name="PersonMsg" Relationship="Self.FK__PearsonMs__Recep__2D12A970" FromRole="Users" ToRole="PersonMsg" />
+    <NavigationProperty Name="PersonMsg1" Relationship="Self.FK__PearsonMs__Sebde__2C1E8537" FromRole="Users" ToRole="PersonMsg" />
+    <NavigationProperty Name="RcptAddress" Relationship="Self.FK__RcptAddre__Users__0638D371" FromRole="Users" ToRole="RcptAddress" />
+    <NavigationProperty Name="Reply" Relationship="Self.FK__Reply__UsersId__4A38F803" FromRole="Users" ToRole="Reply" />
+    <NavigationProperty Name="ShopCart" Relationship="Self.FK__ShopCart__UsersI__166F3B3A" FromRole="Users" ToRole="ShopCart" />
+    <NavigationProperty Name="ShopEvaluate" Relationship="Self.FK__ShopEvalu__Users__11AA861D" FromRole="Users" ToRole="ShopEvaluate" />
+    <NavigationProperty Name="ShopOrder" Relationship="Self.FK__ShopOrder__Users__0915401C" FromRole="Users" ToRole="ShopOrder" />
+    <NavigationProperty Name="SysMsg" Relationship="Self.FK__SysMsg__ReceptId__6C040022" FromRole="Users" ToRole="SysMsg" />
+    <NavigationProperty Name="UsersLogin" Relationship="Self.FK__Users__UsersId__1273C1CD" FromRole="Users" ToRole="UsersLogin" />
+    <NavigationProperty Name="VoteDetail" Relationship="Self.FK__VoteDetai__Voter__40106F4B" FromRole="Users" ToRole="VoteDetail" />
+    <NavigationProperty Name="Production" Relationship="TheCreationModel.production_Primarykey" FromRole="Users" ToRole="Production" />
+  </EntityType>
+  <EntityType Name="UsersLevel">
+    <Key>
+      <PropertyRef Name="UsersLevel1" />
+    </Key>
+    <Property Name="UsersLevel1" Type="Int32" Nullable="false" />
+    <Property Name="LowExp" Type="Int64" Nullable="false" />
+    <Property Name="HighExp" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsersLogin">
+    <Key>
+      <PropertyRef Name="UsersId" />
+    </Key>
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Users__UsersId__1273C1CD" FromRole="UsersLogin" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Vote">
+    <Key>
+      <PropertyRef Name="VoteId" />
+    </Key>
+    <Property Name="VoteId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Content" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BeginDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="ImgUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AdminID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReferenceType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Admin" Relationship="Self.FK__Vote__AdminID__0E7913B7" FromRole="Vote" ToRole="Admin" />
+    <NavigationProperty Name="Voted" Relationship="Self.FK__Voted__VoteId__11558062" FromRole="Vote" ToRole="Voted" />
+    <NavigationProperty Name="VoteDetail" Relationship="Self.FK__VoteDetai__VoteI__3E2826D9" FromRole="Vote" ToRole="VoteDetail" />
+  </EntityType>
+  <EntityType Name="Voted">
+    <Key>
+      <PropertyRef Name="VotedId" />
+    </Key>
+    <Property Name="VotedId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Detail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ImgUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ReferenceId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="VoteId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Vote" Relationship="Self.FK__Voted__VoteId__11558062" FromRole="Voted" ToRole="Vote" />
+    <NavigationProperty Name="VoteDetail" Relationship="Self.FK__VoteDetai__Voted__3F1C4B12" FromRole="Voted" ToRole="VoteDetail" />
+  </EntityType>
+  <EntityType Name="VoteDetail">
+    <Key>
+      <PropertyRef Name="VoteId" />
+      <PropertyRef Name="VotedId" />
+      <PropertyRef Name="VoteTime" />
+      <PropertyRef Name="VoterId" />
+    </Key>
+    <Property Name="VoteId" Type="Int64" Nullable="false" />
+    <Property Name="VotedId" Type="Int64" Nullable="false" />
+    <Property Name="VoteTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="VoterId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__VoteDetai__Voter__40106F4B" FromRole="VoteDetail" ToRole="Users" />
+    <NavigationProperty Name="Vote" Relationship="Self.FK__VoteDetai__VoteI__3E2826D9" FromRole="VoteDetail" ToRole="Vote" />
+    <NavigationProperty Name="Voted" Relationship="Self.FK__VoteDetai__Voted__3F1C4B12" FromRole="VoteDetail" ToRole="Voted" />
+  </EntityType>
+  <EntityType Name="All_Users_Fans_View">
+    <Key>
+      <PropertyRef Name="UsersId" />
+    </Key>
+    <Property Name="tot_focus_count" Type="Int64" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="All_Works_Comment_View">
+    <Key>
+      <PropertyRef Name="UsersId" />
+    </Key>
+    <Property Name="tot_comment_count" Type="Int64" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="All_Works_Hot_View">
+    <Key>
+      <PropertyRef Name="UsersId" />
+    </Key>
+    <Property Name="tot_hot" Type="Int32" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Creator_Evaluate">
+    <Key>
+      <PropertyRef Name="Content" />
+      <PropertyRef Name="EvaluateDate" />
+      <PropertyRef Name="CreatorId" />
+      <PropertyRef Name="CreateType" />
+      <PropertyRef Name="HeadUrl" />
+    </Key>
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EvaluateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatorId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreateType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HeadUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UsersName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Creator_Nmae">
+    <Key>
+      <PropertyRef Name="CreatorId" />
+      <PropertyRef Name="CreateType" />
+    </Key>
+    <Property Name="CreatorId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreateType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsersName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Creator_Type">
+    <Key>
+      <PropertyRef Name="CreateType" />
+    </Key>
+    <Property Name="CreateType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Hot_Good_Works">
+    <Key>
+      <PropertyRef Name="UsersId" />
+      <PropertyRef Name="UsersLevel" />
+      <PropertyRef Name="Credit" />
+      <PropertyRef Name="State" />
+      <PropertyRef Name="OrderCount" />
+      <PropertyRef Name="ChargebackCount" />
+      <PropertyRef Name="PublisherNo" />
+      <PropertyRef Name="ProductionName" />
+      <PropertyRef Name="ProductionContent" />
+      <PropertyRef Name="ViewCount" />
+      <PropertyRef Name="LikeCount" />
+      <PropertyRef Name="CommentCount" />
+      <PropertyRef Name="Tag1" />
+      <PropertyRef Name="ImgUrl1" />
+    </Key>
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsersName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Birth" Type="DateTime" Precision="3" />
+    <Property Name="UsersLevel" Type="Int32" Nullable="false" />
+    <Property Name="Credit" Type="Int32" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="OrderCount" Type="Int32" Nullable="false" />
+    <Property Name="ChargebackCount" Type="Int32" Nullable="false" />
+    <Property Name="Hobby" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CreatorId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="HeadUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductionId" Type="Int32" />
+    <Property Name="PublisherNo" Type="Int64" Nullable="false" />
+    <Property Name="ProductionName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PublishDate" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ProductionContent" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProductionType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ViewCount" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LikeCount" Type="Int32" Nullable="false" />
+    <Property Name="CommentCount" Type="Int32" Nullable="false" />
+    <Property Name="Tag1" Type="Int32" Nullable="false" />
+    <Property Name="Tag2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Tag3" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ImgUrl1" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="most_comment_creator">
+    <Key>
+      <PropertyRef Name="CreateType" />
+      <PropertyRef Name="CertificationDate" />
+      <PropertyRef Name="HeadUrl" />
+      <PropertyRef Name="UsersId" />
+    </Key>
+    <Property Name="UsersName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CreateType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CertificationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HeadUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="comt_count" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Most_Evaluate_Creator_View">
+    <Key>
+      <PropertyRef Name="CreatorId" />
+      <PropertyRef Name="CertificationDate" />
+      <PropertyRef Name="CreateType" />
+    </Key>
+    <Property Name="CreatorId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CertificationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsersName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Music_Works_Hot">
+    <Key>
+      <PropertyRef Name="ProductionId" />
+      <PropertyRef Name="PublisherNo" />
+      <PropertyRef Name="ProductionType" />
+      <PropertyRef Name="ViewCount" />
+      <PropertyRef Name="LikeCount" />
+      <PropertyRef Name="CommentCount" />
+      <PropertyRef Name="HotCount" />
+    </Key>
+    <Property Name="ProductionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PublisherNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PublishDate" Type="DateTime" Precision="3" />
+    <Property Name="ProductionContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductionType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ViewCount" Type="Int64" Nullable="false" />
+    <Property Name="LikeCount" Type="Int32" Nullable="false" />
+    <Property Name="CommentCount" Type="Int32" Nullable="false" />
+    <Property Name="Tag" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ImgUrl" Type="String" MaxLength="160" FixedLength="false" Unicode="false" />
+    <Property Name="HotCount" Type="Int32" Nullable="false" />
+    <Property Name="Describe" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="newest_comment">
+    <Key>
+      <PropertyRef Name="HeadUrl" />
+      <PropertyRef Name="ProductionId" />
+      <PropertyRef Name="UsersId" />
+    </Key>
+    <Property Name="HeadUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductionId" Type="Int64" Nullable="false" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsersName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CommentContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="newst_creator_production">
+    <Key>
+      <PropertyRef Name="ProductionId" />
+      <PropertyRef Name="PublisherNo" />
+      <PropertyRef Name="ProductionType" />
+      <PropertyRef Name="ViewCount" />
+      <PropertyRef Name="LikeCount" />
+      <PropertyRef Name="CommentCount" />
+      <PropertyRef Name="HotCount" />
+    </Key>
+    <Property Name="ProductionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PublisherNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PublishDate" Type="DateTime" Precision="3" />
+    <Property Name="ProductionContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductionType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ViewCount" Type="Int64" Nullable="false" />
+    <Property Name="LikeCount" Type="Int32" Nullable="false" />
+    <Property Name="CommentCount" Type="Int32" Nullable="false" />
+    <Property Name="Tag" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ImgUrl" Type="String" MaxLength="160" FixedLength="false" Unicode="false" />
+    <Property Name="HotCount" Type="Int32" Nullable="false" />
+    <Property Name="Describe" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="P_Type">
+    <Key>
+      <PropertyRef Name="ProductionType" />
+    </Key>
+    <Property Name="ProductionType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Picture_Works_Hot">
+    <Key>
+      <PropertyRef Name="ProductionId" />
+      <PropertyRef Name="PublisherNo" />
+      <PropertyRef Name="ProductionType" />
+      <PropertyRef Name="ViewCount" />
+      <PropertyRef Name="LikeCount" />
+      <PropertyRef Name="CommentCount" />
+      <PropertyRef Name="HotCount" />
+    </Key>
+    <Property Name="ProductionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PublisherNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PublishDate" Type="DateTime" Precision="3" />
+    <Property Name="ProductionContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductionType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ViewCount" Type="Int64" Nullable="false" />
+    <Property Name="LikeCount" Type="Int32" Nullable="false" />
+    <Property Name="CommentCount" Type="Int32" Nullable="false" />
+    <Property Name="Tag" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ImgUrl" Type="String" MaxLength="160" FixedLength="false" Unicode="false" />
+    <Property Name="HotCount" Type="Int32" Nullable="false" />
+    <Property Name="Describe" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Relevant_Type">
+    <Key>
+      <PropertyRef Name="UsersId" />
+    </Key>
+    <Property Name="Tag" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tag_Hot">
+    <Key>
+      <PropertyRef Name="LabelName" />
+      <PropertyRef Name="LabelId" />
+    </Key>
+    <Property Name="LabelName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LabelId" Type="Int32" Nullable="false" />
+    <Property Name="LabelImg" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="tot_hot" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Text_Works_Hot">
+    <Key>
+      <PropertyRef Name="ProductionId" />
+      <PropertyRef Name="PublisherNo" />
+      <PropertyRef Name="ProductionType" />
+      <PropertyRef Name="ViewCount" />
+      <PropertyRef Name="LikeCount" />
+      <PropertyRef Name="CommentCount" />
+      <PropertyRef Name="HotCount" />
+    </Key>
+    <Property Name="ProductionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PublisherNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PublishDate" Type="DateTime" Precision="3" />
+    <Property Name="ProductionContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductionType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ViewCount" Type="Int64" Nullable="false" />
+    <Property Name="LikeCount" Type="Int32" Nullable="false" />
+    <Property Name="CommentCount" Type="Int32" Nullable="false" />
+    <Property Name="Tag" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ImgUrl" Type="String" MaxLength="160" FixedLength="false" Unicode="false" />
+    <Property Name="HotCount" Type="Int32" Nullable="false" />
+    <Property Name="Describe" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Tot_Comment">
+    <Key>
+      <PropertyRef Name="UsersId" />
+    </Key>
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tot_comment1" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tot_Fans">
+    <Key>
+      <PropertyRef Name="UsersId" />
+    </Key>
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tot_fans1" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tot_hot_users">
+    <Key>
+      <PropertyRef Name="HeadUrl" />
+      <PropertyRef Name="UsersId" />
+    </Key>
+    <Property Name="Sex" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="UsersName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Birth" Type="DateTime" Precision="3" />
+    <Property Name="HeadUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tot_hot" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tot_Like">
+    <Key>
+      <PropertyRef Name="UsersId" />
+    </Key>
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tot_like1" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tot_Works">
+    <Key>
+      <PropertyRef Name="UsersId" />
+    </Key>
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tot_works1" Type="Int32" />
+  </EntityType>
+  <EntityType Name="UnEvaluate">
+    <Key>
+      <PropertyRef Name="OrderId" />
+      <PropertyRef Name="UsersId" />
+      <PropertyRef Name="CreatorId" />
+      <PropertyRef Name="total_amt" />
+      <PropertyRef Name="BuyDate" />
+      <PropertyRef Name="FinishDate" />
+      <PropertyRef Name="CreateType" />
+    </Key>
+    <Property Name="UsersName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="UsersId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatorId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="total_amt" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="BuyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FinishDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OrderState" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="NeedDescrib" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ActualFinishDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatorName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CreateType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users_Level_View">
+    <Key>
+      <PropertyRef Name="Exp" />
+      <PropertyRef Name="UsersLevel" />
+      <PropertyRef Name="LowExp" />
+      <PropertyRef Name="HighExp" />
+    </Key>
+    <Property Name="UsersName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Exp" Type="Int32" Nullable="false" />
+    <Property Name="UsersLevel" Type="Int32" Nullable="false" />
+    <Property Name="LowExp" Type="Int64" Nullable="false" />
+    <Property Name="HighExp" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Video_Works_Hot">
+    <Key>
+      <PropertyRef Name="ProductionId" />
+      <PropertyRef Name="PublisherNo" />
+      <PropertyRef Name="ProductionType" />
+      <PropertyRef Name="ViewCount" />
+      <PropertyRef Name="LikeCount" />
+      <PropertyRef Name="CommentCount" />
+      <PropertyRef Name="HotCount" />
+    </Key>
+    <Property Name="ProductionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PublisherNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PublishDate" Type="DateTime" Precision="3" />
+    <Property Name="ProductionContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductionType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ViewCount" Type="Int64" Nullable="false" />
+    <Property Name="LikeCount" Type="Int32" Nullable="false" />
+    <Property Name="CommentCount" Type="Int32" Nullable="false" />
+    <Property Name="Tag" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ImgUrl" Type="String" MaxLength="160" FixedLength="false" Unicode="false" />
+    <Property Name="HotCount" Type="Int32" Nullable="false" />
+    <Property Name="Describe" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__EveryImg__AdminI__47B19113">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+    <End Role="EveryImg" Type="Self.EveryImg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="AdminId" />
+      </Principal>
+      <Dependent Role="EveryImg">
+        <PropertyRef Name="AdminID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PublicMsg__Sende__68336F3E">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+    <End Role="PublicMsg" Type="Self.PublicMsg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="AdminId" />
+      </Principal>
+      <Dependent Role="PublicMsg">
+        <PropertyRef Name="SenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SysMsg__SenderId__6B0FDBE9">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+    <End Role="SysMsg" Type="Self.SysMsg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="AdminId" />
+      </Principal>
+      <Dependent Role="SysMsg">
+        <PropertyRef Name="SenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vote__AdminID__0E7913B7">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+    <End Role="Vote" Type="Self.Vote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="AdminId" />
+      </Principal>
+      <Dependent Role="Vote">
+        <PropertyRef Name="AdminID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applys__UsersId__02E7657A">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Applys" Type="Self.Applys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="Applys">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AuthenApp__Users__06B7F65E">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="AuthenApply" Type="Self.AuthenApply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="AuthenApply">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Blog__PublisherI__37661AB1">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="Blog">
+        <PropertyRef Name="PublisherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BlogComme__BlogI__5125ECB4">
+    <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+    <End Role="BlogComment" Type="Self.BlogComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blog">
+        <PropertyRef Name="BlogID" />
+      </Principal>
+      <Dependent Role="BlogComment">
+        <PropertyRef Name="BlogID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BlogComme__Comme__5031C87B">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="BlogComment" Type="Self.BlogComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="BlogComment">
+        <PropertyRef Name="CommenterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Collect__Product__09946309">
+    <End Role="Production" Type="Self.Production" Multiplicity="1" />
+    <End Role="Collect" Type="Self.Collect" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Production">
+        <PropertyRef Name="ProductionId" />
+      </Principal>
+      <Dependent Role="Collect">
+        <PropertyRef Name="ProductionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Collect__UsersId__0A888742">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Collect" Type="Self.Collect" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="Collect">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comments__Commen__592635D8">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="CommenterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comments__Produc__5A1A5A11">
+    <End Role="Production" Type="Self.Production" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Production">
+        <PropertyRef Name="ProductionId" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="ProductionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reply__CommentId__4B2D1C3C">
+    <End Role="Comments" Type="Self.Comments" Multiplicity="1" />
+    <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comments">
+        <PropertyRef Name="CommentId" />
+      </Principal>
+      <Dependent Role="Reply">
+        <PropertyRef Name="CommentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Creator__PriceRa__173876EA">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Creator" Type="Self.Creator" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="Creator">
+        <PropertyRef Name="CreatorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__CreatorI__40257DE4">
+    <End Role="Creator" Type="Self.Creator" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Creator">
+        <PropertyRef Name="CreatorId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="CreatorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Evaluate__OrderI__15FA39EE">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+    <End Role="Evaluate" Type="Self.Evaluate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="Evaluate">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Evaluate__UsersI__150615B5">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Evaluate" Type="Self.Evaluate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="Evaluate">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Focus__FocusedUs__0E591826">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Focus" Type="Self.Focus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="Focus">
+        <PropertyRef Name="FocusedUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Focus__UsersId__0D64F3ED">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Focus" Type="Self.Focus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="Focus">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__likeIt__Producti__25276EE5">
+    <End Role="Production" Type="Self.Production" Multiplicity="1" />
+    <End Role="likeIt" Type="Self.likeIt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Production">
+        <PropertyRef Name="ProductionId" />
+      </Principal>
+      <Dependent Role="likeIt">
+        <PropertyRef Name="ProductionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__likeIt__UsersId__261B931E">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="likeIt" Type="Self.likeIt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="likeIt">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderAppl__QOrde__7F16D496">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+    <End Role="OrderApply" Type="Self.OrderApply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderApply">
+        <PropertyRef Name="QOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderAppl__Users__7E22B05D">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="OrderApply" Type="Self.OrderApply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="OrderApply">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__UsersId__3F3159AB">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PearsonMs__Recep__2D12A970">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="PersonMsg" Type="Self.PersonMsg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="PersonMsg">
+        <PropertyRef Name="ReceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PearsonMs__Sebde__2C1E8537">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="PersonMsg" Type="Self.PersonMsg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="PersonMsg">
+        <PropertyRef Name="SebderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RcptAddre__Users__0638D371">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="RcptAddress" Type="Self.RcptAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="RcptAddress">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopOrder__AddID__0A096455">
+    <End Role="RcptAddress" Type="Self.RcptAddress" Multiplicity="1" />
+    <End Role="ShopOrder" Type="Self.ShopOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RcptAddress">
+        <PropertyRef Name="AddID" />
+      </Principal>
+      <Dependent Role="ShopOrder">
+        <PropertyRef Name="AddID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reply__UsersId__4A38F803">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="Reply">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopCart__SubID__157B1701">
+    <End Role="SProductSubClass" Type="Self.SProductSubClass" Multiplicity="1" />
+    <End Role="ShopCart" Type="Self.ShopCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SProductSubClass">
+        <PropertyRef Name="SubID" />
+      </Principal>
+      <Dependent Role="ShopCart">
+        <PropertyRef Name="SubID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopCart__UsersI__166F3B3A">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="ShopCart" Type="Self.ShopCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="ShopCart">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopEvalu__Order__129EAA56">
+    <End Role="ShopOrder" Type="Self.ShopOrder" Multiplicity="1" />
+    <End Role="ShopEvaluate" Type="Self.ShopEvaluate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopOrder">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="ShopEvaluate">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopEvalu__Users__11AA861D">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="ShopEvaluate" Type="Self.ShopEvaluate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="ShopEvaluate">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopInfoM__Produ__007FFA1B">
+    <End Role="ShopProduct" Type="Self.ShopProduct" Multiplicity="1" />
+    <End Role="ShopInfoMore" Type="Self.ShopInfoMore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProduct">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ShopInfoMore">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopOrder__Order__0DD9F539">
+    <End Role="ShopOrder" Type="Self.ShopOrder" Multiplicity="1" />
+    <End Role="ShopOrderDetail" Type="Self.ShopOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopOrder">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="ShopOrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopOrder__Users__0915401C">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="ShopOrder" Type="Self.ShopOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="ShopOrder">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopOrder__SubID__0ECE1972">
+    <End Role="SProductSubClass" Type="Self.SProductSubClass" Multiplicity="1" />
+    <End Role="ShopOrderDetail" Type="Self.ShopOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SProductSubClass">
+        <PropertyRef Name="SubID" />
+      </Principal>
+      <Dependent Role="ShopOrderDetail">
+        <PropertyRef Name="SubID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopProdu__TagId__7DA38D70">
+    <End Role="ShopProductTag" Type="Self.ShopProductTag" Multiplicity="1" />
+    <End Role="ShopProduct" Type="Self.ShopProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProductTag">
+        <PropertyRef Name="TagId" />
+      </Principal>
+      <Dependent Role="ShopProduct">
+        <PropertyRef Name="TagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShopProdu__TypeI__7CAF6937">
+    <End Role="ShopProductType" Type="Self.ShopProductType" Multiplicity="1" />
+    <End Role="ShopProduct" Type="Self.ShopProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProductType">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="ShopProduct">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SProductS__Produ__035C66C6">
+    <End Role="ShopProduct" Type="Self.ShopProduct" Multiplicity="1" />
+    <End Role="SProductSubClass" Type="Self.SProductSubClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopProduct">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="SProductSubClass">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SysMsg__ReceptId__6C040022">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="SysMsg" Type="Self.SysMsg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="SysMsg">
+        <PropertyRef Name="ReceptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__UsersId__1273C1CD">
+    <End Role="UsersLogin" Type="Self.UsersLogin" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UsersLogin">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VoteDetai__Voter__40106F4B">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="VoteDetail" Type="Self.VoteDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="VoteDetail">
+        <PropertyRef Name="VoterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Voted__VoteId__11558062">
+    <End Role="Vote" Type="Self.Vote" Multiplicity="1" />
+    <End Role="Voted" Type="Self.Voted" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vote">
+        <PropertyRef Name="VoteId" />
+      </Principal>
+      <Dependent Role="Voted">
+        <PropertyRef Name="VoteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VoteDetai__VoteI__3E2826D9">
+    <End Role="Vote" Type="Self.Vote" Multiplicity="1" />
+    <End Role="VoteDetail" Type="Self.VoteDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vote">
+        <PropertyRef Name="VoteId" />
+      </Principal>
+      <Dependent Role="VoteDetail">
+        <PropertyRef Name="VoteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VoteDetai__Voted__3F1C4B12">
+    <End Role="Voted" Type="Self.Voted" Multiplicity="1" />
+    <End Role="VoteDetail" Type="Self.VoteDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Voted">
+        <PropertyRef Name="VotedId" />
+      </Principal>
+      <Dependent Role="VoteDetail">
+        <PropertyRef Name="VotedId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TheCreationEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admin" EntityType="Self.Admin" />
+    <EntitySet Name="Applys" EntityType="Self.Applys" />
+    <EntitySet Name="AuthenApply" EntityType="Self.AuthenApply" />
+    <EntitySet Name="Blog" EntityType="Self.Blog" />
+    <EntitySet Name="BlogComment" EntityType="Self.BlogComment" />
+    <EntitySet Name="Collect" EntityType="Self.Collect" />
+    <EntitySet Name="Comments" EntityType="Self.Comments" />
+    <EntitySet Name="Creator" EntityType="Self.Creator" />
+    <EntitySet Name="Evaluate" EntityType="Self.Evaluate" />
+    <EntitySet Name="EveryImg" EntityType="Self.EveryImg" />
+    <EntitySet Name="Focus" EntityType="Self.Focus" />
+    <EntitySet Name="likeIt" EntityType="Self.likeIt" />
+    <EntitySet Name="OrderApply" EntityType="Self.OrderApply" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" />
+    <EntitySet Name="PersonMsg" EntityType="Self.PersonMsg" />
+    <EntitySet Name="Production" EntityType="Self.Production" />
+    <EntitySet Name="PublicMsg" EntityType="Self.PublicMsg" />
+    <EntitySet Name="RcptAddress" EntityType="Self.RcptAddress" />
+    <EntitySet Name="Reply" EntityType="Self.Reply" />
+    <EntitySet Name="ShopCart" EntityType="Self.ShopCart" />
+    <EntitySet Name="ShopEvaluate" EntityType="Self.ShopEvaluate" />
+    <EntitySet Name="ShopInfoMore" EntityType="Self.ShopInfoMore" />
+    <EntitySet Name="ShopOrder" EntityType="Self.ShopOrder" />
+    <EntitySet Name="ShopOrderDetail" EntityType="Self.ShopOrderDetail" />
+    <EntitySet Name="ShopProduct" EntityType="Self.ShopProduct" />
+    <EntitySet Name="ShopProductTag" EntityType="Self.ShopProductTag" />
+    <EntitySet Name="ShopProductType" EntityType="Self.ShopProductType" />
+    <EntitySet Name="SProductSubClass" EntityType="Self.SProductSubClass" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="SysMsg" EntityType="Self.SysMsg" />
+    <EntitySet Name="Tag" EntityType="Self.Tag" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="UsersLevel" EntityType="Self.UsersLevel" />
+    <EntitySet Name="UsersLogin" EntityType="Self.UsersLogin" />
+    <EntitySet Name="Vote" EntityType="Self.Vote" />
+    <EntitySet Name="Voted" EntityType="Self.Voted" />
+    <EntitySet Name="VoteDetail" EntityType="Self.VoteDetail" />
+    <EntitySet Name="All_Users_Fans_View" EntityType="Self.All_Users_Fans_View" />
+    <EntitySet Name="All_Works_Comment_View" EntityType="Self.All_Works_Comment_View" />
+    <EntitySet Name="All_Works_Hot_View" EntityType="Self.All_Works_Hot_View" />
+    <EntitySet Name="Creator_Evaluate" EntityType="Self.Creator_Evaluate" />
+    <EntitySet Name="Creator_Nmae" EntityType="Self.Creator_Nmae" />
+    <EntitySet Name="Creator_Type" EntityType="Self.Creator_Type" />
+    <EntitySet Name="Hot_Good_Works" EntityType="Self.Hot_Good_Works" />
+    <EntitySet Name="most_comment_creator" EntityType="Self.most_comment_creator" />
+    <EntitySet Name="Most_Evaluate_Creator_View" EntityType="Self.Most_Evaluate_Creator_View" />
+    <EntitySet Name="Music_Works_Hot" EntityType="Self.Music_Works_Hot" />
+    <EntitySet Name="newest_comment" EntityType="Self.newest_comment" />
+    <EntitySet Name="newst_creator_production" EntityType="Self.newst_creator_production" />
+    <EntitySet Name="P_Type" EntityType="Self.P_Type" />
+    <EntitySet Name="Picture_Works_Hot" EntityType="Self.Picture_Works_Hot" />
+    <EntitySet Name="Relevant_Type" EntityType="Self.Relevant_Type" />
+    <EntitySet Name="Tag_Hot" EntityType="Self.Tag_Hot" />
+    <EntitySet Name="Text_Works_Hot" EntityType="Self.Text_Works_Hot" />
+    <EntitySet Name="Tot_Comment" EntityType="Self.Tot_Comment" />
+    <EntitySet Name="Tot_Fans" EntityType="Self.Tot_Fans" />
+    <EntitySet Name="tot_hot_users" EntityType="Self.tot_hot_users" />
+    <EntitySet Name="Tot_Like" EntityType="Self.Tot_Like" />
+    <EntitySet Name="Tot_Works" EntityType="Self.Tot_Works" />
+    <EntitySet Name="UnEvaluate" EntityType="Self.UnEvaluate" />
+    <EntitySet Name="Users_Level_View" EntityType="Self.Users_Level_View" />
+    <EntitySet Name="Video_Works_Hot" EntityType="Self.Video_Works_Hot" />
+    <AssociationSet Name="FK__EveryImg__AdminI__47B19113" Association="Self.FK__EveryImg__AdminI__47B19113">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="EveryImg" EntitySet="EveryImg" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PublicMsg__Sende__68336F3E" Association="Self.FK__PublicMsg__Sende__68336F3E">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="PublicMsg" EntitySet="PublicMsg" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SysMsg__SenderId__6B0FDBE9" Association="Self.FK__SysMsg__SenderId__6B0FDBE9">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="SysMsg" EntitySet="SysMsg" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vote__AdminID__0E7913B7" Association="Self.FK__Vote__AdminID__0E7913B7">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="Vote" EntitySet="Vote" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applys__UsersId__02E7657A" Association="Self.FK__Applys__UsersId__02E7657A">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Applys" EntitySet="Applys" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AuthenApp__Users__06B7F65E" Association="Self.FK__AuthenApp__Users__06B7F65E">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="AuthenApply" EntitySet="AuthenApply" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Blog__PublisherI__37661AB1" Association="Self.FK__Blog__PublisherI__37661AB1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Blog" EntitySet="Blog" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BlogComme__BlogI__5125ECB4" Association="Self.FK__BlogComme__BlogI__5125ECB4">
+      <End Role="Blog" EntitySet="Blog" />
+      <End Role="BlogComment" EntitySet="BlogComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BlogComme__Comme__5031C87B" Association="Self.FK__BlogComme__Comme__5031C87B">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="BlogComment" EntitySet="BlogComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Collect__Product__09946309" Association="Self.FK__Collect__Product__09946309">
+      <End Role="Production" EntitySet="Production" />
+      <End Role="Collect" EntitySet="Collect" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Collect__UsersId__0A888742" Association="Self.FK__Collect__UsersId__0A888742">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Collect" EntitySet="Collect" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comments__Commen__592635D8" Association="Self.FK__Comments__Commen__592635D8">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comments__Produc__5A1A5A11" Association="Self.FK__Comments__Produc__5A1A5A11">
+      <End Role="Production" EntitySet="Production" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reply__CommentId__4B2D1C3C" Association="Self.FK__Reply__CommentId__4B2D1C3C">
+      <End Role="Comments" EntitySet="Comments" />
+      <End Role="Reply" EntitySet="Reply" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Creator__PriceRa__173876EA" Association="Self.FK__Creator__PriceRa__173876EA">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Creator" EntitySet="Creator" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__CreatorI__40257DE4" Association="Self.FK__Orders__CreatorI__40257DE4">
+      <End Role="Creator" EntitySet="Creator" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Evaluate__OrderI__15FA39EE" Association="Self.FK__Evaluate__OrderI__15FA39EE">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="Evaluate" EntitySet="Evaluate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Evaluate__UsersI__150615B5" Association="Self.FK__Evaluate__UsersI__150615B5">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Evaluate" EntitySet="Evaluate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Focus__FocusedUs__0E591826" Association="Self.FK__Focus__FocusedUs__0E591826">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Focus" EntitySet="Focus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Focus__UsersId__0D64F3ED" Association="Self.FK__Focus__UsersId__0D64F3ED">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Focus" EntitySet="Focus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__likeIt__Producti__25276EE5" Association="Self.FK__likeIt__Producti__25276EE5">
+      <End Role="Production" EntitySet="Production" />
+      <End Role="likeIt" EntitySet="likeIt" />
+    </AssociationSet>
+    <AssociationSet Name="FK__likeIt__UsersId__261B931E" Association="Self.FK__likeIt__UsersId__261B931E">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="likeIt" EntitySet="likeIt" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderAppl__QOrde__7F16D496" Association="Self.FK__OrderAppl__QOrde__7F16D496">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderApply" EntitySet="OrderApply" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderAppl__Users__7E22B05D" Association="Self.FK__OrderAppl__Users__7E22B05D">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="OrderApply" EntitySet="OrderApply" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__UsersId__3F3159AB" Association="Self.FK__Orders__UsersId__3F3159AB">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PearsonMs__Recep__2D12A970" Association="Self.FK__PearsonMs__Recep__2D12A970">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PersonMsg" EntitySet="PersonMsg" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PearsonMs__Sebde__2C1E8537" Association="Self.FK__PearsonMs__Sebde__2C1E8537">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PersonMsg" EntitySet="PersonMsg" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RcptAddre__Users__0638D371" Association="Self.FK__RcptAddre__Users__0638D371">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="RcptAddress" EntitySet="RcptAddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopOrder__AddID__0A096455" Association="Self.FK__ShopOrder__AddID__0A096455">
+      <End Role="RcptAddress" EntitySet="RcptAddress" />
+      <End Role="ShopOrder" EntitySet="ShopOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reply__UsersId__4A38F803" Association="Self.FK__Reply__UsersId__4A38F803">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Reply" EntitySet="Reply" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopCart__SubID__157B1701" Association="Self.FK__ShopCart__SubID__157B1701">
+      <End Role="SProductSubClass" EntitySet="SProductSubClass" />
+      <End Role="ShopCart" EntitySet="ShopCart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopCart__UsersI__166F3B3A" Association="Self.FK__ShopCart__UsersI__166F3B3A">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ShopCart" EntitySet="ShopCart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopEvalu__Order__129EAA56" Association="Self.FK__ShopEvalu__Order__129EAA56">
+      <End Role="ShopOrder" EntitySet="ShopOrder" />
+      <End Role="ShopEvaluate" EntitySet="ShopEvaluate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopEvalu__Users__11AA861D" Association="Self.FK__ShopEvalu__Users__11AA861D">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ShopEvaluate" EntitySet="ShopEvaluate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopInfoM__Produ__007FFA1B" Association="Self.FK__ShopInfoM__Produ__007FFA1B">
+      <End Role="ShopProduct" EntitySet="ShopProduct" />
+      <End Role="ShopInfoMore" EntitySet="ShopInfoMore" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopOrder__Order__0DD9F539" Association="Self.FK__ShopOrder__Order__0DD9F539">
+      <End Role="ShopOrder" EntitySet="ShopOrder" />
+      <End Role="ShopOrderDetail" EntitySet="ShopOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopOrder__Users__0915401C" Association="Self.FK__ShopOrder__Users__0915401C">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ShopOrder" EntitySet="ShopOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopOrder__SubID__0ECE1972" Association="Self.FK__ShopOrder__SubID__0ECE1972">
+      <End Role="SProductSubClass" EntitySet="SProductSubClass" />
+      <End Role="ShopOrderDetail" EntitySet="ShopOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopProdu__TagId__7DA38D70" Association="Self.FK__ShopProdu__TagId__7DA38D70">
+      <End Role="ShopProductTag" EntitySet="ShopProductTag" />
+      <End Role="ShopProduct" EntitySet="ShopProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShopProdu__TypeI__7CAF6937" Association="Self.FK__ShopProdu__TypeI__7CAF6937">
+      <End Role="ShopProductType" EntitySet="ShopProductType" />
+      <End Role="ShopProduct" EntitySet="ShopProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SProductS__Produ__035C66C6" Association="Self.FK__SProductS__Produ__035C66C6">
+      <End Role="ShopProduct" EntitySet="ShopProduct" />
+      <End Role="SProductSubClass" EntitySet="SProductSubClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SysMsg__ReceptId__6C040022" Association="Self.FK__SysMsg__ReceptId__6C040022">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="SysMsg" EntitySet="SysMsg" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__UsersId__1273C1CD" Association="Self.FK__Users__UsersId__1273C1CD">
+      <End Role="UsersLogin" EntitySet="UsersLogin" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VoteDetai__Voter__40106F4B" Association="Self.FK__VoteDetai__Voter__40106F4B">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="VoteDetail" EntitySet="VoteDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Voted__VoteId__11558062" Association="Self.FK__Voted__VoteId__11558062">
+      <End Role="Vote" EntitySet="Vote" />
+      <End Role="Voted" EntitySet="Voted" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VoteDetai__VoteI__3E2826D9" Association="Self.FK__VoteDetai__VoteI__3E2826D9">
+      <End Role="Vote" EntitySet="Vote" />
+      <End Role="VoteDetail" EntitySet="VoteDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VoteDetai__Voted__3F1C4B12" Association="Self.FK__VoteDetai__Voted__3F1C4B12">
+      <End Role="Voted" EntitySet="Voted" />
+      <End Role="VoteDetail" EntitySet="VoteDetail" />
+    </AssociationSet>
+    <FunctionImport Name="All_MyFocus_Works_View" ReturnType="Collection(TheCreationModel.All_MyFocus_Works_View_Result)">
+      <Parameter Name="U_ID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Proc_Get_Works" ReturnType="Collection(TheCreationModel.Proc_Get_Works_Result)">
+      <Parameter Name="U_ID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_init_CommentCount" />
+    <FunctionImport Name="proc_init_HotCoun">
+      <Parameter Name="Work_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_init_UserLevel" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TheCreationModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TheCreationModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="Users_FoucusMe_View" ReturnType="Collection(TheCreationModel.Users_FoucusMe_View_Result)">
+      <Parameter Name="U_ID" Mode="In" Type="String" />
+    </FunctionImport>
+    <AssociationSet Name="production_Primarykey" Association="TheCreationModel.production_Primarykey">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Production" EntitySet="Production" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="All_MyFocus_Works_View_Result">
+    <Property Type="Int64" Name="ProductionId" Nullable="false" />
+    <Property Type="String" Name="PublisherNo" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="ProductionName" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="PublishDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ProductionContent" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="ProductionType" Nullable="false" MaxLength="10" />
+    <Property Type="Int64" Name="ViewCount" Nullable="false" />
+    <Property Type="Int32" Name="LikeCount" Nullable="false" />
+    <Property Type="Int32" Name="CommentCount" Nullable="false" />
+    <Property Type="String" Name="Tag" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ImgUrl" Nullable="true" MaxLength="160" />
+    <Property Type="Int32" Name="HotCount" Nullable="false" />
+    <Property Type="String" Name="Describe" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="Proc_Get_Works_Result">
+    <Property Type="Int64" Name="ProductionId" Nullable="false" />
+    <Property Type="String" Name="PublisherNo" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="ProductionName" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="PublishDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ProductionContent" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="ProductionType" Nullable="false" MaxLength="10" />
+    <Property Type="Int64" Name="ViewCount" Nullable="false" />
+    <Property Type="Int32" Name="LikeCount" Nullable="false" />
+    <Property Type="Int32" Name="CommentCount" Nullable="false" />
+    <Property Type="String" Name="Tag" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ImgUrl" Nullable="true" MaxLength="160" />
+    <Property Type="Int32" Name="HotCount" Nullable="false" />
+    <Property Type="String" Name="Describe" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Users_FoucusMe_View_Result">
+    <Property Type="String" Name="UsersId" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="UsersName" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Hobby" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <Association Name="production_Primarykey">
+    <End Type="TheCreationModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="TheCreationModel.Production" Role="Production" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UsersId" />
+      </Principal>
+      <Dependent Role="Production">
+        <PropertyRef Name="PublisherNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

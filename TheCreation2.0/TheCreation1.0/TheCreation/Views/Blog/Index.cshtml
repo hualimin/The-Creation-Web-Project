@@ -1,0 +1,41 @@
+﻿@using Models
+@model IEnumerable<Blog>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/BlogLayout1.cshtml";
+}
+
+<main class="main" role="main">
+    <div class="rslides_container">
+        <ul class="rslides" id="slider">
+            <li><a href="http://sc.adminbuy.cn" target="_blank" title="第三张"><img src="/image/blog_img/blog_index_img/1-1FFR153500-L.jpg" alt="第三张" /></a></li>
+            <li><a href="http://www.adminbuy.cn" target="_blank" title="第二张"><img src="/image/blog_img/blog_index_img/1-1FFR154310-L.jpg" alt="第二张" /></a></li>
+            <li><a href="/a/ziyuan/5.html" target="_blank" title="第一张"><img src="/image/blog_img/blog_index_img/1-1FFR153500-L.jpg" alt="第一张" /></a></li>
+
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="post istop cate1 auth1">
+
+        <h2><span>置顶推荐</span> <a href="#" title="如何让自己的网站更有质量？AB模板王有妙招">如何让自己的网站更有质量？AB模板王有妙招</a></h2>
+    </div>
+    @foreach (var item in Model)
+    {
+        <article class="post cate1 auth1">
+            <div class="thumb"> <a href="@Url.Action("BlogDetail","Blog",new { id=item.BlogID})" title="@item.Title" target="_blank"> <img alt="@item.Title" src="@item.CoverImg" /> </a> </div>
+            <span class="post-cat"><a href="@Url.Action("BlogDetail","Blog",new { id=item.BlogID})" title="@item.BlogType" target="_blank">@item.BlogType</a></span>
+            <h2><a href="@Url.Action("BlogDetail","Blog",new { id=item.BlogID})" title="@item.Title" target="_blank">@item.Title</a></h2>
+            <div class="entry loop-entry">
+                <p>@item.Describe</p>
+            </div>
+            <div class="postmeta">
+                <span><i class="fa fa-calendar"></i> 日期：@item.PublishDate</span> <span>
+                    <i class="fa fa-fire"></i> 浏览：@item.ViewCount
+                    <script src="#" type='text/javascript' language="javascript"></script>次
+                </span>
+            </div>
+        </article>
+    }
+</main>
+

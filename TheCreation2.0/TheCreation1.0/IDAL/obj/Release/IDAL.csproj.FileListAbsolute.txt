@@ -1,0 +1,13 @@
+F:\大三\大三下\C#工作室文件\工作室下\TheCreation2.0(6.25)\TheCreation1.0\IDAL\bin\Release\IDAL.dll
+F:\大三\大三下\C#工作室文件\工作室下\TheCreation2.0(6.25)\TheCreation1.0\IDAL\bin\Release\IDAL.pdb
+F:\大三\大三下\C#工作室文件\工作室下\TheCreation2.0(6.25)\TheCreation1.0\IDAL\bin\Release\Models.dll
+F:\大三\大三下\C#工作室文件\工作室下\TheCreation2.0(6.25)\TheCreation1.0\IDAL\bin\Release\EntityFramework.dll
+F:\大三\大三下\C#工作室文件\工作室下\TheCreation2.0(6.25)\TheCreation1.0\IDAL\bin\Release\Models.pdb
+F:\大三\大三下\C#工作室文件\工作室下\TheCreation2.0(6.25)\TheCreation1.0\IDAL\bin\Release\Models.dll.config
+F:\大三\大三下\C#工作室文件\工作室下\TheCreation2.0(6.25)\TheCreation1.0\IDAL\bin\Release\EntityFramework.xml
+F:\大三\大三下\C#工作室文件\工作室下\TheCreation2.0(6.25)\TheCreation1.0\IDAL\bin\Release\zh-Hans\EntityFramework.resources.dll
+F:\大三\大三下\C#工作室文件\工作室下\TheCreation2.0(6.25)\TheCreation1.0\IDAL\obj\Release\IDAL.csprojAssemblyReference.cache
+F:\大三\大三下\C#工作室文件\工作室下\TheCreation2.0(6.25)\TheCreation1.0\IDAL\obj\Release\IDAL.csproj.CoreCompileInputs.cache
+F:\大三\大三下\C#工作室文件\工作室下\TheCreation2.0(6.25)\TheCreation1.0\IDAL\obj\Release\IDAL.csproj.CopyComplete
+F:\大三\大三下\C#工作室文件\工作室下\TheCreation2.0(6.25)\TheCreation1.0\IDAL\obj\Release\IDAL.dll
+F:\大三\大三下\C#工作室文件\工作室下\TheCreation2.0(6.25)\TheCreation1.0\IDAL\obj\Release\IDAL.pdb

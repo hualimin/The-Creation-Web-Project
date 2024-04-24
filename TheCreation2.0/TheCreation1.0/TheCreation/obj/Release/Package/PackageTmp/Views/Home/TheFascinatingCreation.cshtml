@@ -1,0 +1,248 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>创世界</title>
+
+    <link href="~/css/Join_TheFascinatingCreation/animate.css" rel="stylesheet" />
+    <link href="~/css/Join_TheFascinatingCreation/normalize.css" rel="stylesheet" />
+    <link href="~/css/Join_TheFascinatingCreation/styles.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .first-background {
+            background-image: url(/image/Join_TheFascinatingCreation/4.jpg);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="first-background" data-midnight="white">
+
+    </div>
+
+
+    <header data-midnight="black">
+        <div class="container">
+            <h1 class="wow fadeInUp">创世界，让你的世界更有趣</h1>
+            <p class="wow fadeInUp">You are the King of the world!</p>
+            <div class="scroll-prompt wow fadeInUp"></div>
+            <figure id="space-island">
+                <img class="wow fadeInUp" src="~/image/Join_TheFascinatingCreation/1.jpg" />
+            </figure>
+        </div>
+
+    </header>
+
+
+    <section class="step step-one" data-midnight="blue">
+
+        <div class="container">
+            <div class="instructions wow fadeInLeft">
+                <h2>创作品</h2>
+                <p>只要你有<em>一技之长</em></p>
+                <p>你就能成为“创世界”中的一员</p>
+            </div>
+
+            <div class="line-numbers wow fadeInRight">
+                <img src="~/image/Join_TheFascinatingCreation/4.jpg" style=" width: 500px;height: 200px;" />
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="step step-two" data-midnight="light">
+
+        <div class="container">
+            <div class="instructions wow fadeInLeft">
+                <h2>创作者</h2>
+                <p>只要你的作品质量足够好</p>
+                <p>你就能申请认证成为<em>创作者</em></p>
+            </div>
+
+            <div class="line-numbers wow fadeInRight">
+                <img src="~/image/Join_TheFascinatingCreation/4.jpg" style=" width: 500px;height: 200px;" />
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="step step-three" data-midnight="dark">
+
+        <div class="container">
+            <div class="instructions wow fadeInLeft">
+                <h2>创用户</h2>
+                <p>随着时代的发展</p>
+                <p>越来越多人开始在生活中追求个性和与众不同</p>
+                <p>而你，就是那个<em>“独一无二”</em>的你</p>
+            </div>
+
+            <div class="line-numbers wow fadeInRight">
+                <img src="~/image/Join_TheFascinatingCreation/4.jpg" style=" width: 500px;height: 200px;" />
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <section class="step step-four" data-midnight="lighter">
+
+        <div class="container">
+            <div class="instructions wow fadeInLeft">
+                <h2>创平台</h2>
+                <p><em>“低门槛、高质量”</em></p>
+                <p>我们会为你提供最好的服务！</p>
+            </div>
+
+            <div class="line-numbers wow fadeInRight">
+                <img src="~/image/Join_TheFascinatingCreation/4.jpg" style=" width: 500px;height: 200px;" />
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="step step-five full-height" data-midnight="white">
+
+        <div class="container">
+
+            <div class="instructions wow fadeInLeft">
+                <h2>我们的“创”友谊</h2>
+                <p>你缺少志同道合的朋友吗？</p>
+                <p>你缺少施展自己能力的平台吗？</p>
+                <p>创世界，将为你打造一个属于你的<em>“世界”</em></p>
+            </div>
+
+
+            <div class="line-numbers wow fadeInRight">
+                <img src="~/image/Join_TheFascinatingCreation/4.jpg" style=" width: 500px;height: 200px;" />
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <footer class="footer" data-midnight="full">
+        <div class="illustration-city">
+
+        </div>
+    </footer>
+
+
+
+    <script src="~/Scripts/Join_TheFascinatingCreation/jquery-1.11.1.min.js"></script>
+    <script src="~/Scripts/Join_TheFascinatingCreation/sscr.min.js"></script>
+    <script src="~/Scripts/Join_TheFascinatingCreation/prism.js"></script>>
+    <script src="~/Scripts/Join_TheFascinatingCreation/wow.min.js"></script>
+    <script src="~/Scripts/Join_TheFascinatingCreation/viewport-units-buggyfill.js"></script>
+    <script src="~/Scripts/Join_TheFascinatingCreation/midnight.jquery.js"></script>
+    <script src="~/Scripts/Join_TheFascinatingCreation/idangerous.swiper.min.js"></script>
+    <script src="~/Scripts/Join_TheFascinatingCreation/jquery-1.10.1.min.js"></script>
+    <script src="~/Scripts/Join_TheFascinatingCreation/jquery.min.js"></script>
+    <script src="~/Scripts/Join_TheFascinatingCreation/kefu.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            viewportUnitsBuggyfill.init();
+
+            $(window).resize(function () {
+                viewportUnitsBuggyfill.refresh();
+            });
+
+            $('nav.fixed').midnight();
+
+            new WOW().init();
+
+
+            var $island = $('#space-island');
+            var islandTop = $island.offset().top;
+            var windowHeight = $(window).height();
+
+            $(window).resize(function () {
+                islandTop = $island.offset().top;
+                windowHeight = $(window).height();
+            });
+
+            $(document).scroll(function () {
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                var minScrollTop = islandTop - windowHeight * 0.4;
+                var maxScrollTop = islandTop;
+
+
+                if (scrollTop <= islandTop * 2) {
+                    var targetOpacity = 1.0;
+                    var minOpacity = 0.4;
+
+                    if (scrollTop > minScrollTop && scrollTop < maxScrollTop) {
+                        targetOpacity = ((maxScrollTop - scrollTop) / (maxScrollTop - minScrollTop)) * (1.0 - minOpacity) +
+                            minOpacity;
+                    } else if (scrollTop > maxScrollTop) {
+                        targetOpacity = minOpacity;
+                    } else if (scrollTop < minScrollTop) {
+                        targetOpacity = 1.0;
+                    }
+
+                    $island.css('opacity', targetOpacity);
+                }
+
+            });
+
+            $('.scroll-prompt').click(function (event) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $("section.step-one").offset().top - $('nav').height() * 0.5
+                }, 1000, 'swing');
+            });
+
+            $(window).trigger('resize');
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        var tabsSwiper = new Swiper('.swiper-container', {
+            speed: 500,
+            onSlideChangeStart: function () {
+                $(".tabs .active").removeClass('active');
+                $(".tabs a").eq(tabsSwiper.activeIndex).addClass('active');
+            }
+        });
+
+        $(".tabs a").on('touchstart mousedown', function (e) {
+            e.preventDefault()
+            $(".tabs .active").removeClass('active');
+            $(this).addClass('active');
+            tabsSwiper.swipeTo($(this).index());
+        });
+
+        $(".tabs a").click(function (e) {
+            e.preventDefault();
+        });
+
+        var kefu = new Kefu({
+            index: "@Url.Action("Home","Home")",
+            tel: "18145678987", //电话号码
+            qq: "123489789", //在线QQ
+            wechatPerson: {
+                state: true, // true是开启个人微信二维码, false不开启
+                imgURL: "../image/LogResigter/创世界.jpg"
+            },
+            wechatofficial: {
+                state: true, // true是开启微信公众号二维码, false不开启
+                imgURL: "../image/LogResigter/创世界.jpg"
+            } //微信公众号
+        });
+    </script>
+
+</body>
+</html>

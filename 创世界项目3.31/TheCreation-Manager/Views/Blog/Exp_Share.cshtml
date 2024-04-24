@@ -1,0 +1,49 @@
+﻿@using Models
+@model IEnumerable<Blog>
+
+@{
+    ViewBag.Title = "Exp_Share";
+    Layout = "~/Views/Shared/BlogLayout1.cshtml";
+}
+
+<div class="breadcrumb"> <i class="fa fa-home"></i> <a href="@Url.Action("Index","Blog")">主页</a> &gt; <a href="@Url.Action("Exp_Share","Blog")">经验分享</a> &gt;  </div>
+
+
+<main class="main" role="main">
+
+
+    <div class="post istop cate1 auth1">
+        <h2><span>置顶推荐</span> <a href="/210/a/ziyuan/5.html" title="如何让自己的网站更有质量？AB模板王有妙招">如何让自己的网站更有质量？AB模板王有妙招</a></h2>
+    </div>
+
+    @if (Model == null)
+    {
+        <article class="post cate1 auth1">
+            <h2>抱歉什么都没有哦？</h2>
+        </article>
+    }
+
+    @foreach (var item in Model)
+    {
+        <article class="post cate1 auth1">
+            <div class="thumb"> <a href="@Url.Action("BlogDetail","Blog",new { id= item.BlogID})" title="@item.Title" target="_blank"> <img alt="@item.Title" src="@item.CoverImg" /> </a> </div>
+            <span class="post-cat"><a href="@Url.Action("Exp_Share","Blog")" title="@item.BlogType" target="_blank">@item.BlogType</a></span>
+            <h2><a href="@Url.Action("BlogDetail","Blog",new { id= item.BlogID})" title="@item.Title" target="_blank">@item.Title</a></h2>
+            <div class="entry loop-entry">
+                <p>@item.Describe</p>
+            </div>
+            <div class="postmeta">
+                <span><i class="fa fa-calendar"></i> 日期：@item.PublishDate</span> <span>
+                    <i class="fa fa-fire"></i> 浏览：@item.ViewCount
+                    <script src="" type='text/javascript' language="javascript"></script>次
+                </span>
+            </div>
+        </article>
+    }
+    <div class="pagess">
+        <ul>
+            <li><span class="pageinfo">共 <strong>@(Model.Count()/10+1)</strong>页<strong>@Model.Count()</strong>条记录</span></li>
+
+        </ul>
+    </div>
+</main>

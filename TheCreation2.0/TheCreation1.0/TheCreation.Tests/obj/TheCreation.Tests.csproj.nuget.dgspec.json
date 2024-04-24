@@ -1,0 +1,227 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\TheCreation.Tests\\TheCreation.Tests.csproj": {}
+  },
+  "projects": {
+    "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\BLL\\BLL.csproj": {
+      "restore": {
+        "projectUniqueName": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\BLL\\BLL.csproj",
+        "projectName": "BLL",
+        "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\BLL\\BLL.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\DALFactory\\DALFactory.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\DALFactory\\DALFactory.csproj"
+              },
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\IDAL\\IDAL.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\IDAL\\IDAL.csproj"
+              },
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\Models\\Models.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\Models\\Models.csproj"
+              },
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\SqlDAL\\SqlDAL.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\SqlDAL\\SqlDAL.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\DALFactory\\DALFactory.csproj": {
+      "restore": {
+        "projectUniqueName": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\DALFactory\\DALFactory.csproj",
+        "projectName": "DALFactory",
+        "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\DALFactory\\DALFactory.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\IDAL\\IDAL.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\IDAL\\IDAL.csproj"
+              },
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\Models\\Models.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\Models\\Models.csproj"
+              },
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\SqlDAL\\SqlDAL.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\SqlDAL\\SqlDAL.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\IDAL\\IDAL.csproj": {
+      "restore": {
+        "projectUniqueName": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\IDAL\\IDAL.csproj",
+        "projectName": "IDAL",
+        "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\IDAL\\IDAL.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\Models\\Models.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\Models\\Models.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\Models\\Models.csproj": {
+      "restore": {
+        "projectUniqueName": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\Models\\Models.csproj",
+        "projectName": "Models",
+        "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\Models\\Models.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\SqlDAL\\SqlDAL.csproj": {
+      "restore": {
+        "projectUniqueName": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\SqlDAL\\SqlDAL.csproj",
+        "projectName": "SqlDAL",
+        "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\SqlDAL\\SqlDAL.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\IDAL\\IDAL.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\IDAL\\IDAL.csproj"
+              },
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\Models\\Models.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\Models\\Models.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\TheCreation.Tests\\TheCreation.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\TheCreation.Tests\\TheCreation.Tests.csproj",
+        "projectName": "TheCreation.Tests",
+        "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\TheCreation.Tests\\TheCreation.Tests.csproj",
+        "packagesPath": "C:\\Users\\华立民\\.nuget\\packages\\",
+        "outputPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\TheCreation.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\华立民\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\TheCreation\\TheCreation.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\TheCreation\\TheCreation.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.10.0, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\TheCreation\\TheCreation.csproj": {
+      "restore": {
+        "projectUniqueName": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\TheCreation\\TheCreation.csproj",
+        "projectName": "TheCreation",
+        "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\TheCreation\\TheCreation.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\BLL\\BLL.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\BLL\\BLL.csproj"
+              },
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\DALFactory\\DALFactory.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\DALFactory\\DALFactory.csproj"
+              },
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\IDAL\\IDAL.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\IDAL\\IDAL.csproj"
+              },
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\Models\\Models.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\Models\\Models.csproj"
+              },
+              "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\SqlDAL\\SqlDAL.csproj": {
+                "projectPath": "F:\\大三-大四\\毕业论文相关\\华立民-毕设文件\\创世界-项目组\\创世界小组-项目源码及数据库\\TheCreation2.0\\TheCreation1.0\\SqlDAL\\SqlDAL.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}

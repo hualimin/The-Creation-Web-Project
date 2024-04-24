@@ -1,0 +1,91 @@
+﻿@using Models
+@model Blog
+
+@{
+    ViewBag.Title = "BlogDetail";
+    Layout = "~/Views/Shared/BlogLayout1.cshtml";
+}
+
+
+<div class="breadcrumb"> <i class="fa fa-home"></i> <a href="@Url.Action("Index","Blog")">主页</a> &gt; <a href="@Url.Action("UsefulInfo_Share","Blog")">干货分享</a> &gt;  </div>
+
+<main class="main" role="main" style="opacity: 1;">
+    <div class="clear"></div>
+    <article class="post cate1  auth1">
+
+        <h1>@Model.Title</h1>
+        <div class="postmeta article-meta"> <span><i class="fa fa-calendar"></i> 日期：@Model.PublishDate </span> <span><i class="fa fa-book"></i> 栏目：<a href="" title="@Model.BlogType" target="_blank">@Model.BlogType</a></span> <span><i class="fa fa-fire"></i> 浏览：@Model.ViewCount 次 </span> </div>
+        <div class="entry">
+            @Html.Raw(Model.BlogContent)
+        </div>
+
+        @if (Model.Address != "未填写")
+        {
+            <div class="postmeta article-meta"> <span><i class="fa fa-location-arrow"></i> 发布于：@Model.Address </span></div>
+        }
+
+
+        <div class="post-nav">
+            <div class="nav-left">上一篇：没有了 </div>
+            <div class="nav-right">下一篇：没有了 </div>
+        </div>
+        <div class="post-copyright">
+            <p>内容版权声明：除非注明，否则皆为本站原创文章。</p>
+            <p>转载注明出处：<a href="///Blog/BlogDetail/@ViewBag.aa" title="@Model.Title" target="_blank">http://120.12.546/Blog/BlogDetail/@ViewBag.aa</a></p>
+        </div>
+        <section class="related">
+            <h3>相关推荐</h3>
+            <ul>
+                <li><i>2017-07-08</i><span class="top">1</span><a href="/210/a/ziyuan/5.html" target="_blank" title="如何让自己的网站更有质量？AB模板王有">如何让自己的网站更有质量？AB模板王有</a></li>
+
+            </ul>
+        </section>
+    </article>
+    <div class="bshare-custom icon-medium">
+        <div class="bsPromo bsPromo2"></div><a title="分享到" href="http://www.bShare.cn/" id="bshare-shareto" class="bshare-more">分享到</a>
+        <a title="分享到微信" class="bshare-weixin" href="javascript:void(0);"></a>
+        <a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:void(0);"></a>
+        <a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a>
+        <a title="分享到Facebook" class="bshare-facebook" href="javascript:void(0);"></a>
+        <a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+    </div>
+    <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+    <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+
+    <article class="post cate1 auth1">
+        <h2>评论内容</h2>
+        <input name="content" id="content" />
+        <input type="hidden" id="blogid" value="@Model.BlogID" />
+        <button id="tijiao">提交</button>
+        <div id="show">
+            @Html.Action("GetComments", "Blog", new { id = Model.BlogID })
+        </div>
+
+    </article>
+</main>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $('#tijiao').on('click', function () {
+        var content = $('#content').val();
+        console.log(content);
+        $.ajax({
+            url: "/Blog/Test1",
+            type: "post",
+            data: {
+                content: content,
+                id: $('#blogid').val(),
+            },
+            success: function (data) {
+                if (data == "评论删除失败！") {
+                    alert("评论删除失败！");
+                }
+                else {
+                    alert("评论成功！");
+                    $('#show').html(data);
+                    $('#content').val('');
+                }
+            }
+        });
+    });
+</script>

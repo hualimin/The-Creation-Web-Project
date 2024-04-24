@@ -1,0 +1,33 @@
+﻿@using TheCreation_Manager.Models
+@model NormalVotedDetail
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Normal_Vote_Dtail</title>
+</head>
+<body>
+    <div> 
+        <h2>@Model.vote.Title</h2>
+        <img width="200" height="180"  src="@Model.vote.ImgUrl"/>
+
+        <h4>选项👇</h4>
+        <ul>
+            @foreach(var item in Model.voteds)
+            {
+                <li>
+                    <img width="100" height="80"  src="@item.ImgUrl" /><br />
+                    <h7>@item.Detail</h7><br />
+                    <a href="@Url.Action("SubmitVote","Vote",new {vid=Model.vote.VoteId,vedid=item.VotedId })">投票</a><br />
+                </li>
+            }
+        </ul>
+    </div>
+</body>
+</html>

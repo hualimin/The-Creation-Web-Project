@@ -1,0 +1,810 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TheCreationModelStoreContainer" CdmEntityContainer="TheCreationEntities">
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="TheCreationModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+          <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+          <ScalarProperty Name="AdminType" ColumnName="AdminType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Applys">
+      <EntityTypeMapping TypeName="TheCreationModel.Applys">
+        <MappingFragment StoreEntitySet="Applys">
+          <ScalarProperty Name="ApplysId" ColumnName="ApplysId" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="ApplysDescrib" ColumnName="ApplysDescrib" />
+          <ScalarProperty Name="ApplysDate" ColumnName="ApplysDate" />
+          <ScalarProperty Name="ApplysState" ColumnName="ApplysState" />
+          <ScalarProperty Name="DealerId" ColumnName="DealerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuthenApply">
+      <EntityTypeMapping TypeName="TheCreationModel.AuthenApply">
+        <MappingFragment StoreEntitySet="AuthenApply">
+          <ScalarProperty Name="AuthenId" ColumnName="AuthenId" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="CreateType" ColumnName="CreateType" />
+          <ScalarProperty Name="PriceRange" ColumnName="PriceRange" />
+          <ScalarProperty Name="AuthenApplyState" ColumnName="AuthenApplyState" />
+          <ScalarProperty Name="Describe" ColumnName="Describe" />
+          <ScalarProperty Name="DealerId" ColumnName="DealerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Collect">
+      <EntityTypeMapping TypeName="TheCreationModel.Collect">
+        <MappingFragment StoreEntitySet="Collect">
+          <ScalarProperty Name="CollectId" ColumnName="CollectId" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="TheCreationModel.Comments">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+          <ScalarProperty Name="CommentContent" ColumnName="CommentContent" />
+          <ScalarProperty Name="CommenterId" ColumnName="CommenterId" />
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Creator">
+      <EntityTypeMapping TypeName="TheCreationModel.Creator">
+        <MappingFragment StoreEntitySet="Creator">
+          <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+          <ScalarProperty Name="CertificationDate" ColumnName="CertificationDate" />
+          <ScalarProperty Name="CreateType" ColumnName="CreateType" />
+          <ScalarProperty Name="CreatorCredit" ColumnName="CreatorCredit" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="CreatorLevel" ColumnName="CreatorLevel" />
+          <ScalarProperty Name="FinishedCount" ColumnName="FinishedCount" />
+          <ScalarProperty Name="GoodRate" ColumnName="GoodRate" />
+          <ScalarProperty Name="EfctCmpltCnt" ColumnName="EfctCmpltCnt" />
+          <ScalarProperty Name="PriceRange" ColumnName="PriceRange" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Evaluate">
+      <EntityTypeMapping TypeName="TheCreationModel.Evaluate">
+        <MappingFragment StoreEntitySet="Evaluate">
+          <ScalarProperty Name="EvaluateId" ColumnName="EvaluateId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="EvaluateDate" ColumnName="EvaluateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EveryImg">
+      <EntityTypeMapping TypeName="TheCreationModel.EveryImg">
+        <MappingFragment StoreEntitySet="EveryImg">
+          <ScalarProperty Name="ImgId" ColumnName="ImgId" />
+          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Focus">
+      <EntityTypeMapping TypeName="TheCreationModel.Focus">
+        <MappingFragment StoreEntitySet="Focus">
+          <ScalarProperty Name="FocusId" ColumnName="FocusId" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="FocusedUserId" ColumnName="FocusedUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="likeIt">
+      <EntityTypeMapping TypeName="TheCreationModel.likeIt">
+        <MappingFragment StoreEntitySet="likeIt">
+          <ScalarProperty Name="LikeId" ColumnName="LikeId" />
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderApply">
+      <EntityTypeMapping TypeName="TheCreationModel.OrderApply">
+        <MappingFragment StoreEntitySet="OrderApply">
+          <ScalarProperty Name="ApplyId" ColumnName="ApplyId" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="QOrderId" ColumnName="QOrderId" />
+          <ScalarProperty Name="ApplyDescrib" ColumnName="ApplyDescrib" />
+          <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+          <ScalarProperty Name="ApplyState" ColumnName="ApplyState" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="TheCreationModel.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+          <ScalarProperty Name="total_amt" ColumnName="total_amt" />
+          <ScalarProperty Name="BuyDate" ColumnName="BuyDate" />
+          <ScalarProperty Name="FinishDate" ColumnName="FinishDate" />
+          <ScalarProperty Name="OrderState" ColumnName="OrderState" />
+          <ScalarProperty Name="NeedDescrib" ColumnName="NeedDescrib" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ActualFinishDate" ColumnName="ActualFinishDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonMsg">
+      <EntityTypeMapping TypeName="TheCreationModel.PersonMsg">
+        <MappingFragment StoreEntitySet="PersonMsg">
+          <ScalarProperty Name="PMId" ColumnName="PMId" />
+          <ScalarProperty Name="MsgDate" ColumnName="MsgDate" />
+          <ScalarProperty Name="SebderID" ColumnName="SebderID" />
+          <ScalarProperty Name="ReceptID" ColumnName="ReceptID" />
+          <ScalarProperty Name="MsgContent" ColumnName="MsgContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Production">
+      <EntityTypeMapping TypeName="TheCreationModel.Production">
+        <MappingFragment StoreEntitySet="Production">
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+          <ScalarProperty Name="PublisherNo" ColumnName="PublisherNo" />
+          <ScalarProperty Name="ProductionName" ColumnName="ProductionName" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="ProductionContent" ColumnName="ProductionContent" />
+          <ScalarProperty Name="ProductionType" ColumnName="ProductionType" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="HotCount" ColumnName="HotCount" />
+          <ScalarProperty Name="Describe" ColumnName="Describe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PublicMsg">
+      <EntityTypeMapping TypeName="TheCreationModel.PublicMsg">
+        <MappingFragment StoreEntitySet="PublicMsg">
+          <ScalarProperty Name="PublicMsgId" ColumnName="PublicMsgId" />
+          <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+          <ScalarProperty Name="PublicMsgContent" ColumnName="PublicMsgContent" />
+          <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reply">
+      <EntityTypeMapping TypeName="TheCreationModel.Reply">
+        <MappingFragment StoreEntitySet="Reply">
+          <ScalarProperty Name="ReplyId" ColumnName="ReplyId" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="ReplyDate" ColumnName="ReplyDate" />
+          <ScalarProperty Name="ReplyContent" ColumnName="ReplyContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="TheCreationModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SysMsg">
+      <EntityTypeMapping TypeName="TheCreationModel.SysMsg">
+        <MappingFragment StoreEntitySet="SysMsg">
+          <ScalarProperty Name="SysMsgId" ColumnName="SysMsgId" />
+          <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+          <ScalarProperty Name="ReceptId" ColumnName="ReceptId" />
+          <ScalarProperty Name="SysMsgContent" ColumnName="SysMsgContent" />
+          <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tag">
+      <EntityTypeMapping TypeName="TheCreationModel.Tag">
+        <MappingFragment StoreEntitySet="Tag">
+          <ScalarProperty Name="LabelId" ColumnName="LabelId" />
+          <ScalarProperty Name="LabelName" ColumnName="LabelName" />
+          <ScalarProperty Name="LabelType" ColumnName="LabelType" />
+          <ScalarProperty Name="LabelImg" ColumnName="LabelImg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="TheCreationModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="UsersName" ColumnName="UsersName" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Birth" ColumnName="Birth" />
+          <ScalarProperty Name="UsersLevel" ColumnName="UsersLevel" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="OrderCount" ColumnName="OrderCount" />
+          <ScalarProperty Name="ChargebackCount" ColumnName="ChargebackCount" />
+          <ScalarProperty Name="Hobby" ColumnName="Hobby" />
+          <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+          <ScalarProperty Name="HeadUrl" ColumnName="HeadUrl" />
+          <ScalarProperty Name="Exp" ColumnName="Exp" />
+          <ScalarProperty Name="RegisteDate" ColumnName="RegisteDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersLevel">
+      <EntityTypeMapping TypeName="TheCreationModel.UsersLevel">
+        <MappingFragment StoreEntitySet="UsersLevel">
+          <ScalarProperty Name="UsersLevel1" ColumnName="UsersLevel" />
+          <ScalarProperty Name="LowExp" ColumnName="LowExp" />
+          <ScalarProperty Name="HighExp" ColumnName="HighExp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersLogin">
+      <EntityTypeMapping TypeName="TheCreationModel.UsersLogin">
+        <MappingFragment StoreEntitySet="UsersLogin">
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vote">
+      <EntityTypeMapping TypeName="TheCreationModel.Vote">
+        <MappingFragment StoreEntitySet="Vote">
+          <ScalarProperty Name="VoteId" ColumnName="VoteId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="ReferenceType" ColumnName="ReferenceType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Voted">
+      <EntityTypeMapping TypeName="TheCreationModel.Voted">
+        <MappingFragment StoreEntitySet="Voted">
+          <ScalarProperty Name="VotedId" ColumnName="VotedId" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+          <ScalarProperty Name="VoteId" ColumnName="VoteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VoteDetail">
+      <EntityTypeMapping TypeName="TheCreationModel.VoteDetail">
+        <MappingFragment StoreEntitySet="VoteDetail">
+          <ScalarProperty Name="VoteId" ColumnName="VoteId" />
+          <ScalarProperty Name="VotedId" ColumnName="VotedId" />
+          <ScalarProperty Name="VoteTime" ColumnName="VoteTime" />
+          <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="All_Users_Fans_View">
+      <EntityTypeMapping TypeName="TheCreationModel.All_Users_Fans_View">
+        <MappingFragment StoreEntitySet="All_Users_Fans_View">
+          <ScalarProperty Name="tot_focus_count" ColumnName="tot_focus_count" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="All_Works_Comment_View">
+      <EntityTypeMapping TypeName="TheCreationModel.All_Works_Comment_View">
+        <MappingFragment StoreEntitySet="All_Works_Comment_View">
+          <ScalarProperty Name="tot_comment_count" ColumnName="tot_comment_count" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="All_Works_Hot_View">
+      <EntityTypeMapping TypeName="TheCreationModel.All_Works_Hot_View">
+        <MappingFragment StoreEntitySet="All_Works_Hot_View">
+          <ScalarProperty Name="tot_hot" ColumnName="tot_hot" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Creator_Evaluate">
+      <EntityTypeMapping TypeName="TheCreationModel.Creator_Evaluate">
+        <MappingFragment StoreEntitySet="Creator_Evaluate">
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="EvaluateDate" ColumnName="EvaluateDate" />
+          <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+          <ScalarProperty Name="CreateType" ColumnName="CreateType" />
+          <ScalarProperty Name="HeadUrl" ColumnName="HeadUrl" />
+          <ScalarProperty Name="UsersName" ColumnName="UsersName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Creator_Nmae">
+      <EntityTypeMapping TypeName="TheCreationModel.Creator_Nmae">
+        <MappingFragment StoreEntitySet="Creator_Nmae">
+          <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+          <ScalarProperty Name="CreateType" ColumnName="CreateType" />
+          <ScalarProperty Name="UsersName" ColumnName="UsersName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Creator_Type">
+      <EntityTypeMapping TypeName="TheCreationModel.Creator_Type">
+        <MappingFragment StoreEntitySet="Creator_Type">
+          <ScalarProperty Name="CreateType" ColumnName="CreateType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hot_Good_Works">
+      <EntityTypeMapping TypeName="TheCreationModel.Hot_Good_Works">
+        <MappingFragment StoreEntitySet="Hot_Good_Works">
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="UsersName" ColumnName="UsersName" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Birth" ColumnName="Birth" />
+          <ScalarProperty Name="UsersLevel" ColumnName="UsersLevel" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="OrderCount" ColumnName="OrderCount" />
+          <ScalarProperty Name="ChargebackCount" ColumnName="ChargebackCount" />
+          <ScalarProperty Name="Hobby" ColumnName="Hobby" />
+          <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+          <ScalarProperty Name="HeadUrl" ColumnName="HeadUrl" />
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+          <ScalarProperty Name="PublisherNo" ColumnName="PublisherNo" />
+          <ScalarProperty Name="ProductionName" ColumnName="ProductionName" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="ProductionContent" ColumnName="ProductionContent" />
+          <ScalarProperty Name="ProductionType" ColumnName="ProductionType" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="Tag1" ColumnName="Tag1" />
+          <ScalarProperty Name="Tag2" ColumnName="Tag2" />
+          <ScalarProperty Name="Tag3" ColumnName="Tag3" />
+          <ScalarProperty Name="ImgUrl1" ColumnName="ImgUrl1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="most_comment_creator">
+      <EntityTypeMapping TypeName="TheCreationModel.most_comment_creator">
+        <MappingFragment StoreEntitySet="most_comment_creator">
+          <ScalarProperty Name="UsersName" ColumnName="UsersName" />
+          <ScalarProperty Name="CreateType" ColumnName="CreateType" />
+          <ScalarProperty Name="CertificationDate" ColumnName="CertificationDate" />
+          <ScalarProperty Name="HeadUrl" ColumnName="HeadUrl" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="comt_count" ColumnName="comt_count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Most_Evaluate_Creator_View">
+      <EntityTypeMapping TypeName="TheCreationModel.Most_Evaluate_Creator_View">
+        <MappingFragment StoreEntitySet="Most_Evaluate_Creator_View">
+          <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+          <ScalarProperty Name="CertificationDate" ColumnName="CertificationDate" />
+          <ScalarProperty Name="CreateType" ColumnName="CreateType" />
+          <ScalarProperty Name="UsersName" ColumnName="UsersName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Music_Works_Hot">
+      <EntityTypeMapping TypeName="TheCreationModel.Music_Works_Hot">
+        <MappingFragment StoreEntitySet="Music_Works_Hot">
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+          <ScalarProperty Name="PublisherNo" ColumnName="PublisherNo" />
+          <ScalarProperty Name="ProductionName" ColumnName="ProductionName" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="ProductionContent" ColumnName="ProductionContent" />
+          <ScalarProperty Name="ProductionType" ColumnName="ProductionType" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="HotCount" ColumnName="HotCount" />
+          <ScalarProperty Name="Describe" ColumnName="Describe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="newest_comment">
+      <EntityTypeMapping TypeName="TheCreationModel.newest_comment">
+        <MappingFragment StoreEntitySet="newest_comment">
+          <ScalarProperty Name="HeadUrl" ColumnName="HeadUrl" />
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="UsersName" ColumnName="UsersName" />
+          <ScalarProperty Name="CommentContent" ColumnName="CommentContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="newst_creator_production">
+      <EntityTypeMapping TypeName="TheCreationModel.newst_creator_production">
+        <MappingFragment StoreEntitySet="newst_creator_production">
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+          <ScalarProperty Name="PublisherNo" ColumnName="PublisherNo" />
+          <ScalarProperty Name="ProductionName" ColumnName="ProductionName" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="ProductionContent" ColumnName="ProductionContent" />
+          <ScalarProperty Name="ProductionType" ColumnName="ProductionType" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="HotCount" ColumnName="HotCount" />
+          <ScalarProperty Name="Describe" ColumnName="Describe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P_Type">
+      <EntityTypeMapping TypeName="TheCreationModel.P_Type">
+        <MappingFragment StoreEntitySet="P_Type">
+          <ScalarProperty Name="ProductionType" ColumnName="ProductionType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Picture_Works_Hot">
+      <EntityTypeMapping TypeName="TheCreationModel.Picture_Works_Hot">
+        <MappingFragment StoreEntitySet="Picture_Works_Hot">
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+          <ScalarProperty Name="PublisherNo" ColumnName="PublisherNo" />
+          <ScalarProperty Name="ProductionName" ColumnName="ProductionName" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="ProductionContent" ColumnName="ProductionContent" />
+          <ScalarProperty Name="ProductionType" ColumnName="ProductionType" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="HotCount" ColumnName="HotCount" />
+          <ScalarProperty Name="Describe" ColumnName="Describe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Relevant_Type">
+      <EntityTypeMapping TypeName="TheCreationModel.Relevant_Type">
+        <MappingFragment StoreEntitySet="Relevant_Type">
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tag_Hot">
+      <EntityTypeMapping TypeName="TheCreationModel.Tag_Hot">
+        <MappingFragment StoreEntitySet="Tag_Hot">
+          <ScalarProperty Name="LabelName" ColumnName="LabelName" />
+          <ScalarProperty Name="LabelId" ColumnName="LabelId" />
+          <ScalarProperty Name="LabelImg" ColumnName="LabelImg" />
+          <ScalarProperty Name="tot_hot" ColumnName="tot_hot" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Text_Works_Hot">
+      <EntityTypeMapping TypeName="TheCreationModel.Text_Works_Hot">
+        <MappingFragment StoreEntitySet="Text_Works_Hot">
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+          <ScalarProperty Name="PublisherNo" ColumnName="PublisherNo" />
+          <ScalarProperty Name="ProductionName" ColumnName="ProductionName" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="ProductionContent" ColumnName="ProductionContent" />
+          <ScalarProperty Name="ProductionType" ColumnName="ProductionType" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="HotCount" ColumnName="HotCount" />
+          <ScalarProperty Name="Describe" ColumnName="Describe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tot_Comment">
+      <EntityTypeMapping TypeName="TheCreationModel.Tot_Comment">
+        <MappingFragment StoreEntitySet="Tot_Comment">
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="tot_comment1" ColumnName="tot_comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tot_Fans">
+      <EntityTypeMapping TypeName="TheCreationModel.Tot_Fans">
+        <MappingFragment StoreEntitySet="Tot_Fans">
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="tot_fans1" ColumnName="tot_fans" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tot_hot_users">
+      <EntityTypeMapping TypeName="TheCreationModel.tot_hot_users">
+        <MappingFragment StoreEntitySet="tot_hot_users">
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="UsersName" ColumnName="UsersName" />
+          <ScalarProperty Name="Birth" ColumnName="Birth" />
+          <ScalarProperty Name="HeadUrl" ColumnName="HeadUrl" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="tot_hot" ColumnName="tot_hot" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tot_Like">
+      <EntityTypeMapping TypeName="TheCreationModel.Tot_Like">
+        <MappingFragment StoreEntitySet="Tot_Like">
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="tot_like1" ColumnName="tot_like" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tot_Works">
+      <EntityTypeMapping TypeName="TheCreationModel.Tot_Works">
+        <MappingFragment StoreEntitySet="Tot_Works">
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="tot_works1" ColumnName="tot_works" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnEvaluate">
+      <EntityTypeMapping TypeName="TheCreationModel.UnEvaluate">
+        <MappingFragment StoreEntitySet="UnEvaluate">
+          <ScalarProperty Name="UsersName" ColumnName="UsersName" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+          <ScalarProperty Name="total_amt" ColumnName="total_amt" />
+          <ScalarProperty Name="BuyDate" ColumnName="BuyDate" />
+          <ScalarProperty Name="FinishDate" ColumnName="FinishDate" />
+          <ScalarProperty Name="OrderState" ColumnName="OrderState" />
+          <ScalarProperty Name="NeedDescrib" ColumnName="NeedDescrib" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ActualFinishDate" ColumnName="ActualFinishDate" />
+          <ScalarProperty Name="CreatorName" ColumnName="CreatorName" />
+          <ScalarProperty Name="CreateType" ColumnName="CreateType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users_Level_View">
+      <EntityTypeMapping TypeName="TheCreationModel.Users_Level_View">
+        <MappingFragment StoreEntitySet="Users_Level_View">
+          <ScalarProperty Name="UsersName" ColumnName="UsersName" />
+          <ScalarProperty Name="Exp" ColumnName="Exp" />
+          <ScalarProperty Name="UsersLevel" ColumnName="UsersLevel" />
+          <ScalarProperty Name="LowExp" ColumnName="LowExp" />
+          <ScalarProperty Name="HighExp" ColumnName="HighExp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Video_Works_Hot">
+      <EntityTypeMapping TypeName="TheCreationModel.Video_Works_Hot">
+        <MappingFragment StoreEntitySet="Video_Works_Hot">
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+          <ScalarProperty Name="PublisherNo" ColumnName="PublisherNo" />
+          <ScalarProperty Name="ProductionName" ColumnName="ProductionName" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="ProductionContent" ColumnName="ProductionContent" />
+          <ScalarProperty Name="ProductionType" ColumnName="ProductionType" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="HotCount" ColumnName="HotCount" />
+          <ScalarProperty Name="Describe" ColumnName="Describe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="All_MyFocus_Works_View" FunctionName="TheCreationModel.Store.All_MyFocus_Works_View">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TheCreationModel.All_MyFocus_Works_View_Result">
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+          <ScalarProperty Name="PublisherNo" ColumnName="PublisherNo" />
+          <ScalarProperty Name="ProductionName" ColumnName="ProductionName" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="ProductionContent" ColumnName="ProductionContent" />
+          <ScalarProperty Name="ProductionType" ColumnName="ProductionType" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="HotCount" ColumnName="HotCount" />
+          <ScalarProperty Name="Describe" ColumnName="Describe" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_Get_Works" FunctionName="TheCreationModel.Store.Proc_Get_Works">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TheCreationModel.Proc_Get_Works_Result">
+          <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+          <ScalarProperty Name="PublisherNo" ColumnName="PublisherNo" />
+          <ScalarProperty Name="ProductionName" ColumnName="ProductionName" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="ProductionContent" ColumnName="ProductionContent" />
+          <ScalarProperty Name="ProductionType" ColumnName="ProductionType" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="HotCount" ColumnName="HotCount" />
+          <ScalarProperty Name="Describe" ColumnName="Describe" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_init_CommentCount" FunctionName="TheCreationModel.Store.proc_init_CommentCount" />
+    <FunctionImportMapping FunctionImportName="proc_init_HotCoun" FunctionName="TheCreationModel.Store.proc_init_HotCoun" />
+    <FunctionImportMapping FunctionImportName="proc_init_UserLevel" FunctionName="TheCreationModel.Store.proc_init_UserLevel" />
+    <FunctionImportMapping FunctionImportName="Users_FoucusMe_View" FunctionName="TheCreationModel.Store.Users_FoucusMe_View">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TheCreationModel.Users_FoucusMe_View_Result">
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="UsersName" ColumnName="UsersName" />
+          <ScalarProperty Name="Hobby" ColumnName="Hobby" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="RcptAddress">
+      <EntityTypeMapping TypeName="TheCreationModel.RcptAddress">
+        <MappingFragment StoreEntitySet="RcptAddress">
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="AddDetail" ColumnName="AddDetail" />
+          <ScalarProperty Name="RcptName" ColumnName="RcptName" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="AddID" ColumnName="AddID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopCart">
+      <EntityTypeMapping TypeName="TheCreationModel.ShopCart">
+        <MappingFragment StoreEntitySet="ShopCart">
+          <ScalarProperty Name="AddCount" ColumnName="AddCount" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="SubID" ColumnName="SubID" />
+          <ScalarProperty Name="CartID" ColumnName="CartID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopEvaluate">
+      <EntityTypeMapping TypeName="TheCreationModel.ShopEvaluate">
+        <MappingFragment StoreEntitySet="ShopEvaluate">
+          <ScalarProperty Name="EvaImg5" ColumnName="EvaImg5" />
+          <ScalarProperty Name="EvaImg4" ColumnName="EvaImg4" />
+          <ScalarProperty Name="EvaImg3" ColumnName="EvaImg3" />
+          <ScalarProperty Name="EvaImg2" ColumnName="EvaImg2" />
+          <ScalarProperty Name="EvaImg1" ColumnName="EvaImg1" />
+          <ScalarProperty Name="EvaDate" ColumnName="EvaDate" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="EvaluateID" ColumnName="EvaluateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopInfoMore">
+      <EntityTypeMapping TypeName="TheCreationModel.ShopInfoMore">
+        <MappingFragment StoreEntitySet="ShopInfoMore">
+          <ScalarProperty Name="Imgurl7" ColumnName="Imgurl7" />
+          <ScalarProperty Name="Imgurl6" ColumnName="Imgurl6" />
+          <ScalarProperty Name="Imgurl5" ColumnName="Imgurl5" />
+          <ScalarProperty Name="Imgurl4" ColumnName="Imgurl4" />
+          <ScalarProperty Name="Imgurl3" ColumnName="Imgurl3" />
+          <ScalarProperty Name="Imgurl2" ColumnName="Imgurl2" />
+          <ScalarProperty Name="Imgurl1" ColumnName="Imgurl1" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="IMID" ColumnName="IMID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopOrder">
+      <EntityTypeMapping TypeName="TheCreationModel.ShopOrder">
+        <MappingFragment StoreEntitySet="ShopOrder">
+          <ScalarProperty Name="SendBy" ColumnName="SendBy" />
+          <ScalarProperty Name="PayMethod" ColumnName="PayMethod" />
+          <ScalarProperty Name="TotAmt" ColumnName="TotAmt" />
+          <ScalarProperty Name="BuyState" ColumnName="BuyState" />
+          <ScalarProperty Name="BuyDate" ColumnName="BuyDate" />
+          <ScalarProperty Name="AddID" ColumnName="AddID" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopOrderDetail">
+      <EntityTypeMapping TypeName="TheCreationModel.ShopOrderDetail">
+        <MappingFragment StoreEntitySet="ShopOrderDetail">
+          <ScalarProperty Name="SubID" ColumnName="SubID" />
+          <ScalarProperty Name="BuyPrice" ColumnName="BuyPrice" />
+          <ScalarProperty Name="BuyCount" ColumnName="BuyCount" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ODetailID" ColumnName="ODetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopProduct">
+      <EntityTypeMapping TypeName="TheCreationModel.ShopProduct">
+        <MappingFragment StoreEntitySet="ShopProduct">
+          <ScalarProperty Name="LeftCount" ColumnName="LeftCount" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="Describe" ColumnName="Describe" />
+          <ScalarProperty Name="TagId" ColumnName="TagId" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="PName" ColumnName="PName" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopProductTag">
+      <EntityTypeMapping TypeName="TheCreationModel.ShopProductTag">
+        <MappingFragment StoreEntitySet="ShopProductTag">
+          <ScalarProperty Name="TagName" ColumnName="TagName" />
+          <ScalarProperty Name="TagId" ColumnName="TagId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopProductType">
+      <EntityTypeMapping TypeName="TheCreationModel.ShopProductType">
+        <MappingFragment StoreEntitySet="ShopProductType">
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SProductSubClass">
+      <EntityTypeMapping TypeName="TheCreationModel.SProductSubClass">
+        <MappingFragment StoreEntitySet="SProductSubClass">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="MiniImg" ColumnName="MiniImg" />
+          <ScalarProperty Name="LeftCount" ColumnName="LeftCount" />
+          <ScalarProperty Name="PStyleDescribe" ColumnName="PStyleDescribe" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="SubID" ColumnName="SubID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Blog">
+      <EntityTypeMapping TypeName="TheCreationModel.Blog">
+        <MappingFragment StoreEntitySet="Blog">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="Describe" ColumnName="Describe" />
+          <ScalarProperty Name="CoverImg" ColumnName="CoverImg" />
+          <ScalarProperty Name="BlogContent" ColumnName="BlogContent" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="BlogType" ColumnName="BlogType" />
+          <ScalarProperty Name="PublisherID" ColumnName="PublisherID" />
+          <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlogComment">
+      <EntityTypeMapping TypeName="TheCreationModel.BlogComment">
+        <MappingFragment StoreEntitySet="BlogComment">
+          <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+          <ScalarProperty Name="CommenterID" ColumnName="CommenterID" />
+          <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

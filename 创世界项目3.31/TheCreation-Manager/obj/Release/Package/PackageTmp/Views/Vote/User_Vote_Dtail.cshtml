@@ -1,0 +1,39 @@
+﻿@using TheCreation_Manager.Models
+@model UserVotedDetail
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>User_Vote_Dtail</title>
+</head>
+<body>
+    <div>
+        <h2>@Model.vote.Title</h2>
+        <img width="200" height="180" src="@Model.vote.ImgUrl" />
+
+        <h4>选项👇</h4>
+        <ul>
+            @foreach (var item in Model.users)
+            {
+            <li>
+                <h7>@item.UsersName</h7>
+                <br />
+                <img width="200" height="180" src="@item.HeadUrl" /><br />
+                <p>@item.Hobby</p>
+                <span>信誉度：@item.Credit</span><br />
+                <a href="@Url.Action("SubmitVoteByReferenceId","Vote",new {vid=Model.vote.VoteId,reference_id=item.UsersId.ToString() })">投他</a>
+            </li>
+                
+            }
+        </ul>
+
+
+    </div>
+</body>
+</html>

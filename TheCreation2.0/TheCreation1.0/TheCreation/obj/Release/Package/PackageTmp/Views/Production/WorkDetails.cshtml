@@ -1,0 +1,209 @@
+﻿@using Models
+@model Production
+@{
+    ViewBag.Title = "作品详情";
+
+}
+
+@section css{
+    <link href="~/Content/作品详情/detailstyle.css" rel="stylesheet" />
+    <script src="~/Scripts/作品详情/file.script.js"></script>
+    <script src="/Scripts/jquery-3.5.1.js"></script>
+    <style type="text/css">
+        .bcmtadd .fabiao {
+            float: right;
+            width: 78px;
+            height: 24px;
+            border-width: 1px;
+            cursor: pointer;
+            background: #53c4cb;
+        }
+    </style>
+
+
+}
+
+<br />
+
+
+
+<div class="g-doc box2 container">
+    <div class="g-hd">
+        <div class="g-hdc box2">
+            <div class="m-ttl">
+                <!--创作者头像-->
+                <a class="hdimg img" href="#">
+                    <img src="@Model.Users.HeadUrl" width="80" height="80">
+                </a>
+                <!--创作者昵称-->
+                <h1 class="ttl">@Model.Users.UsersName</h1>
+            </div>
+            <!--导航内容-->
+            <ul class="m-nav">
+                <li><a href="#">@Model.Users.UsersName</a><span class="sep">/</span></li>
+                <li><a href="">@Model.ProductionName</a><span class="sep">/</span></li>
+                <li><a href="#">@Model.ProductionType</a><span class="sep">/</span></li>
+                <li><a href="#">@Model.Tag</a><span class="sep">/</span></li>
+                <li><a href="#">私信</a><span class="sep">/</span></li>
+                <li><a href="#">约稿</a></li>
+            </ul>
+            <!-- 个人信息-->
+            <div class="m-about">
+                <p>&gt;&gt;@Model.ProductionName</p>
+            </div>
+        </div>
+    </div>
+
+    <!--作品内容-->
+    <div class="g-mn">
+        <div class="g-mnc box2">
+            <div class="m-postdtl box2">
+                <div class="m-detail m-detail-img">
+                    <div class="m-cont box2">
+                        <div class="ct">
+                            <div class="ctc box2">
+                                <!--作品图像-->
+                                <div class="pic">
+                                    <a href="#" class="img imgclasstag" imggroup="gal" bigimgwidth="1500" bigimgheight="480" bigimgsrc="图片一.jpg">
+                                        <img src="@Model.ImgUrl" style="margin:0 auto; display:block;" />
+                                    </a>
+                                </div>
+                                <!--作品内容-->
+                                <div class=" my-5">
+                                    @Html.Raw(Model.ProductionContent)
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--作品标签-->
+                    <div class="info box2">
+                        <span class="tags">
+                            <a class="tag" href="">@Model.ProductionName</a>
+                            <a class="tag" href="#">@Model.Tag</a>
+                            <a class="tag" href="#">发布自&nbsp;  @Model.Users.UsersName</a>
+                            <a class="tag" href="">于&nbsp;  @Model.PublishDate</a>
+                            @*<a class="tag" href="#">水墨人生</a>*@
+                        </span>
+                    </div>
+                    <br />
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <!-- 内页评论和热度 -->
+            <div class="m-cmthot">
+                <div class="cmthotc box2">
+                    <div class="m-cmt">
+                        <div class="box2">
+                            <div class="clearfix" style="width: 100%;">
+                                <div class="nctitle" id="@Model.ProductionId" style="float: left;">评论(@Html.Action("Searchcomment", "Production", new { pid = Model.ProductionId }))</div>
+
+                                <div class="nctitle float-left" style="margin-left: 5px;">热度(@Model.HotCount)</div>
+
+                                <a class="nctitle float-left" onclick="addcollect('@Model.ProductionId')" style="margin-left: 7px;color:#666;" href="@Url.Action("judgeCollect","Production",new { pid = Model.ProductionId})">收藏</a>
+                                <div id="@("collect"+Model.ProductionId)"  rel="like" class="heart nctitle" style="margin-top: -31px;display:inline-block !important;padding-left:0px;">
+                                    (@Html.Action("Searchcollect", "Production", new { pid = Model.ProductionId }))
+                                </div>
+
+                                <a class="nctitle" onclick="AddClick('@Model.ProductionId');" style="margin-left:5px;margin-top: -31px;display:inline-block !important;color:#666;">点赞</a>
+
+                                <div id="@("count"+Model.ProductionId)" rel="like" class="heart nctitle" style="margin-top: -31px;display:inline-block !important;padding-left:0px;">
+                                    (@Html.Action("Searchlike", "Production", new { pid = Model.ProductionId }))
+                                </div>
+
+                                @*引用bshare分享插件，使它悬浮在作品详情的页面上     fs是自定义悬浮属性*@
+                                <a class="bshareDiv">分享按钮</a>
+                                <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#uuid=&amp;style=3&amp;fs=4&amp;textcolor=#fff&amp;bgcolor=#000&amp;text=分享到"></script>
+
+                                @*bshare插件，实现图片分享*@
+                                <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#uuid=0&style=-1"></script>
+                                <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/addons/bshareMM.js#shareClass=BSHARE_IMAGE_ALL"></script>
+                            </div>
+
+                            <div class="bcmt">
+                                <div class="bcmtadd" style="">
+                                    @*评论框*@
+                                    @*异步出现问题需要重写*@
+
+                                    @using (Ajax.BeginForm("AddComment", "Production", new AjaxOptions { HttpMethod = "post", OnSuccess = "addcomment", UpdateTargetId = "Div1" }))  //Confirm = "是否要提交?", , UpdateTargetId = "result",InsertionMode = InsertionMode.Replace ,
+                                    {
+                                        <input type="hidden" name="productionid" value="@Model.ProductionId" />
+                                        <textarea rows="4" cols="1000" name="comment" placeholder="来说几句吧......" style="width:100%;height:200px;max-height:200px;min-height:200px;max-width:100%;min-width:100%;"> </textarea>
+                                        <br />
+
+                                        <input class="fabiao" id="Comment(@Model.ProductionId)" style="height:100%;" type="submit" value="发布评论" />
+                                    }
+                                </div>
+                            </div>
+
+                            @*评论展示视图*@
+                            <div id="Div1">
+                                @{Html.RenderAction("ProductionComment", "Production", new { pid = Model.ProductionId });}
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--加载更多-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+        function AddClick(id) {
+            $.ajax({
+                type: "get",
+                url: "/Production/judgelike",
+                data: {
+                    pid: id
+                },
+                success: function (res) {
+                    $("#count" + id).html(res);
+                }
+            })
+    }
+    //function addcollect(id) {
+    //    $.ajax({
+    //        type: "get",
+    //        url: "/Production/judgeCollect",
+    //        data: {
+    //            pid: id
+    //        },
+    //        success: function (res) {
+    //            $("#collect" + id).html(res);
+    //        }
+    //    })
+    //}
+
+    //发评论的回调函数
+    function Comment(data) {
+        if (data == "login") {
+            alert("请先登录！");
+            sessionStorage.setItem('thePass', window.location.href);
+            window.location.href = '/Home/Login';
+        }
+        else if (data == "fail") {
+            alert("评论失败！");
+        }
+        else {
+            $("#Div1").html(data);
+            updateComment(@Model.ProductionId);
+        }
+    }
+</script>
+
+<!-- 尾部 -->
+<div class="g-ft">
+    <p class="m-cprt">©&nbsp;<a href="#">The Creation</a>&nbsp;|&nbsp;Powered by <a href="#">The Creation</a></p>
+</div>
+

@@ -1,0 +1,554 @@
+﻿.processBar {
+    float: left;
+    width: 200px;
+    margin-top: 15px
+}
+
+    .processBar .bar {
+        background: #e6e0ec;
+        height: 3px;
+        position: relative;
+        width: 185px;
+        margin-left: 10px
+    }
+
+    .processBar .b-select {
+        background: #60487c
+    }
+
+    .processBar .bar .c-step {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #e6e0ec;
+        left: -12px;
+        top: 50%;
+        margin-top: -4px
+    }
+
+    .processBar .bar .c-select {
+        width: 10px;
+        height: 10px;
+        margin: -5px -1px;
+        background: #60487c
+    }
+
+.main-hide {
+    position: absolute;
+    top: -9999px;
+    left: -9999px
+}
+
+.poetry {
+    color: #60487c;
+    font-family: KaiTi_GB2312, KaiTi, STKaiti;
+    font-size: 16px;
+    background-color: transparent;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none
+}
+
+button {
+    width: 80px;
+    line-height: 30px;
+    font-size: 11px;
+    color: #742a95;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #e2e2e2;
+    cursor: pointer;
+    background-color: #fff;
+    outline: none
+}
+
+    button:hover {
+        border: 1px solid #b3a1c8
+    }
+
+h2 {
+    color: #742a95;
+    text-align: center;
+}
+
+.condition-but-w {
+    display: block;
+    padding: 112px 0 72px;
+    text-align: center;
+}
+
+.line .index {
+    width: 45px;
+    height: 49px;
+    padding-left: 10px;
+    margin: 28px 0 13px;
+    background-position: -490px -140px;
+    line-height: 42px;
+    color: #584b3b;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.line .txt {
+    font-size: 26px;
+    color: #666;
+    text-align: left;
+}
+
+.welfare-1 {
+    width: 348px;
+    height: 352px;
+    background-image: url('../../image/Identify/关注.png');
+    background-size: 100% 100%;
+}
+
+.welfare-2 {
+    width: 365px;
+    height: 352px;
+    background-image: url('../../image/Identify/兴趣.png');
+    background-size: 100% 100%;
+}
+
+.welfare-3 {
+    width: 311px;
+    height: 352px;
+    background-image: url('../../image/Identify/领域.png');
+    background-size: 100% 100%;
+}
+
+.welfare-4 {
+    width: 348px;
+    height: 256px;
+    background-image: url('../../image/Identify/相似.png');
+    background-size: 100% 100%;
+}
+
+.welfare-5 {
+    width: 372px;
+    height: 221px;
+    background-image: url('../../image/Identify/趋势.png');
+    background-size: 100% 100%;
+}
+
+.welfare-6 {
+    width: 372px;
+    height: 221px;
+    background-image: url('../../image/Identify/创作者.png');
+    background-size: 100% 100%;
+}
+
+.welfare-7 {
+    width: 391px;
+    height: 172px;
+    background-image: url('../../image/Identify/喜欢.png');
+    background-size: 100% 100%;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td {
+    padding: 0;
+    margin: 0;
+}
+
+body,
+textarea,
+select,
+input,
+button {
+    font-size: 12px;
+    color: #444;
+}
+
+body {
+    background-color: #ededef;
+}
+
+a {
+    text-decoration: none;
+    color: #444;
+    outline: none;
+}
+
+a,
+button {
+    cursor: pointer;
+}
+
+.box.first {
+    margin-top: -75px;
+}
+
+.box {
+    position: relative;
+    width: 928px;
+    padding-top: 16px;
+    margin: 20px auto 0;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+
+.title-w {
+    margin: auto;
+}
+
+body,
+textarea,
+select,
+input,
+button {
+    font-size: 12px;
+    color: #444;
+}
+
+.title-w .title {
+    padding-left: 284px;
+}
+
+.f-cb {
+    zoom: 1;
+}
+
+    .f-cb::after {
+        clear: both;
+        content: ".";
+        display: block;
+        height: 0px;
+        visibility: hidden;
+        overflow: hidden;
+    }
+
+.title-w .title .line {
+    width: 100px;
+    height: 2px;
+    margin-top: 21px;
+    background: linear-gradient(-90deg, #FFEAC4 0%, rgba(255, 255, 255, 0.00) 100%);
+    border-radius: 2px;
+}
+
+.line {
+    margin-top: 60px;
+}
+
+.f-fl {
+    float: left;
+}
+
+.f-cb::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0px;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.title-w .title .txt {
+    margin: 0 21px;
+    font-size: 30px;
+    line-height: 42px;
+    color: #333;
+}
+
+.title-w .title .line.right {
+    background: linear-gradient(-90deg, rgba(255, 255, 255, 0.00) 0%, #FFEAC4 100%);
+}
+
+
+
+.f-fl {
+    float: left;
+}
+
+.title-w .tip {
+    font-size: 16px;
+    color: #999;
+    text-align: center;
+}
+
+.advantage-w {
+    padding: 40px 34px 16px;
+}
+
+.advantage-it {
+    text-align: center;
+}
+
+li {
+    list-style: none;
+}
+
+.bg-advantage {
+    width: 100px;
+    height: 100px;
+    margin: 0 36px 10px;
+    border-radius: 50%;
+}
+
+.line .index {
+    width: 45px;
+    height: 49px;
+    padding-left: 10px;
+    margin: 28px 0 13px;
+    background-position: -490px -140px;
+    line-height: 42px;
+    color: #584b3b;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+}
+
+/*申请条件*/
+.applyneeded .need-content {
+    width: 800px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    margin: 0 auto;
+}
+
+.applyneeded .content-word {
+    font-size: 16px;
+    color: #333;
+    margin: 30px 0 0;
+    height: 19px;
+    line-height: 22px;
+}
+
+.applyneeded .need-content .progress-bar {
+    margin-top: 62px;
+    margin-bottom: 39px;
+    height: 6px;
+    background-color: #f6f6f6;
+    border-radius: 10px;
+}
+
+.applyneeded .need-content .progress {
+    width: 60%;
+    height: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    position: relative;
+}
+
+.applyneeded .need-content .progress-text {
+    position: absolute;
+    width: max-content;
+    top: 30px;
+    padding: 0 18px;
+    font-size: 16px;
+    line-height: 30px;
+    color: #333;
+    border: 1px solid #e0e0e0;
+    border-radius: 22px;
+}
+
+    .applyneeded .need-content .progress-text .triangle {
+        width: 0px;
+        height: 0px;
+        border-top: 6px solid #e0e0e0;
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-left: 6px solid transparent;
+        position: absolute;
+        top: 30px;
+        left: 44%;
+    }
+
+
+    .applyneeded .need-content .progress-text .triangle::after {
+        content: "";
+        border-top: 4px solid #fff;
+        border-right: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-left: 4px solid transparent;
+        position: absolute;
+        top: -6px;
+        left: -4px;
+    }
+
+.applyneeded .need-content .progress-satisfied {
+    margin-top: 62px;
+    margin-bottom: 39px;
+    height: 6px;
+    background-color: #e7d082;
+    border-radius: 10px;
+    position: relative;
+}
+
+.applyneeded .need-content .progress-satisfied-text {
+    position: absolute;
+    top: -46px;
+    right: 0px;
+    padding: 0 27px;
+    font-size: 16px;
+    line-height: 30px;
+    color: #fff;
+    background-color: #e7d082;
+    border-radius: 22px;
+}
+
+    .applyneeded .need-content .progress-satisfied-text .triangle {
+        width: 0px;
+        height: 0px;
+        border-top: 6px solid #e7d082;
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-left: 6px solid transparent;
+        position: absolute;
+        top: 29px;
+        left: 46px;
+    }
+
+.clear::after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0px;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.fillinfo .info-title .title-span {
+    font-size: 20px;
+    color: #444444;
+    padding: 0 18px;
+    height: 24px;
+    position: relative;
+    z-index: 9;
+    background-color: white;
+}
+
+
+.fillinfo .info-title .title-hr {
+    width: 100%;
+    height: 0px;
+    border: none;
+    border-bottom: 1px dotted #b7b7b7;
+    position: relative;
+    margin: 0;
+    margin-top: -12px;
+    *margin-top: -24px:;
+    vertical-align: bottom;
+}
+
+.fillinfo .info-title {
+    text-align: center;
+    position: relative;
+    height: 24px;
+}
+
+.aui-content-up {
+    border-radius: 2px;
+    padding: 10px 24px 1px 24px;
+    width: 900px;
+    margin: 0 auto;
+}
+
+em {
+    font-style: normal;
+}
+
+.aui-form-group {
+    padding-top: 20px;
+}
+
+.aui-label-control {
+    display: inline-block;
+    width: 80px;
+    margin-bottom: 5px;
+    min-width: 80px;
+    padding-right: 10px;
+    line-height: 35px;
+    position: relative;
+    float: left;
+    text-align: right;
+}
+
+
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    outline: none;
+}
+
+select {
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.aui-form-input {
+    float: left;
+    width: 470px;
+    position: relative;
+}
+
+.aui-form-control {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #999;
+    background-color: #fff;
+    border-radius: 4px;
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    height: 150px;
+    resize: none;
+    border: 1px solid #e7e7e7;
+    margin-left: 20px;
+}
+
+.aui-form-control-two {
+    display: block;
+    width: 100%;
+    height: 36px;
+    padding: 8px 16px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    color: #222;
+    background-color: #fff;
+    border: 1px solid #b3cef9;
+    border-radius: 4px;
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.aui-label-control span {
+    display: block;
+    font-size: 12px;
+    color: #999;
+    position: absolute;
+    top: 20px;
+    right: 23px;
+}

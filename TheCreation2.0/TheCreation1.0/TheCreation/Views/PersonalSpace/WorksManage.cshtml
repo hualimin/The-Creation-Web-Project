@@ -1,0 +1,249 @@
+﻿@model TheCreation.Models.MyWorksViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>创作品管理</title>
+    <link href="~/Content/个人空间/workstyle.css" rel="stylesheet" />
+    <style>
+        .aui-nav-list-box ul li {
+            float: left;
+            color: #000;
+            height: 45px;
+            cursor: pointer;
+            line-height: 45px;
+            width: 25%;
+            text-align: center;
+            font-size: 14px;
+            border-right: solid 1px #d1d1d1;
+            border-bottom: solid 1px #d1d1d1;
+        }
+    </style>
+
+</head>
+<body style="width: 100%;margin: 0 auto;height:2000px;">
+    <div style="width: 805px;margin: 0 auto;border: 1px solid #d1d1d1;">
+        <div class="mine-data">
+            <div class="space-avatar">
+                <img src="@Model.My_infos.HeadUrl" />
+            </div>
+            <div class="space-message">
+                <h5>@Model.My_infos.UsersName</h5>
+                <p>个性签名：@Model.My_infos.Hobby</p>
+            </div>
+        </div>
+        <div class="mine-shows">
+            <div>
+                <p>@Model.WorksCount</p>
+                <span>作品数</span>
+            </div>
+            <div>
+                <p>@Model.TotalHotCount</p>
+                <span>热度</span>
+            </div>
+            <div>
+                <p>@Model.TotalCommentCount</p>
+                <span>评论</span>
+            </div>
+            <div>
+                <p>@Model.TotalFanount</p>
+                <span>粉丝</span>
+            </div>
+        </div>
+    </div>
+    <div class="aui-nav-content-box">
+        <div class="aui-nav-list-box">
+            <ul>
+                <li class="aui-current">
+                    <a>我的作品</a>
+                </li>
+                <li>
+                    <a>我的粉丝</a>
+                </li>
+                <li>
+                    <a>我的关注</a>
+                </li>
+                <li>
+                    <a>我的收藏</a>
+                </li>
+            </ul>
+        </div>
+        <!--我的作品-->
+        <div class="aui-nav-list-tab">
+            <div class="aui-nav-list-item" style="display:block">
+                <!--第一个作品-->
+                @foreach (var item in Model.My_Works)
+                {
+                    <div class="aui-flex">
+                        <div class="aui-img-sml">
+                            <a href="#" target="_blank"><img src="@item.Users.HeadUrl" alt=""></a>
+                        </div>
+                        <div class="aui-flex-box">
+                            <h4>@item.Users.UsersName</h4>
+                            <p>@item.PublishDate</p>
+                        </div>
+                    </div>
+                    <div class="aui-flex" style="padding-top:0">
+                        <div class="aui-flex-box">
+                            <a href="#" target="_blank">
+                                <h2>@item.ProductionName</h2>
+                            </a>
+                            <img class="gallery" src="@item.ImgUrl" onClick="openModal();changeImage(0)">
+                        </div>
+                    </div>
+
+                    <div class="aui-flex">
+                        <div class="aui-flex-box">
+                            <button> <i class="icon icon-up"></i> 点赞数#@item.LikeCount</button>
+                            <label><a href="#" target="_blank">#@item.ProductionType</a></label>&nbsp;
+                            <label><a href="#" target="_blank">#@item.Tag</a></label>
+                        </div>
+                        <div class="aui-card-info aui-card-info-t">
+                            <span>
+                                <i class="icon icon-plu"></i>@item.CommentCount
+                            </span>
+                            &nbsp;
+                            <a href="@Url.Action("WorkDetails","Production",new {id=item.ProductionId })">
+                                查看详情
+                            </a>
+                        </div>
+                    </div>
+                    <div class="divHeight"></div>
+
+                    <!--弹出框-->
+                    <div class="lightboxContainer">
+                        <div class="lightbox">
+                            <div class="close" onClick="closeModal()"> &#10006; </div>
+                            <div class="activeImage">
+                                <img name="activeImage" src="@item.ImgUrl">
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <!--我的粉丝-->
+            <div class="aui-nav-list-item">
+                @foreach (var item in Model.MyFans)
+                {
+                    <!--第一个作品-->
+                    <div class="aui-flex">
+                        <div class="aui-img-sml">
+                            <a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.UsersId})" target="_blank"><img src="@item.Users1.HeadUrl"></a>
+                        </div>
+                        <div class="aui-flex-box">
+                            <input type="hidden" name="id" value="@item.Users.UsersId" />
+                            <h4>@item.Users1.UsersName</h4>
+                            <p>@item.Users1.Hobby</p>
+                        </div>
+                        <a href="@Url.Action("FocusIt", "UserManage", new { id = item.UsersId })"><button class="unfollow" type="button" style="width:100px;">+关注</button></a>
+                    </div>
+
+                    <div class="divHeight"></div>
+                }
+
+            </div>
+
+            <!--我的关注-->
+            <div class="aui-nav-list-item">
+                @foreach (var item in Model.MyFocus)
+                {
+                    <!--第一个作品-->
+                    <div class="aui-flex">
+                        <div class="aui-img-sml">
+                            <a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.FocusedUserId})" target="_blank"><img src="@item.Users.HeadUrl"></a>
+                        </div>
+                        <div class="aui-flex-box">
+                            <h4>@item.Users.UsersName</h4>
+                            <p>@item.Users.Hobby</p>
+                        </div>
+                        <a href="@Url.Action("UnFocusIt", "UserManage", new { id = item.FocusId })"><button class="unfollow" type="button" style="width:100px;">-取消关注</button></a>
+                    </div>
+
+                    <div class="divHeight"></div>
+                }
+
+            </div>
+
+
+
+
+            <!--我的收藏-->
+            <div class="aui-nav-list-item">
+                @foreach (var item in Model.MyCollect)
+                {
+                    <div class="aui-flex">
+                        <div class="aui-img-sml">
+                            <a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.Production.Users.UsersId})" target="_blank"><img src="@item.Production.Users.HeadUrl"></a>
+                        </div>
+                        <div class="aui-flex-box">
+                            <h4>@item.Production.Users.UsersName</h4>
+                            <p>@item.Production.PublishDate</p>
+                        </div>
+                    </div>
+                    <div class="aui-flex" style="padding-top:0">
+                        <div class="aui-flex-box">
+                            <a target="_blank">
+                                <h2>@item.Production.ProductionName</h2>
+                            </a>
+                            <a><img class="gallery" src="@item.Production.ImgUrl" /></a>
+                        </div>
+                    </div>
+
+                    <div class="aui-flex">
+                        <div class="aui-flex-box">
+                            <button> <i class="icon icon-up"></i> @item.Production.LikeCount</button>
+                            <label><a href="#" target="_blank"># @item.Production.ProductionType</a></label>&nbsp;
+                            <label><a href="#" target="_blank"># @item.Production.Tag</a></label>
+                        </div>
+                        <div class="aui-card-info aui-card-info-t">
+                            <a href="@Url.Action("WorkDetails","Production",new {id=item.ProductionId })">
+                                查看详情
+                            </a>&nbsp;
+                            <a href="@Url.Action("CancelCollect1","Production",new {id=item.CollectId })">
+                                取消收藏
+                            </a>&nbsp;
+                            <span>
+                                <i class="icon icon-plu"></i> @item.Production.CommentCount &nbsp;&nbsp;
+                            </span>
+                        </div>
+                    </div>
+                    <div class="divHeight"></div>
+                }
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="~/Scripts/个人空间/jquery.min.js"></script>
+    <script type="text/javascript">
+        //tab切换
+        $(function () {
+            $('.aui-nav-list-box ul li').click(function () {
+                $(this).addClass('aui-current').siblings().removeClass('aui-current');
+                $('.aui-nav-list-tab>div:eq(' + $(this).index() + ')').show().siblings().hide();
+            })
+        });
+
+        function openModal() {
+            document.querySelector(".lightboxContainer").style.display = "flex";
+            document.body.style.overflow = "hidden";
+            document.querySelector(".gallery").style.filter = "blur(5px)";
+
+        }
+        function closeModal() {
+            document.querySelector(".lightboxContainer").style.display = "none";
+            document.body.style.overflow = "initial";
+            document.querySelector(".gallery").style.filter = "blur(0)";
+        }
+    </script>
+</body>
+</html>
+

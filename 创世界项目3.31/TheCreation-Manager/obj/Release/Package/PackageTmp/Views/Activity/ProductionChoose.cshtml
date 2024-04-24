@@ -1,0 +1,49 @@
+﻿
+<blockquote class="layui-elem-quote">
+    投票内容填写
+</blockquote>
+<form action="@Url.Action("AddRefVote","Activity",new { type=1})" name="formB1" class="layui-form" style="margin: 0 auto;max-width: 560px; padding-top: 40px; " method="post" enctype="multipart/form-data">
+    @*<form class="layui-form" style="margin: 0 auto;max-width: 560px; padding-top: 40px; ">*@
+    <div class="layui-form-item">
+        <label class="layui-form-label">投票主题:</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="请填写投票主题" class="layui-input" lay-verify="required" name="title" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">参与人(多选)</label>
+        <div class="layui-input-inline">
+            <input type="text" name="" placeholder="点击选择投票项" autocomplete="off" class="layui-input" id="demo1" lay-verify="required" value="" ts-selected="1">
+        </div>
+        <div class="layui-form-mid layui-word-aux">请在此选择要加入投票的选项</div>
+    </div>
+    <input type="hidden" id="selectedC1" name="selectedC1" value="" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">截止日期:</label>
+        <div class="layui-input-block">
+            <input type="text" name="date1" id="date1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">上传图片:</label>
+        <div class="layui-input-block">
+            <div id="wrapper">
+                <input id="ProductionVoteUp" name="productionvoteimg" type="file" /><br />
+                <div id="image-holderC1"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">详细介绍:</label>
+        <div class="layui-input-block">
+            <textarea placeholder="投票介绍" value="" name="content" class="layui-textarea" lay-verify="required"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit type="submit">
+                &emsp;确定&emsp;
+            </button>
+        </div>
+    </div>
+</form>

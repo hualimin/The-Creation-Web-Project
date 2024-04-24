@@ -1,0 +1,232 @@
+﻿
+@{
+    ViewBag.Title = "Up_Blog";
+    Layout = "~/Views/Shared/BlogLayout1.cshtml";
+}
+@section css{
+    <link rel="stylesheet" href="/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/css/public.css" media="all">
+
+
+    <script src="~/js/blog_js/utf8-net/ueditor.all.min.js"></script>
+
+    <script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+    <script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+    <style>
+        .thumb-image {
+            width: 200px;
+            height: 150px;
+            padding: 5px;
+            margin-left: 10px;
+            display: block;
+            border: 1px solid #ccc;
+            float: left;
+        }
+    </style>
+
+}
+
+
+<div class="breadcrumb"> <i class="fa fa-home"></i> <a href="@Url.Action("Index","Blog")">主页</a> &gt; <a href="@Url.Action("Up_Blog","Blog")">发布博客</a> &gt;  </div>
+
+<main class="main" role="main" style="opacity: 1;">
+    <div class="clear"></div>
+    <article class="post cate1  auth1">
+        <blockquote class="layui-elem-quote">
+            发布博客
+        </blockquote>
+        <form action="@Url.Action("Upload_Blog","Blog")" class="layui-form" name="form1" method="post" OnSuccess="UpSuccess" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <div class="layui-form-item">
+                <label class="layui-form-label">标题：</label>
+                <div class="layui-input-block">
+                    <input type="text" placeholder="请填写博客标题" class="layui-input" lay-verify="required" name="Title" id="title" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">单行选择框</label>
+                <div class="layui-input-block">
+                    <select name="interest" lay-filter="aihao">
+                        <option value=""></option>
+                        <option value="0">写作</option>
+                        <option value="1" selected="">阅读</option>
+                        <option value="2">游戏</option>
+                        <option value="3">音乐</option>
+                        <option value="4">旅行</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">栏目：</label>
+                <div class="layui-input-block">
+                    <input type="text" placeholder="请填写博客所属栏目" class="layui-input" lay-verify="required" name="BlogType" id="title" />
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">博客封面:</label>
+                <div class="layui-input-block">
+                    <div id="wrapper">
+                        <input id="cover_up" name="cover_up" type="file" /><br />
+                        <div id="img_display"> </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">简要描述:</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请填写博客所属栏目" value="" class="layui-textarea" name="Describe" lay-verify="required"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">定位：</label>
+                <div class="layui-input-block">
+                    <input type="text" placeholder="点击可获取当前位置" class="layui-input" value="未填写" lay-verify="required" name="Address" id="local" />
+                </div>
+                <div class="layui-input-block">
+                    <a class="layui-btn"  onclick="getLocation()">
+                        &emsp;获取位置信息&emsp;
+                    </a>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">创作品内容 <em>*</em></label>
+                <div class="layui-input-block">
+                    <script id="editor" name="BlogContent" type="text/plain" style="width:700px;height:300px;">
+                    </script>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit type="submit">
+                        &emsp;确定&emsp;
+                    </button>
+                </div>
+            </div>
+        </form>
+    </article>
+
+    <article class="post cate1  auth1">
+    </article>
+</main>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=ChiPedqsjKTbwV6UCwMFwmjK6kXXQjBG"></script>
+<script type="text/javascript">
+
+    // 创建一个函数，主要功能是在调用html5的geolocation()前，先判断当前浏览器是否支持html5，（PC绝大部分浏览器不支持或者拒绝html5定位）
+    function getLocation() {
+        var options = {
+            enableHighAccuracy: true,
+            maximumAge: 1000
+        };
+        alert('获取位置信息开始--------->');
+        if (navigator.geolocation) {
+            // 走到这里说明，浏览器支持geolocation，参数里有两个回调函数，一个是定位成功后的处理操作，一个是定位失败后的处理操作，另外一个参数没有研究过
+            navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+        } else {
+            // 否则浏览器不支持geolocation
+            alert('您的浏览器不支持地理位置定位！');
+        }
+    }
+
+    // 成功时的回调函数
+    // 第一步获取定位成功返回的经纬度数据，然后结合百度那边提供的接口进行具体位置的转换，最后还有一个数据提交的方法，要跟自己的业务操作了
+    function onSuccess(position) {
+        // 返回用户位置
+        // 经度
+        var longitude = position.coords.longitude;
+        // 纬度
+        var latitude = position.coords.latitude;
+        //alert('您的当前地址的经纬度：经度' + longitude + '，纬度' + latitude);
+        // 根据经纬度获取地理位置，不太准确，获取城市区域还是可以的
+        //var map = new BMap.Map("allmap");
+        var point = new BMap.Point(longitude, latitude);
+        var gc = new BMap.Geocoder();
+        gc.getLocation(point, function (rs) {
+            var addComp = rs.addressComponents;
+            var addstr = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+            alert('已将位置信息自动填入！');
+            document.getElementById("local").value = addstr;  //查找元
+            //alert(rs.address);//弹出所在地址
+            //console.log(addstr);
+            //alert(addstr);
+
+        });
+        // 这里后面可以写你的后续操作了
+        handleData(longitude, latitude);
+    }
+
+    // 失败时的回调函数
+    // 这里是错误提示信息
+    function onError(error) {
+        switch (error.code) {
+            case 1:
+                alert("位置服务被拒绝！");
+                break;
+            case 2:
+                alert("暂时获取不到位置信息！");
+                break;
+            case 3:
+                alert("获取信息超时！");
+                break;
+            case 4:
+                alert("未知错误！");
+                break;
+        }
+        // 这里后面可以写你的后续操作了，下面的经纬度是天安门的具体位置
+        // 经度
+        var longitude = 39.9151;
+        // 纬度
+        var latitude = 116.4041;
+        handleData(longitude, latitude);
+    }
+
+    // 页面载入时请求获取当前地理位置
+    // window.onload = function () {
+    //     // html5获取地理位置
+    //     getLocation();
+    // };
+</script>
+
+@section scripts{
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //实例化编辑器
+            //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+            var ue = UE.getEditor('editor');
+        })
+    </script>
+
+    <script type="text/javascript">
+        $("#cover_up").on('change', function () {
+            console.log("change");
+
+            if (typeof (FileReader) != "undefined") {
+
+                var image_holder = $("#img_display");
+                image_holder.empty();
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("<img />", {
+                        "src": e.target.result,
+                        "class": "thumb-image"
+                    }).appendTo(image_holder);
+
+                }
+                image_holder.show();
+                reader.readAsDataURL($(this)[0].files[0]);
+            } else {
+                alert("你的浏览器不支持FileReader.");
+            }
+        });
+
+    </script>
+
+
+
+}

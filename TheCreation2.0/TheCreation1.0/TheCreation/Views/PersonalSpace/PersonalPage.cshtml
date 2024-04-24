@@ -1,0 +1,196 @@
+﻿@using Models
+@model TheCreation.Models.PersonalPageViewModel
+@{
+    ViewBag.Title = "PersonalPage";
+}
+
+@section css{
+    <script src="~/Scripts/jquery-3.5.1.slim.js"></script>
+    <script src="~/bootstrap-4.5.0-dist/js/bootstrap.bundle.js"></script>
+    <link href="~/Content/个人主页/Style.css" rel="stylesheet" />
+    <style type="text/css">
+        .zhezhao {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+        }
+
+        .tankuang {
+            position: relative;
+            background: #fff;
+            width: 50%;
+            height: 80%;
+            border-radius: 5px;
+            margin: 6% auto;
+        }
+
+        #header {
+            height: 40px;
+        }
+
+        #header-right {
+            position: absolute;
+            width: 25px;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            right: 5px;
+            top: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .month a, .day a {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .link a {
+            height: 20px;
+        }
+
+        .content img {
+            height: 500px;
+            width: 500px;
+        }
+    </style>
+}
+<body>
+    <br />
+    <div class="monthly-item clearfix">
+        <div class="monthly-left">
+            <!--创作者消息部分-->
+            <div class="monthly-left-up clearfix">
+                <img class="monthly-img lazy" src="@Model.PersonalPageInfo.HeadUrl" style="display: block;">
+                <p class="monthly-title">
+                    <span class="monthly-title-title">@Model.PersonalPageInfo.UsersName</span>
+                    <span class="monthly-title-label">已认证</span>
+                </p>
+                <!--认证名称-->
+                <a href="#" class="monthly-shop" target="_blank" style="margin-top:5px;"><img src="~/image/PersonalPage/认证.png" />创世界认证</a>
+                <div class="div1">
+                    <div class="div2">
+                        关注
+                        <a target="_blank" style="text-decoration: none;" href="#">
+                            <div class="div3" style="">@Model.FocusCount</div>
+                        </a>
+                    </div>
+                    <div class="div2">
+                        粉丝
+                        <a target="_blank" style="text-decoration: none;" href="#">
+                            <div class="div3">@Model.TotalFanount</div>
+                        </a>
+                    </div>
+                    <div class="div2">
+                        作品
+                        <a target="_blank" style="text-decoration: none;" href="#">
+                            <div class="div3">@Model.WorksCount</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--擅长部分-->
+            <div class="monthly-left-down">
+                <div class="monthly-skills">
+                    <p class="monthly-skills-title">擅长</p>
+                    <p class="monthly-skills-content">
+                        <span class="monthly-skill">@Model.PersonalPageInfo.Hobby</span>
+                    </p>
+                </div>
+                <!--创作者简介部分-->
+                <div class="monthly-intro">
+                    <p class="monthly-intro-title">介绍</p>
+                    <p class="monthly-intro-content" title="@Model.PersonalPageInfo.Hobby">@Model.PersonalPageInfo.Hobby</p>
+                </div>
+            </div>
+        </div>
+        <!--右边内容-->
+        <div class="monthly-right">
+            <p class="monthly-price">
+                <span style="font-size:14px;">￥</span><span>@Model.PersonalCreator.PriceRange</span>
+            </p>
+            <p class="monthly-count" style="margin-top:-10px;">
+                已接单数：@Model.OrderCount
+            </p>
+            <p class="monthly-experience" style="margin-top:-10px;">
+                等级：@Model.PersonalPageInfo.UsersLevel
+            </p>
+            <a class="monthly-case" href="@Url.Action("ShowCreatorEvaluates","OrderManage",new {creatorid=Model.PersonalPageInfo.UsersId })">查看Ta的评价</a>
+
+
+            <button style="width:140px;height:34px;line-height:34px;background-color:#55557f;color: #fff;text-align:center;margin-top:10px;" data-toggle="modal" data-target="#Modal2">请他定制</button>
+
+            <a href="@Url.Action("FocusIt","UserManage",new { id=Model.PersonalPageInfo.UsersId})"><button style="width:140px;height:34px;line-height:34px;background-color:#55557f;color: #fff;text-align:center;margin-top:5px;">关注</button></a>
+            <button class="monthly-btn" data-toggle="modal" data-target="#Modal">私信</button>
+        </div>
+    </div>
+
+    <!-- 私信部份显示的模态框-->
+    <div class="modal fade" id="Modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">私信</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    请在此处输入内容
+                    <form action="@Url.Action("SendPersonalMessage","MessageManager",new { rid=Model.PersonalPageInfo.UsersId})" name="form1" method="post">
+                        @Html.AntiForgeryToken()
+                        <textarea rows="5" cols="60" name="content" placeholder="请在此输入咨询内容"> </textarea>
+                        <br />
+                        <button style="width:50px;height:34px;line-height:30px;background-color:#55557f;color: #fff;text-align:center;" type="button" data-dismiss="modal">关闭</button>
+                        <button style="width:50px;height:34px;line-height:30px;background-color:#55557f;color: #fff;text-align:center;" type="submit" formmethod="post">提交</button> @*onclick="document.form1.submit();"*@
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 请他定制部份显示的模态框-->
+    <div class="modal fade" id="Modal2">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">请他定制</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm("SendOrder", "OrderManage", new { name = "form2" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <p>请在下方输入你的需求</p><textarea rows="5" cols="60" name="need" placeholder="请在此输入您的需求"> </textarea>
+                        <input type="hidden" name="creatorid" value="@Model.PersonalPageInfo.UsersId" />
+                        <P>给订单取个名字吧</P>
+                        <input type="text" name="name" /><br />
+                        <span>交付日期：</span><input type="date" name="finishdate" /><br />
+                        <input type="text" placeholder="价格介于 @Model.PersonalCreator.PriceRange 之间" name="price" /><br /><br />
+                        <button style="width:50px;height:34px;line-height:30px;background-color:#55557f;color: #fff;text-align:center;" type="button" data-dismiss="modal">关闭</button>
+                        <button style="width:150px;height:34px;line-height:30px;background-color:#55557f;color: #fff;text-align:center;" type="submit" formmethod="post">付款并提交</button>
+                    }
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Action("ShowPersonalPageWorks", "Production", new { id = Model.PersonalPageInfo.UsersId })
+
+    <div class="footer">
+        <span title="Copyright" style="cursor:pointer;">©</span> <a href="#">@Model.PersonalPageInfo.UsersName</a>
+        | Powered by <a href="#">The Creation</a>
+    </div>
+
+</body>

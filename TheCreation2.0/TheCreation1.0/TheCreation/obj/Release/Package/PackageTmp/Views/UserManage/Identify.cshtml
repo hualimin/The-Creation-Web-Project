@@ -1,0 +1,441 @@
+﻿@*@using TheCreation.Models
+
+@model AuthenApplyInfo*@
+@{
+    ViewBag.Title = "Identify";
+}
+
+@*<h2>Identify</h2>*@
+
+@section css{
+    <link href="~/Content/申请认证/Style.css" rel="stylesheet" />
+    <script src="~/Scripts/申请认证/jquery.js"></script>
+    <link href="~/Content/申请认证/ion.rangeSlider.css" rel="stylesheet" />
+
+}
+
+<div style="width:625px;margin:0 auto;">
+    <h1 style="text-align: center;">创作者申请认证</h1>
+    <div class="content" style="margin:30px 0 0 0;width: 100%;">
+        <div class="processBar">
+            <div id="line0" class="bar">
+                <div id="point0" class="c-step c-select"></div>
+            </div>
+            <div class="text" style="margin: 10px -25px;"><span class='poetry'>开始申请</span></div>
+        </div>
+        <div class="processBar">
+            <div id="line1" class="bar">
+                <div id="point1" class="c-step"></div>
+            </div>
+            <div class="text" style="margin: 10px -30px;"><span class='poetry'>申请条件</span></div>
+        </div>
+        <div class="processBar">
+            <div id="line2" class="bar">
+                <div id="point2" class="c-step"></div>
+            </div>
+            <div class="text" style="margin: 10px -30px;"><span class='poetry'>填写信息</span></div>
+        </div>
+        <div class="processBar" style="width:10px;">
+            <div id="line3" class="bar" style="width: 0;">
+                <div id="point3" class="c-step"></div>
+            </div>
+            <div class="text" style="margin: 10px -15px;"><span class='poetry'>完成</span></div>
+        </div>
+    </div>
+
+    <div style="clear: both;"></div>
+    <div id="MainContent" style="margin:30px 0 0 0;">
+        <div class="content" id="advantage">
+            <div class="step-content" style="margin: 0 auto;">
+                <div class="main">
+                    <div class="daren-advantage box  first " style="margin: 0 auto;margin-left: -10px;margin-left: -25%;">
+                        <div class="title-w">
+                            <div class="title f-cb">
+                                <div class="line f-fl"></div>
+                                <div class="txt f-fl">创作者优势</div>
+                                <div class="line right f-fl"></div>
+                            </div>
+                            <div class="tip">你将获得以下权益</div>
+                        </div>
+                        <ul class="advantage-w f-cb">
+                            <li class="advantage-it f-fl">
+                                <div class="bg-advantage">
+                                    <img src="~/image/Identify/打赏.png" />
+                                </div>
+                                <div class="txt">打赏权益</div>
+                            </li>
+                            <li class="advantage-it f-fl">
+                                <div class="bg-advantage">
+                                    <img src="~/image/Identify/VIP.png" />
+                                </div>
+                                <div class="txt">达人尊贵标示</div>
+                            </li>
+                            <li class="advantage-it f-fl">
+                                <div class="bg-advantage">
+                                    <img src="~/image/Identify/签约.png" />
+                                </div>
+                                <div class="txt">签约申请权</div>
+                            </li>
+                            <li class="advantage-it f-fl">
+                                <div class="bg-advantage">
+                                    <img src="~/image/Identify/推荐.png" />
+                                </div>
+                                <div class="txt">领域首页推荐</div>
+                            </li>
+                            <li class="advantage-it f-fl">
+                                <div class="bg-advantage">
+                                    <img src="~/image/Identify/官方.png" />
+                                </div>
+                                <div class="txt">官号推荐</div>
+                            </li>
+                            <li class="advantage-it f-fl">
+                                <div class="bg-advantage">
+                                    <img src="~/image/Identify/专题.png" />
+                                </div>
+                                <div class="txt">专题曝光</div>
+                            </li>
+                            <li class="advantage-it f-fl">
+                                <div class="bg-advantage">
+                                    <img src="~/image/Identify/合作.png" />
+                                </div>
+                                <div class="txt">品牌合作</div>
+                            </li>
+                            <li class="advantage-it f-fl">
+                                <div class="bg-advantage">
+                                    <img src="~/image/Identify/体验.png" />
+                                </div>
+                                <div class="txt">产品优先体验</div>
+                            </li>
+                            <li class="advantage-it f-fl">
+                                <div class="bg-advantage">
+                                    <img src="~/image/Identify/资源.png" />
+                                </div>
+                                <div class="txt">资源位曝光</div>
+                            </li>
+                            <li class="advantage-it f-fl">
+                                <div class="bg-advantage">
+                                    <img src="~/image/Identify/更多.png" />
+                                </div>
+                                <div class="txt">更多权益敬请期待</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <br />
+                    <div class="step-content" style="margin: 0 auto;">
+                        <div class="main">
+                            <div class="daren-advantage box  first " style="margin: 0 auto;margin-left: -10px;margin-left: -25%;">
+                                <div class="title-w">
+                                    <div class="title f-cb">
+                                        <div class="line f-fl"></div>
+                                        <div class="txt f-fl">创作者福利</div>
+                                        <div class="line right f-fl"></div>
+                                    </div>
+                                    <div class="tip">你将获得以下推荐资源位</div>
+                                </div>
+                                <div>
+                                    <div class="line f-cb">
+                                        <div class="welfare-1 f-fl" style="margin-left: 95px;"></div>
+                                        <div class="f-fl" style="width: 359px;margin-left: 60px;">
+                                            <div class="index daren-new-bg">1</div>
+                                            <div class="txt">首页-关注-小编推荐<br />首页-关注-你可能感兴<br />趣的人</div>
+                                        </div>
+                                    </div>
+                                    <div class="line f-cb">
+                                        <div class="f-fl" style="width: 284px;margin-left: 135px;">
+                                            <div class="index daren-new-bg">2</div>
+                                            <div class="txt">发现-搜索-你可能感兴趣的创用户</div>
+                                        </div>
+                                        <div class="welfare-2 f-fl" style="margin-left: 35px;"></div>
+                                    </div>
+                                    <div class="line f-cb">
+                                        <div class="welfare-3 f-fl" style="margin-left: 128px"></div>
+                                        <div class="f-fl" style="width: 284px;margin-left: 58px">
+                                            <div class="index daren-new-bg">3</div>
+                                            <div class="txt">发现-领域-创作品推荐</div>
+                                        </div>
+                                    </div>
+                                    <div class="line f-cb">
+                                        <div class="f-fl" style="width: 239px;margin-left: 135px">
+                                            <div class="index daren-new-bg">4</div>
+                                            <div class="txt">网页端-相似创作者推荐</div>
+                                        </div>
+                                        <div class="welfare-4 f-fl" style="margin-left: 63px"></div>
+                                    </div>
+                                    <div class="line f-cb" style="margin-top: 71px;">
+                                        <div class="welfare-5 f-fl" style="margin-left: 106px;"></div>
+                                        <div class="f-fl" style="width: 239px;margin-left: 59px;">
+                                            <div class="index daren-new-bg">5</div>
+                                            <div class="txt">网页端-浏览-趋势</div>
+                                        </div>
+                                    </div>
+                                    <div class="line f-cb" style="margin-top: 100px;">
+                                        <div class="f-fl" style="width: 239px;margin-left: 135px;">
+                                            <div>
+                                                <div class="index daren-new-bg">6</div>
+                                                <div class="txt">网页端-浏览-创作者</div>
+                                            </div>
+                                        </div>
+                                        <div class="welfare-6 f-fl" style="margin-left: 52px"></div>
+                                    </div>
+                                    <div class="line f-cb" style="margin-top: 115px;">
+                                        <div class="welfare-7 f-fl" style="margin-left: 110px;"></div>
+                                        <div class="f-fl" style="width: 270px;margin-left: 95px;">
+                                            <div>
+                                                <div class="index daren-new-bg">7</div>
+                                                <div class="txt">网页端-首页-猜你喜欢</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="condition-but-w">
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content" id="condition">
+            <div class="step-content">
+                <div class="main">
+                    <div class="daren-advantage box  first " style="margin: 0 auto;margin-left: -10px;margin-left: -25%;">
+                        <div class="title-w">
+                            <div class="title f-cb">
+                                <div class="line f-fl"></div>
+                                <div class="txt f-fl">申请条件</div>
+                                <div class="line right f-fl"></div>
+                            </div>
+                            <div class="tip">申请前你必须满足以下条件</div>
+                        </div>
+                        <div class="applyneeded clear">
+                            <div class="need-content">
+                                <div class="content-word">1、THE CREATION站内累计发布超过50篇原创文章数</div>
+                                @*<div class="progress-bar">
+                                        <div class="progress-text" style="left: 0px;">还差5篇<span class="triangle"></span></div>
+                                        <div class="progress" style="width: 90%">
+                                        </div>
+                                    </div>*@
+                                <div class="progress-satisfied">
+                                    <div class="progress-satisfied-text">已达标<span class="triangle"></span></div>
+                                </div>
+                            </div>
+                            <div class="need-content">
+                                <div class="content-word">2、注册THE CREATION至少90天以上</div>
+                                <div class="progress-bar">
+                                    <div class="progress-text" style="left: 0px;">还差45天<span class="triangle"></span></div>
+                                    <div class="progress" style="width: 50%">
+                                    </div>
+                                </div>
+                                @*<div class="progress-satisfied">
+                                        <div class="progress-satisfied-text">已达标<span class="triangle"></span></div>
+                                    </div>*@
+                            </div>
+                            <div class="need-content">
+                                <div class="content-word">3、THE CREATION站内累计粉丝数1000个</div>
+                                <div class="progress-bar">
+                                    <div class="progress-text" style="left: 0px;">还差1000个<span class="triangle"></span></div>
+                                    <div class="progress" style="width: 0%;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="need-content">
+                                <div class="content-word">4、THE CREATION站内累计被喜欢数5000个</div>
+                                <div class="progress-bar">
+                                    <div class="progress-text" style="left: 0px;">还差4897个<span class="triangle"></span></div>
+                                    <div class="progress" style="width: 2.06%">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="need-content">
+                                <div class="content-word">5、THE CREATION站内累计被推荐数1500个</div>
+                                <div class="progress-bar">
+                                    <div class="progress-text" style="left: 0px;">还差1480个<span class="triangle"></span></div>
+                                    <div class="progress" style="width: 1.3333333333333332%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br />
+                </div>
+            </div>
+        </div>
+        <div class="content" id="information">
+            <div class="step-content">
+                <div class="main">
+                    <div class="daren-advantage box  first " style="margin: 0 auto;margin-left: -10px;margin-left: -25%;">
+                        <div class="title-w">
+                            <div class="title f-cb">
+                                <div class="line f-fl"></div>
+                                <div class="txt f-fl">填写信息</div>
+                                <div class="line right f-fl"></div>
+                            </div>
+                            <div class="tip">申请前你必须填写以下信息</div>
+                        </div>
+                        <div class="fillinfo hide">
+                            <div class="info-title">
+                                <span class="title-span">申请领域</span>
+                                <hr class="title-hr">
+                            </div>
+                            <form action="@Url.Action("ApplyCreator","UserManage")" name="form1" method="post" OnSuccess="UpSuccess" enctype="multipart/form-data">
+                                @Html.AntiForgeryToken()
+                                <div style="width: 100%;height: 200px;">
+                                    <div style="height:20px;"></div>
+                                    <div class="aui-content-up">
+
+                                        <div class="aui-form-group clear">
+                                            <label class="aui-label-control">
+                                                创作品类型 <em>*</em>
+                                            </label>
+                                            <!--<select name="Type">-->
+                                            @*数据库中获取*@
+                                            <!--<option value="视频">视频</option>
+                                                <option value="音乐">音乐</option>
+                                                <option value="文字">文字</option>
+                                                <option value="图片" selected>图片</option>
+                                            </select>-->
+                                            <select name="CreateType" id="ProductionType">
+                                                <option>类型</option>
+                                            </select>
+                                        </div>
+                                        <div class="aui-form-group clear">
+                                            <label class="aui-label-control">
+                                                创作品标签 <em>*</em>
+                                            </label>
+                                            <!--<select name="Tag">-->
+                                            @*数据库中获取*@
+                                            <!--<option value="古墨水彩">古墨水彩</option>
+                                                <option value="动感音乐">动感音乐</option>
+                                                <option value="尔雅文字">尔雅文字</option>
+                                                <option value="唯美图片" selected>唯美图片</option>
+                                            </select>-->
+                                            <select name="Tag" id="Tag">
+                                                <option>标签</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="aui-form-group clear">
+                                            <label class="aui-label-control">
+                                                收费区间 <em>*</em>
+                                            </label>
+                                            <input type="text" name="PriceRange" placeholder="xxx-xxx" />
+
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+
+                                <div class="info-title info-title-top">
+                                    <span class="title-span">申请理由</span>
+                                    <hr class="title-hr">
+                                </div>
+                                <div class="info-reason" style="width: 100%;height: 200px;">
+                                    <div class="aui-form-group clear">
+                                        <label class="aui-label-control">
+                                            申请理由 <em>*</em>
+                                        </label>
+                                        <div class="aui-form-input">
+                                            <textarea class="aui-form-control" name="Describe" id="4" minlength="5" placeholder="请输入您要申请的理由..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="submit" style="margin-left:430px;margin-bottom:10px;">提交</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <br />
+
+                </div>
+            </div>
+        </div>
+
+        <div class="content" id="success">
+            <div class="step-content">
+                <div class="main">
+                    <div class="daren-advantage box  first " style="margin: 0 auto;margin-left: -10px;margin-left: -25%;height: 300px;">
+                        <div class="title-w">
+                            <div class="title f-cb">
+                                <div class="line f-fl"></div>
+                                <div class="txt f-fl">申请成功</div>
+                                <div class="line right f-fl"></div>
+                            </div>
+                        </div>
+                        <h1 style="margin: 100px auto;text-align: center;">申请成功！请耐心等待审核结果！</h1>
+                    </div><br />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both;"></div>
+    <div style="text-align: center;">
+        <button id="previous_step">上一步</button>
+        <button id="next_step">下一步</button>
+    </div>
+</div>
+<br />
+<script src="~/Scripts/申请认证/jquery-1.7.2.min.js"></script>
+<script src="~/Scripts/申请认证/index.js"></script>
+<script src="~/Scripts/发布作品/data.js"></script>
+<script src="~/Scripts/发布作品/myjs.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#condition").addClass('main-hide');
+        $("#information").addClass('main-hide');
+        $("#success").addClass('main-hide');
+        $('#previous_step').hide();
+        /*上一步*/
+        $('#previous_step').bind('click', function () {
+            index--;
+            ControlContent(index);
+        });
+        /*下一步*/
+        $('#next_step').bind('click', function () {
+            index++;
+            ControlContent(index);
+        });
+
+    });
+    var index = 0;
+
+    function ControlContent(index) {
+        var stepContents = ["advantage", "condition", "information", "success"];
+        var key; //数组中元素的索引值
+        for (key in stepContents) {
+            var stepContent = stepContents[key]; //获得元素的值
+            if (key == index) {
+                if (stepContent == 'advantage') {
+                    $('#previous_step').hide();
+                } else {
+                    $('#previous_step').show();
+                }
+                if (stepContent == 'success') {
+                    $('#next_step').hide();
+                } else {
+                    $('#next_step').show();
+                }
+                if (stepContent == 'success') {
+                    $('#previous_step').hide();
+                }
+                if (stepContent == 'information') {
+                    $('#next_step').hide();
+                }
+                $('#' + stepContent).removeClass('main-hide');
+                $('#point' + key).addClass('c-select');
+                $('#line' + key).removeClass('b-select');
+            } else {
+                $('#' + stepContent).addClass('main-hide');
+                if (key > index) {
+                    $('#point' + key).removeClass('c-select');
+                    $('#line' + key).removeClass('b-select');
+                } else if (key < index) {
+                    $('#point' + key).addClass('c-select');
+                    $('#line' + key).addClass('b-select');
+                }
+            }
+        }
+    }
+</script>

@@ -1,0 +1,125 @@
+﻿@using Models
+@model Users
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>基本信息</title>
+</head>
+<body class="container">
+    <div style="width: 100%;height: 1000px;text-align: center;">
+        <form action="@Url.Action("AlterHeadImg", "UserManage")" name="forms" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <div class="avatar">
+                <img src="@Model.HeadUrl" style="border-radius:50%;" id="avatar" width="75" height="75">
+
+                <input type="file" name="photo" id="id_avatar" style="width:75px;display:none; border-radius:50%" accept=".jpg,.png,.gif,.bmp">
+                <div><button type="submit">保存头像</button></div>
+            </div>
+        </form>
+
+        <br /> <br />
+        @using (Ajax.BeginForm("AlterInfo", "UserManage", null, new AjaxOptions() { HttpMethod = "post", OnSuccess = "AlterSuccess" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)             
+              <div>
+                  <span style="width:50px">性别:</span>
+                  @{
+                      if (Model.Sex == "男")
+                      {
+                          <label class="check"><input name="sex" type="radio" class="u-rdi" checked value="男"> 男</label>
+                          <label class="check"><input name="sex" type="radio" class="u-rdi" value="女"> 女</label>
+                      }
+                      else if (Model.Sex == "女")
+                      {
+                          <label class="check"><input name="sex" type="radio" class="u-rdi" value="男"> 男</label>
+                          <label class="check"><input name="sex" type="radio" class="u-rdi" checked value="女"> 女</label>
+                      }
+                  }
+              </div>
+             <span>昵称:</span> <input type="text" name="username" value="@Model.UsersName" /><br />
+            <span>出生日期:</span><input type="date" name="date" class="u-txt txt" value="@string.Format("{0:d}",Model.Birth)" style="width:100px;" />
+            <span>@string.Format("{0:d}", Model.Birth)</span><br />
+            <input type="submit" value="确认修改" />
+        }
+        <br /> <br />
+
+        <br />
+        <form class="mt-4">
+            <span>等级:</span><input type="text" disabled="disabled" value="@Model.UsersLevel" /><br /><br />
+            <span>账号:</span><input type="text" disabled="disabled" value="@Model.UsersId" /><br /><br />
+            <span>信誉度:</span><input type="text" disabled="disabled" value="@Model.Credit" /><br /><br />
+            <span>状态:</span><input type="text" disabled="disabled" value="@Model.State" /><br /><br />
+            <span>下单数:</span><input type="text" disabled="disabled" value="@Model.OrderCount" /><br /><br />
+            <span>退单数:</span><input type="text" disabled="disabled" value="@Model.ChargebackCount" /><br /><br />
+        </form>
+        <br />
+
+    </div>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function UpSuccess(data) {
+            if (data == "success") {
+
+                alert("添加成功");
+
+            }
+            else if (data == "fail") {
+                alert('添加失败！');
+
+            }
+            else {
+                alert('请选择正确的文件格式上传！');
+            }
+        }
+    </script>
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript">
+        function AlterSuccess(data) {
+            if (data == "suc") {
+                alert("保存成功！");
+                window.location.reload();
+            }
+            else {
+                alert("保存失败！");
+            }
+        }
+        function SavePSuccess(data) {
+            if (data == "suc") {
+                alert("更改头像成功！");
+                window.location.reload();
+            }
+            else if (data == "fail") {
+                alert("更改头像失败！");
+            }
+            else {
+                alert(data);
+            }
+        }
+        $("#avatar").click(function () {
+            document.getElementById('id_avatar').click();//id_avatar隐藏的input[file]的id
+        });
+        // 找到头像的input标签绑定change事件
+        $("#id_avatar").change(function () {
+            // 获取上传文件对象
+            var file = $(this)[0].files[0];
+            // 读取文件URL
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            // 阅读文件完成后触发的事件
+            reader.onload = function () {
+                // 读取的URL结果：this.result
+                $("#avatar").attr("src", this.result);//avatar  img标签的ID
+            }
+        });
+    </script>
+</body>
+</html>
+

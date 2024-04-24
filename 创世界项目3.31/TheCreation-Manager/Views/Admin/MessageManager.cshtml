@@ -1,0 +1,223 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/css/public.css" media="all">
+</head>
+<body>
+    <div class="layuimini-container">
+        <div class="layuimini-main">
+
+            <fieldset class="table-search-fieldset">
+                <legend>搜索信息</legend>
+                <div style="margin: 10px 10px 10px 10px">
+                    <form class="layui-form layui-form-pane" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">接收人名称</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="receptname" id="receptname" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">内容关键字</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="keycontent" id="keycontent" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">发布日期</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="date" id="date" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <button type="submit" class="layui-btn layui-btn-primary" lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </fieldset>
+
+            <script type="text/html" id="toolbarDemo">
+                <div class="layui-btn-container">
+                    <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加 </button>
+                    <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 批量删除 </button>
+                </div>
+            </script>
+
+            <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+            <script type="text/html" id="currentTableBar">
+                <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除消息</a>
+            </script>
+
+        </div>
+    </div>
+
+
+    <script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+
+
+    <script>
+        function formatUnixtimestamp(unixtimestamp) {
+            if (unixtimestamp == null) return "发送时间为空";
+            var timestamp = unixtimestamp;
+            var date = new Date(parseInt(timestamp.replace("/Date(", "").replace(")/", ""), 10));
+            Y = date.getFullYear() + '-';
+            M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+            D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
+            h = (date.getHours() < 10 ? '0' + (date.getHours()) : date.getHours()) + ':';
+            m = (date.getMinutes() < 10 ? '0' + (date.getMinutes()) : date.getMinutes()) + ':';
+            s = (date.getSeconds() < 10 ? '0' + (date.getSeconds()) : date.getSeconds());
+            var NewDtime = Y + M + D + h + m + s;
+            return NewDtime;
+        }
+
+
+        layui.use(['form', 'table', 'laydate'], function () {
+            var $ = layui.jquery,
+                form = layui.form,
+                table = layui.table,
+                laydate = layui.laydate;
+
+        table.render({
+            elem: '#currentTableId',
+            url: '@Url.Content("/Admin/GetMessageTable")',
+            toolbar: '#toolbarDemo',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            cols: [[
+                {type: "checkbox", width: 50},
+                { field: 'SysMsgId', width: 100, title: 'ID', sort: true },
+                { field: 'SenderId', width: 200, title: '发送人ID', sort: true },
+                { field: 'ReceptId', width: 110, title: '接收者ID', sort: true },
+                { field: 'SysMsgContent', width: 130, title: '消息内容', sort: true },
+                {
+                    field: 'SendTime', width: 200, title: '发送时间', sort: true,
+                    templet: function (d) {
+                        return formatUnixtimestamp(d.SendTime);
+                    }
+                },
+                {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 15,
+            page: true,
+            skin: 'line'
+        });
+
+            //日期
+            laydate.render({
+                elem: '#date'
+            });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var index = layer.msg('查询中，请稍后...', { icon: 16, time: false, shade: 0 });
+            setTimeout(function () {
+                table.reload('currentTableId', {
+                    url: '/Message/serach_sys_msg'
+                    // ,methods:"post"
+                    , where: {
+                        rname: $('#receptname').val(),
+                        keycontent: $('#keycontent').val(),
+                        time: $('#date').val(),
+                    }, page: {
+                        curr: 1 // 重载后从第一页开始
+                    }
+                });
+                layer.close(index);
+            }, 800)
+
+            return false;
+        });
+
+        /**
+         * toolbar监听事件
+         */
+        table.on('toolbar(currentTableFilter)', function (obj) {
+            if (obj.event === 'add') {  // 监听添Urlrl操作
+                var index = layer.open({
+                    title: '添加用户',
+                    type: 2,
+                    shade: 0.2,
+                    maxmin:true,
+                    shadeClose: true,
+                    area: ['100%', '100%'],
+                    content: '/Message/add_sys_msg',
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+            } else if (obj.event === 'delete') {  // 监听删除操作
+                var checkStatus = table.checkStatus('currentTableId')
+                    , data = checkStatus.data;
+                layer.alert(JSON.stringify(data));
+            }
+        });
+
+        //监听表格复选框选择
+        table.on('checkbox(currentTableFilter)', function (obj) {
+            console.log(obj)
+        });
+
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'edit') {
+
+                var index = layer.open({
+                    title: '编辑用户',
+                    type: 2,
+                    shade: 0.2,
+                    maxmin:true,
+                    shadeClose: true,
+                    area: ['100%', '100%'],
+                    content: '../page/welcome-2.html',
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+                return false;
+            } else if (obj.event === 'delete') {
+                layer.confirm('真的删除行么', function (index) {
+                    console.log(obj.data.SysMsgId);
+                    $.ajax({
+                        url: "@Url.Action("delete_sys_msg", "Message")",
+                        async: false,
+                        data: {
+                            id: obj.data.SysMsgId
+                        },
+                        type: 'post',
+                        success: function (data) {
+                            if (data == "success") {
+                                layer.msg("已成功删除！");
+                                obj.del();                             
+                            }
+                            layer.msg(data);
+                            layer.close(index);
+                        }
+                    });                   
+                });
+            }
+        });
+
+    });
+    </script>
+
+</body>
+</html>

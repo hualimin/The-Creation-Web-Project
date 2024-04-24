@@ -1,0 +1,35 @@
+﻿@using Models
+@model IEnumerable<Production>
+    @{ 
+        Layout = null;
+    }
+<div class="postwrapper box wid700" style="margin-top: 10px;">
+    @foreach (var item in Model)
+    {
+        <div class="block photo">
+            <div class="side" style="text-align:center;">
+                <div class="day"><a>@Convert.ToDateTime(item.PublishDate).Day</a></div>
+                <div class="month"><a>@Convert.ToDateTime(item.PublishDate).Month</a></div>
+            </div>
+
+            <div class="main">
+                <div class="content">
+                    <div class="img">
+                        <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})"><img src="@item.ImgUrl"></a>
+                    </div>
+                    <div class="text">
+                        <p>@item.ProductionName</p>
+                    </div>
+                </div>
+                <div class="tag">
+                    <a href="#">@item.Tag</a>
+                </div>
+                <div class="link">
+                    <a href="#">评论(@item.CommentCount)</a>
+                    <a href="#">热度(@item.HotCount)</a>
+                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">全文链接</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,65 @@
+﻿@using Models
+@model Orders
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+    <legend>订单信息部分</legend>
+</fieldset>
+<div class="layui-form-item">
+    <label class="layui-form-label">订单名称：</label>
+    <div class="layui-tab-content layui-circle">
+        @Model.Name
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">订单状态：</label>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">@Model.OrderState</div>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">订单金额：</label>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">@Model.total_amt</div>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">订单描述：</label>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">@Model.NeedDescrib</div>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">下单日期：</label>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">@Model.BuyDate</div>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">截止日期：</label>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">@Model.FinishDate</div>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">实际交付：</label>
+    @if (Model.ActualFinishDate == null)
+    {
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">还未完工哦！</div>
+        </div>
+    }
+    else
+    {
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">@Model.ActualFinishDate</div>
+        </div>
+    }
+
+
+</div>

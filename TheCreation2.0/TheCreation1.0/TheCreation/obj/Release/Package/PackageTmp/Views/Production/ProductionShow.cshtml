@@ -1,0 +1,97 @@
+﻿
+@model IEnumerable<Models.P_Type>
+@{
+    ViewBag.Title = "ProductionShow";
+}
+<script src="~/Scripts/jquery-3.5.1.slim.js"></script>
+<script src="~/bootstrap-4.5.0-dist/js/bootstrap.bundle.js"></script>
+<style type="text/css">
+    .heading-element {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+        .heading-element::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: #e5e5e5;
+            position: absolute;
+            z-index: -1;
+            left: 0;
+            bottom: 0
+        }
+
+        .heading-element .wrap-filter-group {
+            overflow: hidden;
+            margin-right: 130px
+        }
+
+            .heading-element .wrap-filter-group .filter-tope-group {
+                display: flex;
+                flex-wrap: wrap;
+                margin-left: -30px
+            }
+
+                .heading-element .wrap-filter-group .filter-tope-group .item-tope {
+                    font-weight: 300;
+                    font-size: 16px;
+                    line-height: 1.625;
+                    color: #292929;
+                    word-break: break-word;
+                    margin: 8px 30px 0;
+                    padding: 12px 0;
+                    position: relative;
+                    cursor: pointer;
+                    transition: all .2s
+                }
+
+                    .heading-element .wrap-filter-group .filter-tope-group .item-tope::before {
+                        content: "•";
+                        color: #cecece;
+                        position: absolute;
+                        top: 12px;
+                        left: -32px
+                    }
+</style>
+
+<section class="container">
+    @*上面显示，全部，视频，图片部分*@
+    <div class="heading-element">
+        <div class="wrap-filter-group">
+            <div class="filter-tope-group">
+                <span class="item-tope">
+                    @Ajax.ActionLink("全部", "PTypeShow", "Production", new { typeName = "" }, new AjaxOptions()
+                    {
+                        UpdateTargetId = "Div1",
+                        InsertionMode = InsertionMode.Replace,
+                        HttpMethod = "GET"
+                    }, new { @class = "on" })
+                </span>
+                @foreach (var item in Model)
+                {<span class="item-tope">
+                        @Ajax.ActionLink(item.ProductionType, "PTypeShow", "Production", new { typeName = item.ProductionType.ToString() }, new AjaxOptions()
+                         {
+                              UpdateTargetId = "Div1",
+                              InsertionMode = InsertionMode.Replace,
+                              HttpMethod = "GET",
+                         }, new { @class = "on" })
+                    </span>
+
+                }
+
+            </div>
+        </div>
+    </div>
+
+    @*中间显示内容级页数部分部分*@
+    <div style="min-height:650px;" id="Div1">
+        @{Html.RenderAction("PTypeShow", "Production");}
+    </div>
+
+</section>

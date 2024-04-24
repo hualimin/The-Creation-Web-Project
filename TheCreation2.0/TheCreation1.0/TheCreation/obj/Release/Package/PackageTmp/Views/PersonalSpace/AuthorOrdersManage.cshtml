@@ -1,0 +1,373 @@
+﻿@using Models
+@model TheCreation.Models.CreatorOrdersViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+    <title>Title</title>
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/bootstrap-4.5.0-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <style>
+        .custom .active {
+            border-radius: 0 !important;
+            background: #00b38a !important;
+        }
+
+        .color1 {
+            color: #FF4466;
+        }
+
+        .color2 {
+            color: #ff9797;
+        }
+
+        .value {
+            font-size: 0.8rem;
+        }
+
+        .time {
+            font-size: 14px;
+            font-weight: 400;
+            color: dimgrey;
+        }
+
+        .state {
+            color: grey;
+            font-size: 15px;
+        }
+
+        .btn {
+            background-color: #00b38a;
+        }
+    </style>
+</head>
+<body class="container mb-5">
+    <div class="mt-5"></div>
+    @*<a href="#">
+            <h4>查看历史订单记录</h4>
+        </a>
+        <a href="#">
+            <h4>待验收订单</h4>
+        </a>*@
+    <ul class="nav nav-pills d-flex custom mt-4">
+        <li class="nav-item border flex-fill text-center">
+            <a class="nav-link active " data-toggle="tab" href="#image1">全部订单</a>
+        </li>
+        <li class="nav-item border flex-fill text-center">
+            <a class="nav-link " data-toggle="tab" href="#image2">待接订单</a>
+        </li>
+        <li class="nav-item border flex-fill text-center">
+            <a class="nav-link " data-toggle="tab" href="#image3">已完成订单</a>
+        </li>
+        <li class="nav-item border flex-fill text-center">
+            <a class="nav-link" data-toggle="tab" href="#image4">未完成订单</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="image1">
+            @*全部订单*@
+            @foreach (var item in Model.All_Cretor_Orders)
+            {
+                <div class="row h-100 no-gutters border-bottom justify-content-between mt-2" style="height: 200px; ">
+                    <div class="col-3">
+                        <div class="img p-4" style="display:flex;position: center;">
+                            <img src="~/image/PersonalSpace/图片二.jpg" width="100%" style="border-radius: 5%;" />
+                        </div>
+                        <div class="text-center mt-n1 state">@item.OrderState</div>
+                    </div>
+                    <div class="col-6 py-3">
+                        <p>@item.Name</p>
+                        <div class="time" style="margin-bottom:10px;">交付时间：@item.FinishDate</div>
+                        <span>@item.Creator.CreateType</span>&nbsp;&nbsp;
+                        <span>客户：@item.Users.UsersName</span><br>
+                        <div class="mt-2"></div>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="@string.Format("#ModelA1{0}",item.OrderId).Trim()">查看订单</button>
+                    </div>
+                    <div class="col-2 py-4" style="color: red;">
+                        ￥@item.total_amt
+                    </div>
+                </div>
+
+                //查看订单模态框
+                <div class="modal fade" id="@string.Format("ModelA1{0}",item.OrderId).Trim()">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitle">订单信息</h5>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div>订单名：@item.Name</div><br />
+                                <div>下单人：@item.Users.UsersName</div><br />
+                                <div>接单人：@item.Creator.Users.UsersName</div><br />
+                                <div>金额：@item.total_amt</div><br />
+                                <div>下单日期：@item.BuyDate</div><br />
+                                <div>截止日期：@item.FinishDate</div><br />
+                                <div>订单状态：@item.OrderState</div><br />
+                                <div>具体描述：<br /><textarea rows="5" cols="45">@item.NeedDescrib</textarea></div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="tab-pane fade" id="image2">
+            @*待接收订单*@
+            @foreach (var item in Model.UnqAccept_Cretor_Orders)
+            {
+                <div class="row h-100 no-gutters border-bottom justify-content-between mt-2" style="height: 200px; ">
+                    <div class="col-3">
+                        <div class="img p-4" style="display:flex;position: center;">
+                            <img src="~/image/PersonalSpace/图片五.jpg" width="100%" style="border-radius: 5%;" />
+                        </div>
+                        <div class="text-center mt-n1 state">@item.OrderState</div>
+                    </div>
+                    <div class="col-6 py-3">
+                        <p>@item.Name</p>
+                        <div class="time" style="margin-bottom:10px;">交付时间：@item.FinishDate</div>
+                        <span>@item.Creator.CreateType</span>&nbsp;&nbsp;
+                        <span>客户：@item.Users.UsersName</span><br>
+                        <div class="mt-2"></div>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="@string.Format("#ModelB1{0}",item.OrderId).Trim()">查看订单</button>
+                        <a href="@Url.Action("Accept","OrderManage",new { id=item.OrderId})" type="button" class="btn btncolor btn-info">接受订单</a>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="@string.Format("#ModelB2{0}",item.OrderId).Trim()">发送消息</button>
+                    </div>
+                    <div class="col-2 py-4" style="color: red;">
+                        ￥@item.total_amt
+                    </div>
+                </div>
+
+                //查看订单模态框
+                <div class="modal fade" id="@string.Format("ModelB1{0}",item.OrderId).Trim()">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitle">订单信息</h5>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div>订单名：@item.Name</div><br />
+                                <div>下单人：@item.Users.UsersName</div><br />
+                                <div>接单人：@item.Creator.Users.UsersName</div><br />
+                                <div>金额：@item.total_amt</div><br />
+                                <div>下单日期：@item.BuyDate</div><br />
+                                <div>截止日期：@item.FinishDate</div><br />
+                                <div>订单状态：@item.OrderState</div><br />
+                                <div>具体描述：<br /><textarea rows="5" cols="45">@item.NeedDescrib</textarea></div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                //发送消息模态框  即私信模态框
+                <div class="modal fade" id="@string.Format("ModelB2{0}",item.OrderId).Trim()">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitle">私信</h5>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="@Url.Action("SendPersonalMessage","MessageManager",new { rid=item.UsersId})" name="form1" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <textarea rows="5" cols="45" name="content" placeholder="请在此输入咨询内容"></textarea>
+                                    <br />
+                                    <button type="button" data-dismiss="modal">关闭</button>
+                                    <button type="submit" formmethod="post">提交</button> 
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="tab-pane fade" id="image3">
+            @*已完成订单*@
+            @foreach (var item in Model.Finished_Cretor_Orders)
+            {
+                <div class="row h-100 no-gutters border-bottom justify-content-between mt-2" style="height: 200px; ">
+                    <div class="col-3">
+                        <div class="img p-4" style="display:flex;position: center;">
+                            <img src="~/image/PersonalSpace/图片三.jpg" width="100%" style="border-radius: 5%;">
+                        </div>
+                        <div class="text-center mt-n1 state">@item.OrderState</div>
+                    </div>
+                    <div class="col-6 py-3">
+                        <p>@item.Name</p>
+                        <div class="time" style="margin-bottom:10px;">交付时间：@item.FinishDate</div>
+                        <span>@item.Creator.CreateType</span>&nbsp;&nbsp;
+                        <span>客户：@item.Users.UsersName</span><br>
+                        <div class="mt-2"></div>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="@string.Format("#ModelC1{0}",item.OrderId).Trim()">查看订单</button>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="@string.Format("#ModelC2{0}",item.OrderId).Trim()">发送消息</button>
+                    </div>
+                    <div class="col-2 py-4" style="color: red;">
+                        ￥@item.total_amt
+                    </div>
+                </div>
+
+                //查看订单模态框
+                <div class="modal fade" id="@string.Format("ModelC1{0}",item.OrderId).Trim()">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitle">订单信息</h5>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div>订单名：@item.Name</div><br />
+                                <div>下单人：@item.Users.UsersName</div><br />
+                                <div>接单人：@item.Creator.Users.UsersName</div><br />
+                                <div>金额：@item.total_amt</div><br />
+                                <div>下单日期：@item.BuyDate</div><br />
+                                <div>截止日期：@item.FinishDate</div><br />
+                                <div>订单状态：@item.OrderState</div><br />
+                                <div>具体描述：<br /><textarea rows="5" cols="45">@item.NeedDescrib</textarea></div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                //发送消息模态框  即私信模态框
+                <div class="modal fade" id="@string.Format("ModelC2{0}",item.OrderId).Trim()">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitle">私信</h5>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="@Url.Action("SendPersonalMessage","MessageManager",new { rid=item.UsersId})" name="form1" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <textarea rows="5" cols="45" name="content" placeholder="请在此输入咨询内容"></textarea>
+                                    <br />
+                                    <button type="button" data-dismiss="modal">关闭</button>
+                                    <button type="submit" formmethod="post">提交</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="tab-pane fade" id="image4">
+            @*未完成订单*@
+            @foreach (var item in Model.UnFinished_Cretor_Orders)
+            {
+                <div class="row h-100 no-gutters border-bottom justify-content-between mt-2" style="height: 200px; ">
+                    <div class="col-3">
+                        <div class="img p-4" style="display:flex;position: center;">
+                            <img src="~/image/PersonalSpace/图片四.jpg" width="100%" style="border-radius: 5%;" />
+                        </div>
+                        <div class="text-center mt-n1 state">@item.OrderState</div>
+                    </div>
+                    <div class="col-6 py-3">
+                        <p>@item.Name</p>
+                        <div class="time" style="margin-bottom:10px;">交付时间：@item.FinishDate</div>
+                        <span>@item.Creator.CreateType</span>&nbsp;&nbsp;
+                        <span>客户：@item.Users.UsersName</span><br>
+                        <div class="mt-2"></div>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="@string.Format("#ModelD1{0}",item.OrderId).Trim()">查看订单</button>
+                        <a href="@Url.Action("SubmitOrder","OrderManage",new { id=item.OrderId})" type="button" class="btn btn-info">交付订单</a>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="@string.Format("#ModelD2{0}",item.OrderId).Trim()">发送消息</button>
+                    </div>
+                    <div class="col-2 py-4" style="color: red;">
+                        ￥@item.total_amt
+                    </div>
+                </div>
+                //查看订单模态框
+                <div class="modal fade" id="@string.Format("ModelD1{0}",item.OrderId).Trim()">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitle">订单信息</h5>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div>订单名：@item.Name</div><br />
+                                <div>下单人：@item.Users.UsersName</div><br />
+                                <div>接单人：@item.Creator.Users.UsersName</div><br />
+                                <div>金额：@item.total_amt</div><br />
+                                <div>下单日期：@item.BuyDate</div><br />
+                                <div>截止日期：@item.FinishDate</div><br />
+                                <div>订单状态：@item.OrderState</div><br />
+                                <div>具体描述：<br /><textarea rows="5" cols="45">@item.NeedDescrib</textarea></div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                //发送消息模态框  即私信模态框
+                <div class="modal fade" id="@string.Format("ModelD2{0}",item.OrderId).Trim()">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitle">私信</h5>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="@Url.Action("SendPersonalMessage","MessageManager",new { rid=item.UsersId})" name="form1" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <textarea rows="5" cols="45" name="content" placeholder="请在此输入咨询内容"></textarea>
+                                    <br />
+                                    <button type="button" data-dismiss="modal">关闭</button>
+                                    <button type="submit" formmethod="post">提交</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</body>
+</html>

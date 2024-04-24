@@ -1,0 +1,156 @@
+﻿@using Models
+@model IEnumerable<Models.Creator_Evaluate>
+@{
+    ViewBag.Title = "ShowCreatorEvaluates";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>评价</title>
+    <link href="~/css/评价/style.css" rel="stylesheet" />
+    <link href="~/Content/评价展示/ShowEvaluate.css" rel="stylesheet" />
+    <style type="text/css">
+        .topInfo {
+            width: 100%;
+            height: 300px;
+            background-position: top;
+            background-attachment: scroll;
+            background-image: url('../../image/4.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        .numofmessage {
+            width: 858px;
+            height: 40px;
+            color: #EDEFF0;
+            margin: 0 auto;
+            line-height: 35px;
+            border-bottom: 2px solid #1f70bb;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="topInfo">
+        <div class="zoneName">
+            <h2>@ViewBag.CreatorName</h2>
+            <p>简介：@ViewBag.Hobby</p>
+        </div>
+        <div class="top_bottom">
+            <div class="photo">
+                <img src="@ViewBag.HeadUrl ">
+            </div>
+            <div class="container">
+                <ul class="section">
+                    <li><a href="@Url.Action("PersonalPage","PersonalSpace",new { id=@ViewBag.id})">TA的个人主页</a></li>
+                    <li><a href="@Url.Action("PersonalPage","PersonalSpace",new { id=@ViewBag.id})">约稿</a></li>
+                    <li><a href="@Url.Action("PersonalPage","PersonalSpace",new { id=@ViewBag.id})">咨询</a></li>
+                    <li><a href="@Url.Action("PersonalPage","PersonalSpace",new { id=@ViewBag.id})">关注</a></li>
+                    <li><a href="@Url.Action("Home","Home")">返回首页</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 下面是评价区 -->
+    <div class="mainframe">
+        @*<div class="title">评价</div>
+        <form action="@Url.Action("SubmitEvaluate","OrderManage",new { id=@ViewBag.id})" name="form2" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="orderid" value="@ViewBag.OrderId" />
+            <textarea style="resize:none;width:830px;height:150px;margin-left:30px;margin-top:5px;background-color: #e2e2e2;border: 2px solid #1f70bb;font-size:18px" name="content" rows="5" cols="45"></textarea>
+            <button style="margin-left:30px;margin-top:5px;" type="submit" name="submit" class="subbtn" formmethod="post">发表</button>
+        </form>*@
+        
+        <div class="numofmessage">@ViewBag.CreatorName 的评价(@ViewBag.Count)</div>
+        <div class="msgFrame">
+            @if (@ViewBag.Count == 0)
+            {
+                <h2>他还没有评价哦</h2>
+            }
+            <div class="evaluate-list" style="background-color:#24639D">
+                @foreach (var item in Model)
+                {
+                    <div class="evaluate-px" style="border-bottom:1px solid #1f70bb">
+                        <div class="datum-rw" style="background-color:#24639D">
+                            <div class="datum-name">
+                                <i><a href="javascript:;"><img src="@item.HeadUrl" alt=""></a></i>
+                                <p><a href="javascript:;" style="color:#70CCFF">@item.UsersName</a></p>
+                            </div>
+                            <div class="discuss">
+                                <p style="margin-left:55px;color:white;">@item.Content</p>
+                            </div>
+                            <div class="datum-time">
+                                <p style="margin-left:55px;color:#8AB8E3"><span>@item.EvaluateDate</span><span> 类型：@item.CreateType</span></p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    @*<script src="~/Scripts/评价/jquery.js"></script>
+        <script type="text/javascript">
+            //接下来使用数据库储存留言数据
+            var count = 0;
+            $(".subbtn").click(function() {
+                var text = $(".content").text();
+                var time = getCurrentTime();
+                if (text == "") {
+                    alert("您还没有输入任何内容！");
+                } else {
+                    loadmessage(text, '@Session["usersname"]', time);
+                    count++;
+                    console.log('success!');
+                    $(".content").text("");
+                    $(".numofmessage").text("评价(" + count + ")");
+                }
+            })
+
+            function loadmessage(message, id, time) {
+                //创建content_index
+                //包含img.name + mainInfo
+                //.userId .conInfo .time
+                var contentDiv = '<div class="content_1">';
+                contentDiv +=
+                    '<img class="name" src="http://qlogo3.store.qq.com/qzone/1262283870/1262283870/100?1481718124" alt="photo">';
+                contentDiv += '<div class="mainInfo">'
+                contentDiv += ' <div class="userId"><a href="#">';
+                contentDiv += id;
+                contentDiv += '</a></div> <div class="conInfo">';
+                contentDiv += message;
+                contentDiv += '</div> <div class="time">';
+                contentDiv += time;
+                contentDiv += '</div> </div> </div>'
+                $(".msgFrame").prepend(contentDiv);
+            }
+
+            function getCurrentTime() {
+                var today = new Date();
+                var y = today.getFullYear();
+                var mh = today.getMonth();
+                mh++;
+                var d = today.getDate();
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+                m = checkTime(m)
+                s = checkTime(s)
+                var time = y + "-" + mh + "-" + d + "  " + h + ":" + m + ":" + s;
+                return time;
+            }
+
+            function checkTime(i) {
+                if (i < 10)
+                    i = "0" + i
+                return i
+            }
+        </script>*@
+</body>
+</html>

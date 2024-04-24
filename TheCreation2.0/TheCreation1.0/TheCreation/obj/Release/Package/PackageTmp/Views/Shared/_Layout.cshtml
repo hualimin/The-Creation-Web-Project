@@ -1,0 +1,165 @@
+﻿@using TheCreation.Controllers;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>创世界</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/responsive.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    @RenderSection("css", required: false)
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
+    <style>
+        .box1 {
+            margin-left: 50px;
+        }
+
+            .box1 input {
+                width: 250px;
+                height: 35px;
+                border-radius: 15px;
+                margin: 10px 0;
+                background-image: url('../../image/MuBan_Img/小图标2.png');
+                background-repeat: no-repeat;
+                background-color: white;
+                background-position: 3px;
+                background-size: 25px;
+                padding-left: 30px;
+                margin-top: 20px;
+                border: 1px solid black;
+                outline: none;
+                font-size: 14px;
+            }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <div class="main-nav clearfix is-ts-sticky">
+            <div class="container">
+                <div class="row justify-content-between ">
+                    <nav class="navbar navbar-expand-lg">
+                        <div class="site-nav-inner float-left">
+                            <div class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="#" style="font-size: 20px;font-family: 华文琥珀;color: #E2E3E5;">
+                                            <img src="~/image/MuBan_Img/小图标1.png"
+                                                 style="width: 30px;height: 30px;" />&nbsp;The
+                                            Creation
+                                        </a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a href="@Url.Action("Home","Home")" style="font-size: 22px;color: darkgrey;">首页</a>
+                                    </li>
+
+                                    <li class="nav-item dropdown mega-dropdown">
+                                        <a href="@Url.Action("Market","OrderManage")" style="font-size: 22px;color: darkgrey;">创集市</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("ProductionCreate","Production")" style="font-size: 22px;color: darkgrey;">创作品</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("ProductionShow","Production")" style="font-size: 22px;color: darkgrey;">创社区</a>
+                                    </li>
+
+                                    @{
+                                        if (Session["userID"] != null)
+                                        {
+                                            <li class="dropdown" style="margin-top: -5px;float: left;">
+                                                <a href="#" class="dropdown-toggle menu-dropdown" data-toggle="dropdown">
+                                                    <img src="@Session["headurl"]" style="width: 40px;height: 40px;border-radius: 50%;" />&nbsp;<span class="badge badge-light ml-2 mt-n4">2未读</span>
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li>
+                                                        <a href="@Url.Action("Logout","Home")" style="font-size: 15px;">&nbsp;退出登录</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("PersonalCenter","UserManage")" style="font-size: 15px;">&nbsp;个人空间</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("Help","Home")" style="font-size: 15px;">&nbsp;帮助服务</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("Index","Vote")" style="font-size: 15px;">&nbsp;投票入口</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("Index","Blog")" style="font-size: 15px;">&nbsp;进入博客</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("TheFascinatingCreation","Home")" style="font-size: 15px;">&nbsp;关于创世界</a>
+                                                    </li>
+                                                </ul>
+
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <a href="@Url.Action("Login","Home")" style="font-size: 23px;color: darkgrey;">&nbsp;加入创世界</a>
+                                            </li>
+                                        }
+                                    }
+
+
+
+                                    <!--搜索框-->
+                                    <div class="box1">
+                                        <form class="form-inline" action="@Url.Action("Search","Home")" method="post">
+                                            <input class="form-control mr-sm-2" list="details" type="search" placeholder="搜索用户、标签" name="input" />
+
+                                            <!--下拉菜单-->
+                                            <datalist id="details">
+                                                <option value="韩系">
+                                                <option value="胶片">
+                                                <option value="插画">
+                                                <option value="风景">
+                                                <option value="水彩">
+                                                <option value="美食">
+                                                <option value="纪录片">
+                                                <option value="视频剪辑">
+                                                <option value="模型">
+                                                <option value="橡皮章">
+                                            </datalist>
+                                        </form>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        @RenderBody()
+
+
+        <!-- Footer内容 -->
+        <div class="ts-footer">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-12 text-center">
+                        <div class="copyright-content text-light">
+                            <p>&copy; [2020-2035], 创世界 让你的世界更加有趣</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+        @RenderSection("scripts", required: false)
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+﻿
+@{
+    ViewBag.Title = "FindPwd";
+    Layout = null;
+}
+<script src="~/Scripts/jquery-3.5.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<link href="~/css/登陆注册页/new.css" rel="stylesheet" />
+
+<!-- 找回密码模态框（Modal） -->
+<div class="aui-register-popup">
+    <div class="aui-register-box">
+        <div class="aui-register-logo" >
+            找回密码
+        </div>
+        <div class="aui-register-form" id="verifyCheck">
+            @using (Ajax.BeginForm("FindPassword", "Home", null, new AjaxOptions() { HttpMethod = "post", OnSuccess = "FindPwdSuccess" }, new { @id = "f-form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="f-hide-center">
+                    <div id="f-formbody">
+                        <div class="aui-register-form-item">
+                            <div class="f-Phone">
+                                <input id="f-phone" name="phone" class="f-Input" placeholder="请输入手机号" type="text">
+                                <span id="f-phonecheck" style="color:red"></span>
+                            </div>
+                        </div>
+                        <div class="aui-register-form-item">
+                            <div class="f-Code">
+                                <input id="f-code" name="code" class="f-CodeInput" placeholder="输入验证码" type="text">
+                                <span id="f-BCode" type="button" class="aui-get-code btn btn-gray f-r3 f-ml5 f-size13" onclick="fsends.send();"><span>发送验证码</span></span>
+                            </div>
+                        </div>
+                        <div class="aui-register-form-item">
+                            <div class="f-Pwd">
+                                <i class="fa fa-eye-slash hide"></i>
+                                <input id="f-password" name="password" class="f-Input" placeholder="重置账户密码" type="password">
+                                <span id="f-passwordcheck" style="color:red"></span>
+                            </div>
+                        </div>
+                        <div class="aui-register-form-item">
+                            <div class="f-Pwd">
+                                <i class="fa fa-eye-slash hide"></i>
+                                <input id="f-confirmpassword" name="confirmpassword" class="f-Input" placeholder="确认账户密码" type="password">
+                                <span id="f-confirmpasswordcheck" style="color:red"></span>
+                            </div>
+                        </div>
+                        <div class="aui-register-form-item">
+                            <div class="formfoot">
+                                <button id="f-BSignIn" class="aui-btn-reg" type="submit">重置密码</button>
+                            </div>
+                            <br />
+                            <div class="formfoot">
+                                <a href="@Url.Action("Login","Home")">返回登录注册页面</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+        //找回密码输入验证
+        //号码输入框失去焦点时检验输入内容是否有效
+        $("#f-phone").blur(function () {
+            // 利用正则表达式对输入数据匹配
+            var phone = document.getElementById("f-phone").value;
+            //匹配到一个非数字字符，则返回false
+            var expr = /\D/i;
+            if (expr.test(phone)) {
+                document.getElementById("f-phonecheck").innerHTML = "手机号格式错误";
+                return false;
+            }
+            else if (phone == "") {
+                document.getElementById("f-phonecheck").innerHTML = "手机号码不能为空";
+                return false;
+            }
+            else if (phone.length != 11) {
+                document.getElementById("f-phonecheck").innerHTML = "手机号码长度为11位";
+                return false;
+            }
+            else {
+                document.getElementById("f-phonecheck").innerHTML = null;
+                return true;
+            }
+        })
+        $("#f-phone").focus(function () {
+            document.getElementById("f-phonecheck").innerHTML = null;
+        });
+        $("#f-password").blur(function () {
+            var pwd = document.getElementById("f-password").value;
+            if (pwd == "") {
+                document.getElementById("f-passwordcheck").innerHTML = "请设置密码！";
+                return false;
+            }
+            else {
+                document.getElementById("f-passwordcheck").innerHTML = null;
+                return true;
+            }
+        });
+        $("#f-BSignIn").click(function () {
+            var phone = document.getElementById("f-phone").value;
+            var code = document.getElementById("f-code").value;
+            var password1 = document.getElementById("f-password").value;
+            var password2 = document.getElementById("f-confirmpassword").value;
+            if (phone == null || phone == "") {
+                document.getElementById("f-phonecheck").innerHTML = "请输入手机号码";
+                return false;
+            }
+            else if (code == null || code == "") {
+                alert("请输入验证码！");
+                return false;
+            }
+            else if (password1 != password2) {
+                document.getElementById("f-confirmpasswordcheck").innerHTML = "两次密码输入不一致!";
+                return false;
+            }
+            else if (password1 == "" || password1 == null) {
+                document.getElementById("f-passwordcheck").innerHTML = "请设置密码！";
+                return false;
+            }
+            else {
+                return true;
+            }
+        });
+        $("#f-confirmpassword").focus(function () {
+            document.getElementById("f-confirmpasswordcheck").innerHTML = null;
+        });
+        //找回密码发送验证码js
+        var fsends = {
+            checked: 1,
+            send: function () {
+                var numbers = /^1\d{10}$/;
+                var val = $('#f-phone').val().replace(/\s+/g, ""); //获取输入手机号码
+                if (numbers.test(val)) {
+                    $.ajax({
+                        url: "/Home/FindPwdSentCode",
+                        type: "post",
+                        data: {
+                            phone: val,
+                        },
+                        success: function (value) {
+                            if (value == "unexist") {
+                                alert("手机号不存在！");
+                            }
+                            else {
+                                alert("验证码已发送！");
+                                alert("接收到验证码:" + value);
+                                $("#f-BCode").attr("disabled", true);
+                                var time = 60;
+                                $('#f-BCode span').remove();
+                                function timeCountDown() {
+                                    if (time == 0) {
+                                        clearInterval(timer);
+                                        $('#f-BCode').html("<span>发送验证码</span>");
+                                        $("#f-BCode").attr("disabled", false);
+                                        sends.checked = 1;
+                                        return true;
+                                    }
+                                    $('#f-BCode').html("重新发送" + time + "S");
+                                    time--;
+                                    return false;
+                                    sends.checked = 0;
+                                }
+                                timeCountDown();
+                                var timer = setInterval(timeCountDown, 1000);
+                            }
+                        },
+                        error: function () {
+                            alert("验证码获取失败！");
+                        }
+                    });
+                }
+                else {
+                    document.getElementById("f-phonecheck").innerHTML = "手机号格式错误";
+                }
+            }
+        }
+        //找回密码状态提示
+        function FindPwdSuccess(data) {
+            if (data == "codeerror") {
+                alert("验证码错误");
+            }
+            else if (data == "success") {
+                alert("重置密码成功！请重新登录！");
+                window.location.href = "@Url.Action("Login","Home")";
+                document.getElementById("f-form").reset();
+                clearInterval(timeCountDown);
+            }
+            else if (data == "unexist") {
+                alert("用户不存在！");
+            }
+            else {
+                alert("重置密码失败！");
+            }
+        }
+</script>

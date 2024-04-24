@@ -1,0 +1,249 @@
+﻿@model TheCreation.Models.MessageViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+    <title>消息管理</title>
+    <link href="~/Content/个人空间/base.css" rel="stylesheet" />
+    <link href="~/Content/个人空间/tab.css" rel="stylesheet" />
+    <link href="~/bootstrap-4.5.0-dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.5.1.slim.js"></script>
+    <script src="~/bootstrap-4.5.0-dist/js/bootstrap.bundle.js"></script>
+    <script src="~/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .aui-page-text h2 a:hover {
+            color: #009E94;
+            text-decoration: none;
+        }
+
+        .talk_show {
+            width: 470px;
+            height: 200px;
+            border: 1px solid #666;
+            background: #fff;
+            margin: 10px auto 0;
+            overflow: auto;
+        }
+
+        .talk_input {
+            width: 500px;
+            margin-top: 10px;
+            margin-left: -10px;
+        }
+
+        .talk_word {
+            width: 410px;
+            height: 26px;
+            padding: 0px;
+            float: left;
+            margin-left: 10px;
+            outline: none;
+            text-indent: 10px;
+        }
+
+        .talk_sub {
+            width: 56px;
+            height: 26px;
+            float: left;
+            margin-left: 10px;
+            text-align: center;
+            background-color: cadetblue;
+            color: white;
+        }
+        /*内容盒子形状*/
+        .divxingzhuang {
+            position: relative;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            background-color: #e0e0e0;
+            border: 1px solid #e7e7e7;
+            height: auto !important;
+            min-height: 0px;
+            width: 350px;
+        }
+
+            .divxingzhuang:before {
+                content: "";
+                position: absolute;
+                right: 100%;
+                top: 3px;
+                width: 0;
+                height: 0;
+                border-top: 13px solid transparent;
+                border-right: 26px solid #e0e0e0;
+                border-bottom: 13px solid transparent;
+            }
+    </style>
+</head>
+<body class="container" style="width:100%;height:2000px;">
+    <div class="aui-nav-content-box">
+        <div class="aui-nav-list-box">
+            <ul>
+                <li class="aui-current">
+                    <a>私人消息</a>
+                </li>
+                <li>
+                    <a>系统消息</a>
+                </li>
+                <li>
+                    <a>公告消息</a>
+                </li>
+            </ul>
+        </div>
+        <!--私人消息-->
+        <div class="aui-nav-list-tab">
+            <div class="aui-nav-list-item" style="display:block">
+                @foreach (var item in Model.Recpt_Msg)
+                {
+                    <div class="aui-page-list">
+                        <div class="aui-page-img">
+                            <a href="javascript:;">
+                                <img src="@item.Users1.HeadUrl" />
+                            </a>
+                        </div>
+                        <div class="aui-page-text">
+                            <h2>
+                                <a href="javascript:;">@item.MsgContent</a>
+                            </h2>
+                            <p>
+                                <em>@item.MsgDate</em>
+                                <em>来源：@item.Users1.UsersName</em>
+
+                                <a data-toggle="modal" href="@string.Format("#ModelA1{0}",item.PMId).Trim()">
+                                    回复
+                                </a>
+
+                                <a href="@Url.Action("RemoveMessage","MessageManager",new { id=item.PMId}) ">删除</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!--回复弹窗开始-->
+                    <div class="modal fade" id="@string.Format("ModelA1{0}", item.PMId).Trim()" style="overflow:auto;max-height:400px;">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalTitle">与 @item.Users1.UsersName 的聊天</h5>
+                                    <button type="button" class="close" data-dismiss="modal" style="outline:none;">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="@Url.Action("ReplyMessage","MessageManager",new { sid=item.SebderID,rid=item.ReceptID})" method="post" name="form1">
+                                        @Html.AntiForgeryToken()
+                                        <div class="talk_show clearfix" id="words">
+                                            <div style="text-align:center">@item.MsgDate</div>
+                                            <div>
+                                                <img src="@item.Users1.HeadUrl" style="height:50px;height:50px;border-radius:50%;float:left;padding:5px;" />
+                                                <div class="divxingzhuang" style="margin-top:5px;padding:5px;float:right;margin-right:40px;">
+                                                    @item.MsgContent
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="talk_input">
+                                            <input type="text" name="content" class="talk_word" id="talkwords">
+                                            <button type="submit" value="发送" class="talk_sub" id="talksub" style="outline:none">发送</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <!--系统消息-->
+            <div class="aui-nav-list-item">
+                @foreach (var item in Model.SysReply_Msg)
+                {
+                    <div class="aui-page-list">
+                        <div class="aui-page-img">
+                            <a href="javascript:;">
+                                <img src="~/image/LogResigter/创世界.jpg" />
+                            </a>
+                        </div>
+                        <div class="aui-page-text">
+                            <h2>
+                                <a href="javascript:;">@item.SysMsgContent</a>
+                            </h2>
+                            <p>
+                                <em>@item.SendTime</em>
+                                <em>来源：创世界</em>
+                                <a href="@Url.Action("DeleteSysMsg","MessageManager",new {id =item.SysMsgId })" style="color:#999;text-decoration:none;float:right;"><span>删除</span></a>
+                            </p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <!--公告消息-->
+            <div class="aui-nav-list-item">
+                @foreach (var item in Model.SysPublic_Msg)
+                {
+                    <div class="aui-page-list">
+                        <div class="aui-page-img">
+                            <a href="javascript:;">
+                                <img src="~/image/LogResigter/创世界.jpg" />
+                            </a>
+                        </div>
+                        <div class="aui-page-text">
+                            <h2>
+                                <a href="javascript:;">@item.PublicMsgContent</a>
+                            </h2>
+                            <p>
+                                <em>@item.SendTime</em>
+                                <em>来源：创世界</em>
+                            </p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--弹窗结束-->
+
+    <script src="~/Scripts/个人空间/jquery.min.js"></script>
+    <script type="text/javascript">
+        //tab切换
+        $(function () {
+            $('.aui-nav-list-box ul li').click(function () {
+                $(this).addClass('aui-current').siblings().removeClass('aui-current');
+                $('.aui-nav-list-tab>div:eq(' + $(this).index() + ')').show().siblings().hide();
+            })
+        });
+        window.onload = function () {
+            var Words = document.getElementById("words");
+            var TalkWords = document.getElementById("talkwords");
+            var TalkSub = document.getElementById("talksub");
+
+
+            TalkSub.onclick = function () {
+                //定义空字符串
+                var str = "";
+                if (TalkWords.value == "") {
+                    // 消息为空时弹窗
+                    alert("消息不能为空");
+                    return;
+                }
+                if (TalkWords.value != "") {
+                    //如果Who.value为不为空那么是用户回复（没写好）
+                    str = TalkWords.value + '</span></div>';
+                }
+                Words.innerHTML = Words.innerHTML + str;
+            }
+
+        }
+    </script>
+</body>
+</html>

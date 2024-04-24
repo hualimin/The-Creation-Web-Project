@@ -1,0 +1,1125 @@
+﻿@using Models;
+@model TheCreation.Models.IndexViewModels
+
+@{
+
+    ViewBag.Title = "Home Page";
+    // Layout = "~/Views/Shared/MuBan.cshtml";
+}
+
+<style>
+    .block-title {
+        letter-spacing: .64px;
+        color: black;
+        line-height: 25px;
+        font-weight: 800;
+        font-size: 16px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+        .block-title .title-angle-shap::after, .block-title .title-angle-shap::before {
+            position: absolute;
+            top: 0;
+            content: '';
+            background: black;
+            left: 0;
+        }
+    /*完美作品鼠标略过*/
+    .post-title a:hover {
+        color: #808080;
+    }
+
+    .post-meta .post-author a {
+        color: black;
+        font-weight: 700;
+    }
+
+        .post-meta .post-author a:hover {
+            color: #ddd3d3;
+        }
+
+    .featured-tab .nav-tabs .nav-link.active .tab-head > span.tab-text-title {
+        color: #808080;
+        background: transparent;
+        border: none;
+    }
+
+    .tab-text-title {
+        color: black;
+    }
+
+    .post-tab .nav-tabs .nav-item .nav-link.active::before {
+        background: black;
+        border-radius: 0;
+        height: 12px;
+        top: -6px;
+    }
+
+    .post-tab .nav-tabs .nav-item .nav-link.active::after {
+        background: black;
+        border-radius: 0;
+        height: 3px;
+        width: 12px;
+    }
+
+    .post-meta .post-author a {
+        color: #a3a3a3;
+        font-weight: 700;
+    }
+</style>
+<section class=" no-padding">
+    <div class="container">
+        <div class="row ts-gutter-20 clearfix">
+            <!--导航下左一盒子图-->
+            <div class="pad-r" style="width: 100%;height: 600px;margin-top:20px">
+                <video style="width: 100%;height: 100%;object-fit: fill;border-radius: 10px;" controls="controls" autoplay="autoplay" loop="loop" muted="muted">
+                    @*muted="muted"*@
+                    <source src="~/image/%e8%a7%86%e9%a2%91.mp4" type="video/mp4" style="width: 100%;" />
+                </video>
+            </div>
+        </div>
+    </div>
+</section>
+<br />
+<section class="block-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <h2 class="block-title">
+                    <span class="title-angle-shap">新人作品</span>
+                </h2>
+                @foreach (Production item in Model.Newest_Creator_Works.Take(1))
+                {
+                    <div class="post-block-style">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="post-thumb">
+                                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})"><img src="@item.ImgUrl" style="width:350px;height:197px;"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="post-content">
+                                    <h2 class="post-title title-md">
+                                        <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                    </h2>
+                                    <div class="post-meta mb-7">
+                                        <span class="post-author"><a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.Users.UsersId})">@item.Users.UsersName</a></span>
+                                        <span class="post-date">@item.PublishDate</span>
+                                    </div>
+                                    <p>@item.Describe</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="list-post-block">
+                            <ul class="list-post">
+                                @foreach (Production item in Model.Newest_Creator_Works.Skip(1).Take(2))
+                                {
+                                    <li>
+                                        <div class="post-block-style media">
+                                            <div class="post-thumb">
+                                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                                    <img class="img-fluid" src="@item.ImgUrl" style="width:130px;height:100px;">
+                                                </a>
+                                            </div>
+
+                                            <div class="post-content media-body">
+                                                <div class="grid-category">
+                                                    <a class="post-cat tech-color" href="#">@item.ProductionType</a>
+                                                </div>
+                                                <h2 class="post-title">
+                                                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                                </h2>
+                                                <div class="post-meta mb-7">
+                                                    <span class="post-date">@item.PublishDate</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="list-post-block">
+                            <ul class="list-post">
+                                @foreach (Production item in Model.Newest_Creator_Works.Skip(3).Take(2))
+                                {
+                                    <li>
+                                        <div class="post-block-style media">
+                                            <div class="post-thumb">
+                                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                                    <img class="img-fluid" src="@item.ImgUrl" alt="">
+                                                </a>
+                                            </div>
+
+                                            <div class="post-content media-body">
+                                                <div class="grid-category">
+                                                    <a class="post-cat tech-color" href="#">@item.ProductionType</a>
+                                                </div>
+                                                <h2 class="post-title">
+                                                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                                </h2>
+                                                <div class="post-meta mb-7">
+                                                    <span class="post-date">@item.PublishDate</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 热门标签 -->
+            <div class="col-lg-4 col-md-12">
+                <div class="ts-category">
+                    <ul class="ts-category-list">
+                        @foreach (var item in Model.Tag_HotCount)
+                        {
+                            <li>
+                                <a href="#" style="background-image: url(@item.LabelImg)">
+                                    <span>@item.LabelName</span>
+                                    <span class="bar"></span>
+                                    <span class="category-count">@item.tot_hot</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--最新发表-->
+<section class="block-wrapper">
+    <div class="container">
+        <div class="row ts-gutter-30">
+            <div class="col-lg-8 col-md-12">
+                <!--- Featured Tab startet -->
+                <div class="featured-tab">
+                    <h2 class="block-title">
+                        <span class="title-angle-shap"> 最新发表</span>
+                    </h2>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link animated active fadeIn" href="#tab_a" data-toggle="tab">
+                                <span class="tab-head">
+                                    <span class="tab-text-title">全部</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link animated fadeIn" href="#tab_b" data-toggle="tab">
+                                <span class="tab-head">
+                                    <span class="tab-text-title">文字</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link animated fadeIn" href="#tab_c" data-toggle="tab">
+                                <span class="tab-head">
+                                    <span class="tab-text-title">图片</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link animated fadeIn" href="#tab_d" data-toggle="tab">
+                                <span class="tab-head">
+                                    <span class="tab-text-title">音乐</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link animated fadeIn" href="#tab_e" data-toggle="tab">
+                                <span class="tab-head">
+                                    <span class="tab-text-title">视频</span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active animated fadeInRight" id="tab_a">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <!--最新发表大图内容-->
+                                    @foreach (Production item in Model.All_Newest_Works.Take(1))
+                                    {
+                                        //var t = Model.All_Newest_Works.Take(1);
+                                        <div class="post-block-style clearfix">
+                                            <div class="post-thumb">
+                                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                                    <img class="img-fluid" src="@item.ImgUrl" style="width:348px;height:277px;" />
+                                                </a>
+                                                <div class="grid-cat">
+                                                    <a class="post-cat tech" href="#">@item.ProductionType  </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="post-content">
+                                                <h2 class="post-title title-md">
+                                                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                                </h2>
+                                                <div class="post-meta mb-7">
+                                                    <span class="post-author"><a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.Users.UsersId})">@item.Users.UsersName</a></span>
+                                                    <span class="post-date">@item.PublishDate</span>
+                                                </div>
+                                                <p>@item.Describe</p>
+                                            </div>
+                                        </div>
+
+                                    }
+
+
+                                </div>
+
+
+                                <!--最新发表右侧选择内容-->
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="list-post-block">
+                                        <ul class="list-post">
+                                            @*@for(int i=1;i<=Model.All_Newest_Works.Le){
+                                                }*@
+
+                                            @foreach (Production item in Model.All_Newest_Works.Skip(1).Take(4))
+                                            {
+                                                //int index = Model.All_Newest_Works.indexOf(item);
+                                                <li>
+                                                    <div class="post-block-style media">
+                                                        <div class="post-thumb">
+                                                            <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                                                <img class="img-fluid" src="@item.ImgUrl" style="width:130px;height:100px;" />
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="post-content media-body">
+                                                            <div class="grid-category">
+                                                                <a class="post-cat tech-color" href="#">@item.ProductionType</a>
+                                                            </div>
+                                                            <h2 class="post-title">
+                                                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})"> @item.ProductionName</a>
+                                                            </h2>
+                                                            <div class="post-meta mb-7">
+                                                                <span class="post-date"> @item.PublishDate</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            }
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--第二个类型的内容-->
+                        <div class="tab-pane animated fadeInRight" id="tab_b">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    @foreach (Production item in Model.Text_Newest_Works.Take(1))
+                                    {
+                                        <div class="post-block-style clearfix">
+                                            <div class="post-thumb">
+                                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                                    <img class="img-fluid" style="width:348px;height:277px;" src="@item.ImgUrl" />
+                                                </a>
+                                                <div class="grid-cat">
+                                                    <a class="post-cat tech" href="#">@item.ProductionType</a>
+                                                </div>
+                                            </div>
+                                            <div class="post-content">
+                                                <h2 class="post-title title-md">
+                                                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                                </h2>
+                                                <div class="post-meta mb-7">
+                                                    <span class="post-author"><a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.Users.UsersId})">@item.Users.UsersName</a></span>
+                                                    <span class="post-date"> @item.PublishDate</span>
+                                                </div>
+                                                <p>@item.Describe</p>
+                                            </div>
+                                        </div>
+
+                                    }
+
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="list-post-block">
+                                        <ul class="list-post">
+                                            @foreach (Production item in Model.Text_Newest_Works.Skip(1).Take(4))
+                                            {
+                                                <li>
+                                                    <div class="post-block-style media">
+                                                        <div class="post-thumb">
+                                                            <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                                                <img class="img-fluid" src="@item.ImgUrl" style="width:130px;height:100px;" />
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="post-content media-body">
+                                                            <div class="grid-category">
+                                                                <a class="post-cat tech-color" href="#">@item.ProductionType</a>
+                                                            </div>
+                                                            <h2 class="post-title">
+                                                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                                            </h2>
+                                                            <div class="post-meta mb-7">
+                                                                <span class="post-date">@item.PublishDate</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            }
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--第三个类型里面的内容-->
+                        <div class="tab-pane animated fadeInRight" id="tab_c">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    @foreach (Production item in Model.Img_Newest_Works.Take(1))
+                                    {
+                                        <div class="post-block-style clearfix">
+                                            <div class="post-thumb">
+                                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                                    <img class="img-fluid" style="width:348px;height:277px;" src="@item.ImgUrl" />
+                                                </a>
+                                                <div class="grid-cat">
+                                                    <a class="post-cat tech" href="#">@item.ProductionType  </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="post-content">
+                                                <h2 class="post-title title-md">
+                                                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                                </h2>
+                                                <div class="post-meta mb-7">
+                                                    <span class="post-author"><a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.Users.UsersId})">@item.Users.UsersName</a></span>
+                                                    <span class="post-date">@item.PublishDate</span>
+                                                </div>
+                                                @*<p>@item.ProductionContent</p>*@
+                                                <p>@item.Describe</p>
+                                            </div>
+                                        </div>
+
+                                    }
+
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="list-post-block">
+                                        <ul class="list-post">
+                                            @foreach (Production item in Model.Img_Newest_Works.Skip(1).Take(4))
+                                            {
+                                                <li>
+                                                    <div class="post-block-style media">
+                                                        <div class="post-thumb">
+                                                            <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                                                <img class="img-fluid" src="@item.ImgUrl" style="width:130px;height:100px;" />
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="post-content media-body">
+                                                            <div class="grid-category">
+                                                                <a class="post-cat tech-color" href="#">@item.ProductionType</a>
+                                                            </div>
+                                                            <h2 class="post-title">
+                                                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                                            </h2>
+                                                            <div class="post-meta mb-7">
+                                                                <span class="post-date">@item.PublishDate</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            }
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--第四个类型里面的内容-->
+                        <div class="tab-pane animated fadeInRight" id="tab_d">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    @foreach (Production item in Model.Music_Newest_Works.Take(1))
+                                    {
+                                        <div class="post-block-style clearfix">
+                                            <div class="post-thumb">
+                                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                                    <img class="img-fluid" style="width:348px;height:277px;" src="@item.ImgUrl" />
+                                                </a>
+                                                <div class="grid-cat">
+                                                    <a class="post-cat sports" href="#">@item.ProductionType</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="post-content">
+                                                <h2 class="post-title title-md">
+                                                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                                </h2>
+                                                <div class="post-meta mb-7">
+                                                    <span class="post-author"><a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.Users.UsersId})">@item.Users.UsersName</a></span>
+                                                    <span class="post-date">@item.PublishDate</span>
+                                                </div>
+                                                @*<p>@item.ProductionContent</p>*@
+                                                <p>@item.Describe</p>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="list-post-block">
+                                        <ul class="list-post">
+                                            @foreach (Production item in Model.Music_Newest_Works.Skip(1).Take(4))
+                                            {
+                                                <li>
+                                                    <div class="post-block-style media">
+                                                        <div class="post-thumb">
+                                                            <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                                                <img class="img-fluid" src="@item.ImgUrl" style="width:130px;height:100px;" />
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="post-content media-body">
+                                                            <div class="grid-category">
+                                                                <a class="post-cat tech-color" href="#">@item.ProductionType</a>
+                                                            </div>
+                                                            <h2 class="post-title">
+                                                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                                            </h2>
+                                                            <div class="post-meta mb-7">
+                                                                <span class="post-date">@item.PublishDate</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            }
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--第五个类型里面的内容-->
+                        <div class="tab-pane animated fadeInRight" id="tab_e">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    @foreach (Production item in Model.Video_Newest_Works.Take(1))
+                                    {
+                                        <div class="post-block-style clearfix">
+                                            <div class="post-thumb">
+                                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                                    <img class="img-fluid" style="width:348px;height:277px;" src="@item.ImgUrl" />
+                                                </a>
+                                                <div class="grid-cat">
+                                                    <a class="post-cat health" href="#">@item.ProductionType</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="post-content">
+                                                <h2 class="post-title title-md">
+                                                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                                </h2>
+                                                <div class="post-meta mb-7">
+                                                    <span class="post-author"><a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.Users.UsersId})">@item.Users.UsersName</a></span>
+                                                    <span class="post-date">@item.PublishDate</span>
+                                                </div>
+                                                <p>@item.Describe</p>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="list-post-block">
+                                        <ul class="list-post">
+                                            @foreach (Production item in Model.Video_Newest_Works.Skip(1).Take(4))
+                                            {
+                                                <li>
+                                                    <div class="post-block-style media">
+                                                        <div class="post-thumb">
+                                                            <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                                                <img class="img-fluid" src="@item.ImgUrl" style="width:130px;height:100px;" />
+                                                            </a>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <div class="grid-category">
+                                                                <a class="post-cat tech-color" href="#">@item.ProductionType</a>
+                                                            </div>
+                                                            <h2 class="post-title">
+                                                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                                            </h2>
+                                                            <div class="post-meta mb-7">
+                                                                <span class="post-date">@item.PublishDate</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            }
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--本周重磅-->
+                <div class="block style2 text-light">
+                    <h2 class="block-title">
+                        <span class="title-angle-shap">本周重磅</span>
+                    </h2>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="post-block-style">
+                                @foreach (Production item in Model.Week_Hot_Works.Take(1))
+                                {
+                                    <div class="post-thumb">
+                                        <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                            <img class="img-fluid" src="@item.ImgUrl" style="width:310px;height:200px;" />
+                                        </a>
+                                        <div class="grid-cat">
+                                            <a class="post-cat tech" href="#">@item.ProductionType</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="post-content">
+                                        <h2 class="post-title title-md">
+                                            <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                        </h2>
+                                        <p>@item.Describe</p>
+                                        <div class="post-meta mb-7">
+                                            <span class="post-author"><a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.Users.UsersId})">@item.Users.UsersName </a></span>
+                                            <span class="post-date">@item.PublishDate</span>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <div class="row ts-gutter-20">
+                                @foreach (Production item in Model.Week_Hot_Works.Skip(1).Take(4))
+                                {
+                                    <div class="col-md-6">
+                                        <div class="post-block-style">
+                                            <div class="post-thumb">
+                                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                                    <img class="img-fluid" src="@item.ImgUrl" style="width:140px;height:108px;" />
+                                                </a>
+                                            </div>
+
+                                            <div class="post-content">
+                                                <h2 class="post-title mb-2">
+                                                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                                </h2>
+                                                <div class="post-meta mb-7">
+                                                    <span class="post-date">@item.PublishDate</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--友情链接-->
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <div class="sidebar-widget social-widget">
+                        <h2 class="block-title">
+                            <span class="title-angle-shap"> 友情链接</span>
+                        </h2>
+                        <div class="sidebar-social">
+                            <ul class="ts-social-list">
+                                <li class="ts-facebook" style="width: 151px;height: 55px;">
+                                    <a href="#" style="display:contents;">
+                                        <img src="~/image/index_img/友情链接/logo1.jpg" style="text-align:center;width: 151px;height: 55px;" />
+                                    </a>
+                                </li>
+                                <li class="ts-facebook" style="width: 151px;height: 55px;">
+                                    <a href="#" style="display:contents;">
+                                        <img src="~/image/index_img/友情链接/logo2.jpg" style="text-align:center;width: 151px;height: 55px;" />
+                                    </a>
+                                </li>
+                                <li class="ts-facebook" style="width: 151px;height: 55px;">
+                                    <a href="#" style="display:contents;">
+                                        <img src="~/image/index_img/友情链接/logo3.png" style="text-align:center;width: 151px;height: 55px;" />
+                                    </a>
+                                </li>
+                                <li class="ts-facebook" style="width: 151px;height: 55px;">
+                                    <a href="#" style="display:contents;">
+                                        <img src="~/image/index_img/友情链接/logo4.png" style="text-align:center;width: 151px;height: 55px;" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-widget ads-widget">
+                        <div class="ads-image">
+                            <a href="@Url.Action("Identify","UserManage")">
+                                <img class="img-fluid" src="~/image/FriendLink/认证创作者.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--多类别区-->
+                    <!--放创作者-->
+                    <div class="gap-20 d-none d-lg-block"></div>
+                    <div class="sidebar-widget featured-tab post-tab">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link animated active fadeIn" href="#post_tab_a" data-toggle="tab">
+                                    <span class="tab-head">
+                                        <span class="tab-text-title">最新认证</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link animated fadeIn" href="#post_tab_b" data-toggle="tab">
+                                    <span class="tab-head">
+                                        <span class="tab-text-title">最受好评</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link animated fadeIn" href="#post_tab_c" data-toggle="tab">
+                                    <span class="tab-head">
+                                        <span class="tab-text-title">最多评论</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="gap-50 d-none d-md-block"></div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="tab-content">
+                                    <div class="tab-pane active animated fadeInRight" id="post_tab_a">
+                                        <div class="list-post-block">
+                                            <ul class="list-post">
+                                                @foreach (Creator item in Model.Newest_Creator)
+                                                {
+                                                    <li>
+                                                        <div class="post-block-style media">
+                                                            <div class="post-thumb">
+                                                                <a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.Users.UsersId})">
+                                                                    <img class="img-fluid" src="@item.Users.HeadUrl" alt="">
+                                                                </a>
+
+                                                            </div>
+
+                                                            <div class="post-content media-body">
+                                                                <div class="grid-category">
+                                                                    <a class="post-cat sports-color" href="#">@item.CreateType</a>
+                                                                </div>
+                                                                <h2 class="post-title">
+                                                                    <a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.Users.UsersId})">@item.Users.UsersName</a>
+                                                                </h2>
+                                                                <div class="post-meta mb-7">
+                                                                    <span class="post-date">@item.CertificationDate </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                }
+
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!--最受好评创作者-->
+                                    <div class="tab-pane animated fadeInRight" id="post_tab_b">
+                                        <div class="list-post-block">
+                                            <ul class="list-post">
+                                                @foreach (Creator item in Model.Popular_Creator)
+                                                {
+                                                    <li>
+                                                        <div class="post-block-style media">
+                                                            <div class="post-thumb">
+                                                                <a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.Users.UsersId})">
+                                                                    <img class="img-fluid" src="@item.Users.HeadUrl" alt="">
+                                                                </a>
+
+                                                            </div>
+
+                                                            <div class="post-content media-body">
+                                                                <div class="grid-category">
+                                                                    <a class="post-cat sports-color" href="#">@item.CreateType</a>
+                                                                </div>
+                                                                <h2 class="post-title">
+                                                                    <a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.Users.UsersId})">@item.Users.UsersName</a>
+                                                                </h2>
+                                                                <div class="post-meta mb-7">
+                                                                    <span class="post-date">@item.CertificationDate </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                }
+
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!--最多评论创作者-->
+                                    <div class="tab-pane animated fadeInRight" id="post_tab_c">
+                                        <div class="list-post-block">
+                                            <ul class="list-post">
+                                                @foreach (var item in Model.Most_Comment_Creator)
+                                                {
+                                                    <li>
+                                                        <div class="post-block-style media">
+                                                            <div class="post-thumb">
+                                                                <a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.UsersId})">
+                                                                    <img class="img-fluid" src="@item.HeadUrl" alt="">
+                                                                </a>
+
+                                                            </div>
+
+                                                            <div class="post-content media-body">
+                                                                <div class="grid-category">
+                                                                    <a class="post-cat sports-color" href="#">@item.CreateType</a>
+                                                                </div>
+                                                                <h2 class="post-title">
+                                                                    <a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.UsersId})">@item.UsersName</a>
+                                                                </h2>
+                                                                <div class="post-meta mb-7">
+                                                                    <span class="post-date">@item.CertificationDate </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                }
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--人气佳作-->
+<section class="trending-slider pb-0 ">
+    <div class="container">
+        <div class="ts-grid-box clearfix">
+            <h2 class="block-title">
+                <span class="title-angle-shap">人气佳作</span>
+            </h2>
+            <!--遍历三个佳作-->
+            @foreach (Production item in Model.Hot_Good_Works)
+            {
+                <div class="item post-overaly-style post-md" style="background-image: url('@item.ImgUrl'); width: 300px; height: 400px; float: left; margin-left: 40px;">
+                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})" class="image-link">&nbsp;</a>
+                    <div class="overlay-post-content">
+                        <div class="post-content">
+                            <div class="grid-category">
+                                <a class="post-cat tech" href="#">@item.ProductionType </a>
+                            </div>
+
+                            <h2 class="post-title">
+                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                            </h2>
+                            <div class="post-meta">
+                                <ul>
+                                    <li><a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.Users.UsersId})">@item.Users.UsersName </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
+
+
+<!--今日最佳-->
+<section class="block-wrapper">
+    <div class="container">
+        <div class="row ts-gutter-30">
+            <div class="col-lg-8 col-md-12">
+                <h2 class="block-title">
+                    <span class="title-angle-shap">今日最佳 </span>
+                </h2>
+                <div class="row text-light ts-gutter-30">
+                    @foreach (Production item in Model.Today_Greatest_Works)
+                    {
+                        <div class="col-md-4">
+                            <div class="post-overaly-style post-sm" style="background-image: url('@item.ImgUrl');  ">
+                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})" class="image-link">&nbsp;</a>
+                                <div class="overlay-post-content">
+                                    <div class="post-content">
+                                        <div class="grid-category">
+                                            <a class="post-cat tech" href="#">@item.ProductionType</a>
+                                        </div>
+
+                                        <h2 class="post-title mb-0">
+                                            <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!--风云用户榜-->
+            <div class="sidebar-widget featured-tab post-tab">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link animated active fadeIn" href="#post_tab_a" data-toggle="tab">
+                            <span class="tab-head">
+                                <span class="tab-text-title" style="color:black;">风云用户榜</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="gap-50 d-none d-md-block"></div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tab-content">
+                            <div class="tab-pane active animated fadeInRight" id="post_tab_a">
+                                <div class="list-post-block">
+                                    <ul class="list-post">
+                                        @foreach (var item in Model.Popular_Users)
+                                        {
+                                            <li>
+                                                <div class="post-block-style media">
+                                                    <div class="post-thumb">
+                                                        <a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.UsersId})">
+                                                            <img class="img-fluid" src="@item.HeadUrl" alt="">
+                                                        </a>
+                                                        <span class="tab-post-count"> 1</span>
+                                                    </div>
+
+                                                    <div class="post-content media-body">
+                                                        <div class="grid-category">
+                                                            <a class="post-cat sports-color">@item.Sex</a>
+                                                        </div>
+                                                        <h2 class="post-title">
+                                                            <a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.UsersId})">@item.UsersName</a>
+                                                        </h2>
+                                                        <div class="post-meta mb-7">
+                                                            <span class="post-date">@item.Birth </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--主题强推-->
+<section class="block-wrapper">
+    <div class="container">
+        <div class="row ts-gutter-30">
+            <div class="col-lg-8 col-md-12">
+                <h2 class="block-title">
+                    <span class="title-angle-shap">主题强推 </span>
+                </h2>
+                <div class="row ts-gutter-20">
+                    <!--视频类型-->
+                    @foreach (var item in Model.Video_Works_Hot)
+                    {
+                        <div class="col-md-6">
+                            <div class="post-block-style">
+                                <div class="post-thumb">
+                                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                        <img class="img-fluid" src="@item.ImgUrl" style="width:350px;height:197px;">
+                                    </a>
+                                    <div class="grid-cat">
+                                        <a class="post-cat tech" href="#">@item.ProductionType</a>
+                                    </div>
+                                </div>
+
+                                <div class="post-content">
+                                    <h2 class="post-title">
+                                        <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                    </h2>
+                                    <div class="post-meta mb-7">
+                                        <span class="post-date">@item.PublishDate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <!--图片类型-->
+                    @foreach (var item in Model.Picture_Works_Hot)
+                    {
+                        <div class="col-md-6">
+                            <div class="post-block-style">
+                                <div class="post-thumb">
+                                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                        <img class="img-fluid" src="@item.ImgUrl" style="width:350px;height:197px;">
+                                    </a>
+                                    <div class="grid-cat">
+                                        <a class="post-cat tech" href="#">@item.ProductionType</a>
+                                    </div>
+                                </div>
+
+                                <div class="post-content">
+                                    <h2 class="post-title">
+                                        <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                    </h2>
+                                    <div class="post-meta mb-7">
+                                        <span class="post-date">@item.PublishDate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <!--文字类型-->
+                    @foreach (var item in Model.Text_Works_Hot)
+                    {
+                        <div class="col-md-6">
+                            <div class="post-block-style">
+                                <div class="post-thumb">
+                                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                        <img class="img-fluid" src="@item.ImgUrl" style="width:350px;height:197px;">
+                                    </a>
+                                    <div class="grid-cat">
+                                        <a class="post-cat tech" href="#">@item.ProductionType</a>
+                                    </div>
+                                </div>
+
+                                <div class="post-content">
+                                    <h2 class="post-title">
+                                        <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                    </h2>
+                                    <div class="post-meta mb-7">
+                                        <span class="post-date">@item.PublishDate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <!--音乐类型-->
+                    @foreach (var item in Model.Music_Works_Hot)
+                    {
+                        <div class="col-md-6">
+                            <div class="post-block-style">
+                                <div class="post-thumb">
+                                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                        <img class="img-fluid" src="@item.ImgUrl" style="width:350px;height:197px;">
+                                    </a>
+                                    <div class="grid-cat">
+                                        <a class="post-cat tech" href="#">@item.ProductionType</a>
+                                    </div>
+                                </div>
+
+                                <div class="post-content">
+                                    <h2 class="post-title">
+                                        <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+                                    </h2>
+                                    <div class="post-meta mb-7">
+                                        <span class="post-date">@item.PublishDate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+                <div class="gap-30"></div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="load-more-btn text-center">
+                            <button class="btn">每日一展</button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <img style="width:750px;height:450px;margin-top: 5px;" src="@Model.every_Day_Shows.ImgUrl" />
+                    @*~/image/index_img/每日一展/2.jpg*@
+                </div>
+            </div>
+            <!--最新评论-->
+            <div class="col-lg-4 col-md-12">
+                <h2 class="block-title block-title-dark">
+                    <span class="title-angle-shap">最新评论</span>
+                </h2>
+                <div class="ts-author-comments">
+                    @foreach (var item in Model.Newest_Comments.Take(1))
+                    {
+                        <div class="row ts-comments-row align-items-center mb-50">
+                            <div class="ts-author-thumb" style="width: 60px;height: 60px;margin-left: 28px;">
+                                <img src="@item.HeadUrl" style="width: 60px;height: 60px;" />
+                            </div>
+                            <div class="col-lg-8 col-md-10">
+                                <div class="ts-author-content" style="margin-left: 35px;width:223.32px;">
+                                    <div class="comment" title="创作品详情">
+                                        <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.CommentContent</a>
+                                    </div>
+                                    <div class="ts-author"> by <a href="#">@item.UsersName </a></div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var item in Model.Newest_Comments.Skip(1).Take(5))
+                    {
+                        <div class="row ts-comments-row align-items-center mb-50">
+                            <div class="col-lg-4 col-md-2">
+                                <div class="ts-author-thumb" style="width: 60px;height: 60px;margin-left: 10px;">
+                                    <img src="@item.HeadUrl" style="width: 60px;height: 60px;" />
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-10">
+                                <div class="ts-author-content">
+                                    <div class="comment" title="创作品详情">
+                                        <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">@item.CommentContent</a>
+                                    </div>
+                                    <div class="ts-author"> by <a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.UsersId})">@item.UsersName </a></div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

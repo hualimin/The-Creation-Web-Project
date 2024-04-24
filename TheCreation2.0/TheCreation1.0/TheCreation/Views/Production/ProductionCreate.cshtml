@@ -1,0 +1,175 @@
+﻿@using TheCreation.Models
+@{
+    //ViewBag.Title = "Title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    <link href="~/Content/发布作品/base.css" rel="stylesheet" />
+    <link href="~/Content/发布作品/home.css" rel="stylesheet" />
+    <script type="text/javascript" charset="utf-8" src="~/Scripts/utf8-net/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/Scripts/utf8-net/ueditor.all.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/Scripts/utf8-net/lang/zh-cn/zh-cn.js"></script>
+
+    <script src="~/js/blog_js/utf8-net/ueditor.config.js"></script>
+    <script src="~/js/blog_js/utf8-net/ueditor.all.min.js"></script>
+    <script src="~/js/blog_js/utf8-net/lang/zh-cn/zh-cn.js"></script>
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>发布作品</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=gbk" />
+    <script src="~/Scripts/UEditor/gbk-net/ueditor.config.js"></script>
+    <script src="~/Scripts/UEditor/gbk-net/ueditor.all.min.js"></script>
+    <link href="~/Content/发布作品/home.css" rel="stylesheet" />
+    <link href="~/Content/发布作品/base.css" rel="stylesheet" />
+</head>
+<body>
+    <section class="aui-content">
+        <div style="height:20px;"></div>
+        <div class="aui-content-up">
+            <form action="@Url.Action("ProductionCreate","Production")" method="post" name="form1" OnSuccess="UpSuccess" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="aui-content-up-form">
+                    <h2>发表作品</h2>
+                </div>
+                <div class="aui-form-group clear">
+                    <label class="aui-label-control">
+                        创作品名称 <em>*</em>
+                    </label>
+                    <div class="aui-form-input">
+                        <input type="text" class="aui-form-control-two" name="ProductionName" onBlur="checkna()" required id="1" placeholder="请输入创作品名称">
+                        <span class="tips" id="divname">长度1~6个字符</span>
+                    </div>
+                </div>
+                <div class="aui-form-group clear">
+                    <label class="aui-label-control">
+                        创作品描述 <em>*</em>
+                    </label>
+                    <div class="aui-form-input">
+                        <input type="text" class="aui-form-control-two" name="Describe" onBlur="checkna()" required id="1" placeholder="请简要描述一些作品哦">
+                        <span class="tips" id="divname">长度10~30个字符</span>
+                    </div>
+                </div>
+                <div class="aui-form-group clear">
+                    <label class="aui-label-control">
+                        创作品类型 <em>*</em>
+                    </label>
+                    <select name="ProductionType" id="ProductionType">
+                        <option>类型</option>
+                    </select>
+
+                </div>
+                <div class="aui-form-group clear">
+                    <label class="aui-label-control">
+                        创作品标签 <em>*</em>
+                    </label>
+                    <select name="Tag" id="Tag">
+                        <option>标签</option>
+                    </select>
+                </div>
+                <div class="aui-form-group clear">
+                    <label class="aui-label-control">
+                        创作品封面 <em>*</em>
+                        <span>仅一张</span>
+                    </label>
+                    <div class="aui-form-input">
+                        <div class="aui-content-img-box aui-content-full">
+                            <div class="aui-photo aui-up-img clear">
+                                <section class="aui-file-up fl">
+                                    <img src="~/image/Publish_Works/up.png" class="add-img" />
+                                    <input type="file" name="coverfile" id="file" class="file" accept="image/*" />
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aui-form-group clear">
+                    <label class="aui-label-control">
+                        创作品内容 <em>*</em>
+                    </label>
+                    <div>
+                        <script id="editor" name="ProductionContent" type="text/plain" style="width:700px;height:300px;margin-left:80px;">
+                        </script>
+                    </div>
+                </div>
+                <div class="aui-form-group-text">
+                    <p>发布的作品必须符合创作者协议以及《创世界作品》发布原则，不得抄袭他人原创内容或冒充他人的内容，创世界鼓励创作者发表创意无限、积极向上的文字、图片、音乐、视频。</p>
+                </div>
+                <div class="aui-btn-default" style="width:100%;">
+                    <button class="aui-btn aui-btn-account">发布作品</button>
+                </div>
+            </form>
+        </div>
+        <br />
+    </section>
+    <div class="aui-mask aui-works-mask">
+        <div class="aui-mask-content">
+            <p class="aui-delete-text">确定要删除你上传的作品？</p>
+            <p class="aui-check-text">
+                <span class="aui-delete aui-accept-ok">确定</span>
+                <span class="aui-accept-no">取消</span>
+            </p>
+        </div>
+    </div>
+
+
+    @section scripts{
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript">
+            //验证创作品名称
+            function checkna() {
+                na = form1.Productionname.value;
+                if (na.length < 1 || na.length > 6) {
+
+                    divname.innerHTML = '<font class="tips_false">长度是1~6个字符</font>';
+                } else {
+
+                    divname.innerHTML = '<font class="tips_true">输入正确</font>';
+                }
+            }
+        </script>
+
+
+        <script type="text/javascript">
+
+
+            $(function () {
+
+                //实例化编辑器
+                //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+                var ue = UE.getEditor('editor');
+            })
+
+
+            //回调函数  upsuccess
+            function UpSuccess(data) {
+                if (data == "success") {
+
+                    alert("添加成功");
+
+                }
+                else if (data == "fail") {
+                    alert('添加失败！');
+
+                }
+                else {
+                    alert('请选择正确的文件格式上传！');
+                }
+            }
+
+        </script>
+
+
+    }
+    <script src="~/Scripts/发布作品/jquery.min.js"></script>
+    <script src="~/Scripts/发布作品/data.js"></script>
+    <script src="~/Scripts/发布作品/myjs.js"></script>
+
+
+</body>
+</html>
+

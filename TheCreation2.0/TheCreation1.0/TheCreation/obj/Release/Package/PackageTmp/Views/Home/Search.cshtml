@@ -1,0 +1,449 @@
+﻿@model TheCreation.Models.SearchResultViewModel
+@{
+    ViewBag.Title = "Search";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="~/Content/搜索/app.css" rel="stylesheet" />
+    <link href="~/Content/搜索/base.css" rel="stylesheet" />
+    <link href="~/Content/搜索/tab.css" rel="stylesheet" />
+    <style type="text/css">
+        .aui-flex {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            padding: 15px;
+            position: relative;
+        }
+
+        .aui-img-sml img {
+            width: 60px;
+            height: 60px;
+            display: block;
+            border: none;
+            border-radius: 100%;
+        }
+
+        .aui-flex-box h4 {
+            font-size: 0.95rem;
+            font-weight: normal;
+            margin-bottom: 0.3rem;
+            margin: 0;
+            padding: 0;
+            display: block;
+            margin-block-start: 1.33em;
+            margin-block-end: 1.33em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+        }
+
+        .aui-flex-box p {
+            font-size: 0.85rem;
+            color: #999;
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            margin-left: 30px;
+        }
+
+        button {
+            margin: 0;
+            font: inherit;
+            color: inherit;
+            outline: none;
+        }
+
+        .aui-flex-box {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            min-width: 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .aui-img-sml {
+            width: 45px;
+            height: 45px;
+            margin-right: 0.5rem;
+        }
+
+        .post-block-style {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .media {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: start;
+            align-items: flex-start;
+        }
+
+        .post-block-style .post-thumb {
+            width: 130px;
+            height: 85px;
+            margin-bottom: 30px;
+            margin-right: 25px;
+        }
+
+        .post-block-style .post-thumb {
+            border-radius: 5px;
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .post-block-style .post-thumb img {
+                width: 100%;
+            }
+
+            .post-block-style .post-thumb img {
+                display: block;
+                width: 100%;
+                -webkit-transition: all .3s ease-out;
+                -o-transition: all .3s ease-out;
+                transition: all .3s ease-out;
+                vertical-align: middle;
+                border-style: none;
+            }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .media-body {
+            -ms-flex: 1;
+            flex: 1;
+        }
+
+        .post-cat {
+            position: relative;
+            font-size: 10px;
+            padding: 0 10px;
+            background: #1c1c1c;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #fff;
+            height: 20px;
+            line-height: 20px;
+            display: inline-block;
+            border-radius: 5px;
+        }
+
+        .post-author {
+            font-size: 18px;
+            line-height: 24px;
+            margin: 12px 0 10px;
+            font-weight: 600;
+        }
+
+        .post-meta span {
+            font-size: 12px;
+            color: #a3a3a3;
+            margin-right: 8px;
+            padding-right: 10px;
+            line-height: 12px;
+            display: inline-block;
+        }
+
+            .post-meta span.post-date {
+                border-right: 0;
+            }
+
+        .neirong {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .aui-flex {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            padding: 15px;
+            position: relative;
+        }
+
+        .aui-flex-box {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            min-width: 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .aui-content-list .b-line:after {
+            left: 15px;
+            width: 92%;
+        }
+
+        .aui-work-img {
+            width: 120px;
+            height: 100px;
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 0.8rem;
+        }
+
+            .aui-work-img img {
+                width: 100%;
+                height: auto;
+                display: block;
+                border: none;
+            }
+
+        .aui-flex-box h2 {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            word-break: break-all;
+            text-overflow: ellipsis;
+            color: #505050;
+            font-size: 1rem;
+            text-align: justify;
+            font-weight: normal;
+            margin-bottom: 0.4rem;
+        }
+
+        .aui-flex-box span {
+            color: #507cf7;
+            font-size: 0.7rem;
+            border: 1px solid #507cf7;
+            border-radius: 2px;
+            margin-bottom: 0.2rem;
+            display: block;
+            width: 45px;
+            text-align: center;
+            transform: scale(0.8);
+        }
+    </style>
+</head>
+<body style="background-color: #fff;" class=" pace-done">
+
+    <div class="container paperCut" style="margin-top: 35px;">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="box">
+                    <h3 class="clearfix" style="text-align: center;background-color: #f5f5f5;">
+                        <span style="color: #55557f;">共找到 @Model.Result_Count 个结果</span>
+                    </h3>
+                </div>
+
+                <div class="box">
+                    <h3 class="clearfix">猜你喜欢的创作品</h3>
+                    <div class="content paper-link">
+                        @foreach (var item in Model.May_Like_Works)
+                        {
+                            <div class="post-block-style media">
+                                <div class="post-thumb">
+                                    <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})">
+                                        <img class="img-fluid" src="@item.Users.HeadUrl">
+                                    </a>
+                                </div>
+
+                                <div class="post-content media-body">
+                                    <h2 class="post-author">
+                                        @item.ProductionName
+                                    </h2>
+                                    <p class="neirong" title="创作品详情">@item.Describe</p>
+                                    <br />
+                                    <div class="post-meta mb-7">
+                                        <span class="post-date"> @item.PublishDate</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <hr />
+                        }
+                        @*<div class="post-block-style media">
+                                <div class="post-thumb">
+                                    <a href="#">
+                                        <img class="img-fluid" src="6.jpg">
+                                    </a>
+                                </div>
+
+                                <div class="post-content media-body">
+                                    <h2 class="post-author">
+                                        咸鱼
+                                    </h2>
+                                    <p class="neirong" title="创作品详情">你好世界，相信未来你好世界，相信未来你好世界，相信未来你好世界，相信未来</p>
+                                    <br />
+                                    <div class="post-meta mb-7">
+                                        <span class="post-date"> 2020/12/10 22:56:03</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="post-block-style media">
+                                <div class="post-thumb">
+                                    <a href="#">
+                                        <img class="img-fluid" src="6.jpg">
+                                    </a>
+                                </div>
+
+                                <div class="post-content media-body">
+                                    <h2 class="post-author">
+                                        咸鱼
+                                    </h2>
+                                    <p class="neirong" title="创作品详情">你好世界，相信未来</p>
+                                    <br />
+                                    <div class="post-meta mb-7">
+                                        <span class="post-date"> 2020/12/10 22:56:03</span>
+                                    </div>
+
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="box">
+                    <h3 class="clearfix">猜你喜欢的创作者</h3>
+                    <div class="content paper-link">
+                        @foreach (var item in Model.May_Like_Users)
+                        {
+                            <div class="aui-flex">
+                                <div class="aui-img-sml">
+                                    <a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.UsersId})" target="_blank"><img src="@item.HeadUrl"></a>
+                                </div>
+                                <div class="aui-flex-box">
+                                    <h4>@item.UsersName</h4>
+                                    <p>@item.Hobby</p>
+                                </div>
+                                <a href="@Url.Action("FocusIt","UserManage",new { id=item.UsersId})" class="unfollow" type="button" style="width:50px;">+关注</a>
+                            </div>
+                            <hr />
+                        }
+                        @*<div class="aui-flex">
+                                <div class="aui-img-sml">
+                                    <a href="#" target="_blank"><img src="6.jpg"></a>
+                                </div>
+                                <div class="aui-flex-box">
+                                    <h4>咸鱼</h4>
+                                    <p>喜欢视频</p>
+                                </div>
+                                <button class="unfollow" type="button" style="width:50px;">+关注</button>
+                            </div>
+                            <hr />
+                            <div class="aui-flex">
+                                <div class="aui-img-sml">
+                                    <a href="#" target="_blank"><img src="6.jpg"></a>
+                                </div>
+                                <div class="aui-flex-box">
+                                    <h4>咸鱼</h4>
+                                    <p>喜欢视频</p>
+                                </div>
+                                <button class="unfollow" type="button" style="width:50px;">+关注</button>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+
+                <div class="aui-nav-content-box">
+                    <div class="aui-nav-list-box">
+                        <ul>
+                            <li class="aui-current">
+                                <a href="#">创作者</a>
+                            </li>
+                            <li>
+                                <a href="#">创作品</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--创作者-->
+                    <div class="aui-nav-list-tab">
+                        <div class="aui-nav-list-item" style="display:block">
+                            @foreach (var item in Model.Result_Users)
+                            {
+                                <div class="aui-page-list">
+                                    <div class="box" style="margin-top: 20px;">
+                                        <div class="content">
+                                            <dl class="clearfix">
+                                                <dt class="clearfix pull-left">
+                                                    <p class="paper-image">
+                                                        <a class="J_view paper-title" href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.UsersId})">
+                                                            <img class="" src="@item.HeadUrl" style="width: 50px;height: 50px;border-radius: 50%;" />
+                                                            <span class="txb" style="color:black;">@item.UsersName</span>
+                                                        </a>
+                                                    </p>
+                                                </dt>
+
+                                                <div clas="bottom clearfix" style="margin-top: 60px;padding: 10px;">
+                                                    <p class="pull-left paper-desc">
+                                                        @item.Hobby
+                                                    </p>
+                                                </div>
+                                                <div style="padding: 10px;margin-top: 40px;">
+                                                    <span>擅长：</span>
+                                                    <span class="jns">@item.Creator.CreateType</span>
+
+                                                </div>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                        <!--创作品-->
+                        <div class="aui-nav-list-item">
+                            <div class="aui-page-list">
+                                <div class="aui-content-list">
+                                    @foreach (var item in Model.Result_Works)
+                                    {
+                                        <div class="aui-flex b-line">
+                                            <div class="aui-work-img">
+                                                <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})"><img src="@item.ImgUrl"></a>
+                                            </div>
+                                            <div class="aui-flex-box">
+                                                <h2>@item.ProductionName</h2>
+                                                <span>@item.ProductionType</span>
+                                                <p style="margin-left: 5px;">@item.Users.UsersName</p>
+                                                <p style="margin-left: 5px;">@item.PublishDate   喜欢 @item.LikeCount 热度 @item.HotCount</p>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/个人空间/jquery.min.js"></script>
+    <script type="text/javascript">
+        //tab切换
+        $(function () {
+            $('.aui-nav-list-box ul li').click(function () {
+                $(this).addClass('aui-current').siblings().removeClass('aui-current');
+                $('.aui-nav-list-tab>div:eq(' + $(this).index() + ')').show().siblings().hide();
+            })
+        });
+    </script>
+</body>
+</html>
+
+

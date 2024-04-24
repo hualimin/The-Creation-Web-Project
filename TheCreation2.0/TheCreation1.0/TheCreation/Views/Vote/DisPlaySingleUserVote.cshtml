@@ -1,0 +1,101 @@
+﻿@model TheCreation.Models.UserVoteDetailViewModel
+@{
+    ViewBag.Title = "DisPlaySingleUserVote";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>单个作品投票详情</title>
+    <link href="~/Content/投票活动/celebrity.css" rel="stylesheet" />
+    <style type="text/css">
+        .btn-wrap {
+            padding: 10px 0;
+        }
+
+            .btn-wrap a {
+                background-size: 20px 20px;
+                background-position: 6px 8px;
+                border-radius: 10px;
+                border: 1px solid #f96f80;
+                color: #f96f80;
+                display: inline-block;
+                font-size: 20px;
+                height: 36px;
+                line-height: 36px;
+                width: auto;
+                padding: 0 20px 0 26px;
+                font-weight: bold;
+            }
+    </style>
+</head>
+<body>
+    <div id="wrap_popup">
+        <div id="popup_detail">
+            <div id="detailed_popup" class="popup popup-detail">
+                <div class="body">
+                    <div class="head-wrap">
+                        <div class="head-inner">
+                            <img src="@Model.My_infos.HeadUrl" />
+                        </div>
+                    </div>
+                    <div class="detail-wrap">
+                        <div class="desc">@Model.My_infos.UsersName</div>
+                        <div class="btn-wrap">
+                            <a href="@Url.Action("SubmitVoteByReferenceId","Vote",new {vid=Model.DisPlaySingleUserVote.VoteId,reference_id=Model.My_infos.UsersId.ToString() })">喜欢</a>
+                            <a>@Model.VoteCount 票</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="vote">
+                    <div class="vote-title s s-title-vote-me"></div>
+                    <div class="clearfix">
+                        <div style="width:auto;height:auto; margin:15px 25px 5px 25px">
+                            <img src="@Model.My_infos.HeadUrl" /><!--创作者头像-->
+                        </div>
+                    </div>
+                    <div class="info" style="font-size:14px;margin-top:0">
+                        <p>@Model.My_infos.UsersName</p>
+                        <p>@Model.My_infos.Hobby</p>
+                    </div>
+                    <a href="@Url.Action("PersonalPage","PersonalSpace",new {id=Model.My_infos.UsersId })" class="btn js-share">围观</a>
+                    <a id="share-wrap" href="javascript:;" class="share-wrap dn">
+                        <div class="share-text s"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/投票/1.js"></script>
+    <script src="~/Scripts/投票/2.js"></script>
+    <script>
+        L2Dwidget.init({
+            "model": {
+                jsonPath: "https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json",
+                "scale": 1
+            },
+            "display": {
+                "position": "left",
+                "width": 300,
+                "height": 600,
+                "hOffset": 0,
+                "vOffset": -20
+            },
+            "mobile": {
+                "show": true,
+                "scale": 1
+            },
+            "react": {
+                "opacityDefault": 1,
+                "opacityOnHover": 1
+            }
+        });
+    </script>
+</body>
+
+</html>
+

@@ -1,0 +1,56 @@
+﻿@using Models
+@model Creator
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>创作者管理</title>
+</head>
+<body class="container">
+    <div style="width: 100%;height: 1000px;text-align: center;">
+        <form method="post" action="@Url.Action("AlterPrice","UserManage")">
+            @Html.AntiForgeryToken()
+            <span>收费区间(当前：@Model.PriceRange)：</span>
+            <input type="text" name="newprice" placeholder="xxxx-xxxx" />
+            <br /><br />
+            <input type="submit" value="修改信息" />
+        </form>
+
+        <form method="get">
+            <span>创作者编号:</span><input type="text" value="@Model.CreatorId" disabled="disabled" /><br /><br />
+            <span>认证日期:</span> <input type="date" value="2020/01/02" name="date" disabled="disabled" /><br /><br />
+
+            <span>认证日期:</span><input type="text" value="@Convert.ToDateTime(Model.CertificationDate).ToShortDateString()" disabled="disabled" /><br /><br />
+
+            <span>创作类型:</span><input type="text" value="@Model.CreateType" disabled="disabled" /><br /><br />
+            <span>创作者信誉度:</span><input type="text" value="@Model.CreatorCredit" disabled="disabled" /><br /><br />
+            <span>创作者等级:</span><input type="text" value="@Model.CreatorLevel" disabled="disabled" /><br /><br />
+            <span>状态:</span><input type="text" value="@Model.State" disabled="disabled" /><br /><br />
+            <span>订单数:</span><input type="text" value="" disabled="disabled" /><br /><br />
+            <span>完单数:</span><input type="text" value="@Model.FinishedCount" disabled="disabled" /><br /><br />
+            <span>好评率:</span><input type="text" value="@Model.GoodRate" disabled="disabled" /><br /><br />
+            <span>退单数:</span><input type="text" value="@Model.EfctCmpltCnt" disabled="disabled" /><br /><br />
+        </form>
+
+
+        <script type="text/javascript">
+				function insc() {
+					var count = document.getElementById("count").innerHTML;
+					document.getElementById("count").innerHTML = parseInt(count) + 1;
+				}
+
+				function dec() {
+					var count = document.getElementById("count").innerHTML;
+					if (parseInt(count) > 0) {
+						document.getElementById("count").innerHTML = parseInt(count) - 1;
+					};
+				}
+        </script>
+    </div>
+</body>
+</html>

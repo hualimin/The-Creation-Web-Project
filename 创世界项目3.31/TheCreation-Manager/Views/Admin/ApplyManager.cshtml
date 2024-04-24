@@ -1,0 +1,247 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/css/public.css" media="all">
+</head>
+<body>
+    <div class="layuimini-container">
+        <div class="layuimini-main">
+
+            <fieldset class="table-search-fieldset">
+                <legend>搜索信息</legend>
+                <div style="margin: 10px 10px 10px 10px">
+                    <form class="layui-form layui-form-pane" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">投诉人姓名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="name" id="name"  autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">投诉内容</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="content" id="content" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">投诉日期</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="date" id="date" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <button type="submit" class="layui-btn layui-btn-primary" lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </fieldset>
+
+            <script type="text/html" id="toolbarDemo">
+                <div class="layui-btn-container">
+                    <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 我就是放着好看的 </button>
+                    @*<button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除 </button>*@
+                </div>
+            </script>
+
+            <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+            <script type="text/html" id="currentTableBar">
+                <a class="layui-btn layui-btn layui-btn-sm data-count-deal" lay-event="deal">处理投诉</a>
+                <a class="layui-btn layui-btn-sm layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+                
+            </script>
+           
+        </div>
+    </div>
+
+
+    <script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+
+
+    @*<script type="text/javascript">
+            $("#delete").click(function () {
+                $.ajax({
+                    url: "@Url.Action("HaHa","Home")",
+                    async: false,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+            });
+
+        </script>*@
+
+
+<script>
+        function formatUnixtimestamp(unixtimestamp) {
+            if (unixtimestamp == null) return "投诉时间为空";
+            var timestamp = unixtimestamp;
+            var date = new Date(parseInt(timestamp.replace("/Date(", "").replace(")/", ""), 10));
+            Y = date.getFullYear() + '-';
+            M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+            D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
+            h = (date.getHours() < 10 ? '0' + (date.getHours()) : date.getHours()) + ':';
+            m = (date.getMinutes() < 10 ? '0' + (date.getMinutes()) : date.getMinutes()) + ':';
+            s = (date.getSeconds() < 10 ? '0' + (date.getSeconds()) : date.getSeconds());
+            var NewDtime = Y + M + D + h + m + s;
+            return NewDtime;
+        }
+
+        layui.use(['form', 'table', 'laydate'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+                laydate = layui.laydate;
+           
+
+        table.render({
+            elem: '#currentTableId',
+            url: '@Url.Content("/Admin/GetApplyTable")',
+            toolbar: '#toolbarDemo',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            cols: [[
+
+                { field: 'ApplysId', width: 100, title: 'ID', sort: true },
+                { field: 'UsersId', width: 200, title: '投诉人编号', sort: true },
+                { field: 'ApplysDescrib', width: 110, title: '申诉内容', sort: true },
+                {
+                    field: 'ApplysDate', width: 200, title: '投诉日期', sort: true,
+                    templet: function (d) {
+                        return formatUnixtimestamp(d.ApplysDate);
+                    }
+                },
+                { field: 'ApplysState', width: 120, title: '申诉状态' },
+                {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 15,
+            page: true,
+            skin: 'line'
+        });
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+
+            var index = layer.msg('查询中，请稍后...', { icon: 16, time: false, shade: 0 });
+            setTimeout(function () {
+                table.reload('currentTableId', {
+                    url: '/Apply/serach_apply'
+                    // ,methods:"post"
+                    , where: {
+                        name: $('#name').val(),
+                        content: $('#content').val(),
+                        date: $('#date').val(),
+                    }, page: {
+                        curr: 1 // 重载后从第一页开始
+                    }
+                });
+                layer.close(index);
+            }, 800)
+
+
+            return false;
+        });
+
+        /**
+         * toolbar监听事件
+         */
+        table.on('toolbar(currentTableFilter)', function (obj) {
+            if (obj.event === 'add') {  // 监听添Urlrl操作
+                layer.alert("不会还有人真点吧！");
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+            } else if (obj.event === 'delete') {  // 监听删除操作
+                var checkStatus = table.checkStatus('currentTableId')
+                    , data = checkStatus.data;
+                layer.alert(JSON.stringify(data));
+            }
+        });
+
+        //监听表格复选框选择
+        table.on('checkbox(currentTableFilter)', function (obj) {
+            console.log(obj)
+        });
+
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'deal') {
+
+                var index = layer.open({
+                    title: '处理投诉',
+                    type: 2,
+                    shade: 0.2,
+                    maxmin:true,
+                    shadeClose: true,
+                    area: ['100%', '100%'],
+                    content: '/Apply/deal_apply/' + data.ApplysId,
+
+                    success: function (layero, index) {
+                        var body = layer.getChildFrame('body', index);//少了这个是不能从父页面向子页面传值的
+
+                        //获取子页面的元素，进行数据渲染  对弹出的修改页面输入框赋初始值
+                        body.contents().find("#rid").val(data.UsersId);
+                        let id = '#isValid' + data.isValid;
+                        body.contents().find(id).prop("checked", true);//这是子页面的单选按钮，让其选中
+
+                    },
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+                return false;
+            } else if (obj.event === 'delete') {
+                layer.confirm('真的删除行么', function (index) {
+                     $.ajax({
+                        url: "@Url.Action("delete_apply", "Apply")",
+                        async: false,
+                        data: {
+                            id: obj.data.ApplysId
+                        },
+                        type: 'post',
+                         success: function (data) {
+                             if (data == "success") {
+                                 layer.msg("删除成功！");
+                                 obj.del();
+                                 layer.close(index);
+                             }
+                             else {
+                                 layer.msg(data);
+                             }   
+                        }
+                    });
+                    
+                });
+            }
+        });
+
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+﻿@using Models
+@model IEnumerable<Blog>
+
+<ul class="hot-post">
+    @foreach (var item in Model)
+        {
+            <li>
+                <div class="thumb"><a href="@Url.Action("BlogDetail","Blog",new { id=item.BlogID})" title="@item.Title"><img src="@item.CoverImg" alt="@item.Title" /></a></div>
+                <div class="hot-title"><a href="@Url.Action("BlogDetail","Blog",new { id=item.BlogID})" title="@item.Title">@item.Title</a></div>
+                <div class="hot-time"><i class="fa fa-time"></i> @item.PublishDate</div>
+            </li>
+        }  
+</ul>

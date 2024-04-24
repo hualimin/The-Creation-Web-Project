@@ -1,0 +1,438 @@
+﻿@model IEnumerable<Models.Creator>
+@*<h4>我是分部视图，筛选处相关创作者结果</h4>*@
+
+<style type="text/css">
+
+    body {
+        background-color: #efeded;
+    }
+
+    /*整个盒子,创作者介绍*/
+    .monthly-item {
+        display: inline-block;
+        width: 950px;
+        height: 267px;
+        border: 1px solid #e3e3e3;
+        box-sizing: border-box;
+        margin: 10px;
+        cursor: pointer;
+        margin: 0 auto;
+        display: block;
+    }
+    .clearfix:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+
+    /*左边的盒子*/
+    .monthly-item .monthly-left {
+        float: left;
+        width: 500px;
+        height: 100%;
+        padding: 15px 20px;
+        box-sizing: border-box;
+        background-color: white;
+    }
+
+        /*创作者信息*/
+        .monthly-item .monthly-left .monthly-left-up .monthly-title .monthly-title-title {
+            margin-right: 3px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: inline-block;
+            max-width: 120px;
+        }
+
+        .monthly-item .monthly-left .monthly-left-up .monthly-title {
+            color: #333;
+            font-size: 16px;
+            font-weight: 700;
+            width: 190px;
+            overflow: hidden;
+            padding-top: 5px;
+            line-height: 16px;
+            margin-bottom: 10px;
+        }
+
+            /*认证*/
+            .monthly-item .monthly-left .monthly-left-up .monthly-title .monthly-title-label {
+                margin-left: 0;
+                display: inline-block;
+                width: 59px;
+                height: 18px;
+                border: 1px solid #4db55b;
+                border-radius: 9px;
+                font-size: 12px;
+                text-align: center;
+                padding-left: 6px;
+                box-sizing: border-box;
+                color: #4db55b;
+                line-height: 16px;
+                position: relative;
+                top: -2px;
+            }
+
+                .monthly-item .monthly-left .monthly-left-up .monthly-title .monthly-title-label:before {
+                    content: "";
+                    display: inline-block;
+                    width: 4px;
+                    height: 4px;
+                    background: #4db55b;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 6px;
+                    left: 6px;
+                }
+
+        /*创作者头像*/
+        .monthly-item .monthly-left .monthly-left-up .monthly-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            left: 0;
+        }
+
+        /*创作者简介*/
+        .monthly-item .monthly-left .monthly-left-up {
+            position: relative;
+            padding-left: 90px;
+            border-bottom: 1px dotted #e3e3e3;
+            height: 90px;
+        }
+
+        .monthly-item .monthly-left .monthly-left-down {
+            padding-top: 15px;
+        }
+
+            /*擅长内容*/
+            .monthly-item .monthly-left .monthly-left-down .monthly-skills .monthly-skills-content {
+                height: 30px;
+                overflow: hidden;
+            }
+
+                .monthly-item .monthly-left .monthly-left-down .monthly-skills .monthly-skills-content .monthly-skill {
+                    height: 26px;
+                    line-height: 24px;
+                    padding: 0 8px;
+                    font-size: 14px;
+                    color: #666;
+                    border: 1px solid #e3e3e3;
+                    margin-bottom: 10px;
+                    box-sizing: border-box;
+                    display: inline-block;
+                }
+
+            /*介绍标题*/
+            .monthly-item .monthly-left .monthly-left-down .monthly-intro .monthly-intro-title {
+                font-size: 14px;
+                color: #333;
+                font-weight: 700;
+                margin-bottom: 5px;
+            }
+
+            /*介绍内容*/
+            .monthly-item .monthly-left .monthly-left-down .monthly-intro .monthly-intro-content {
+                font-size: 12px;
+                color: #999;
+                height: 48px;
+                overflow: hidden;
+                line-height: 16px;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+            }
+
+        /*认证名称*/
+        .monthly-item .monthly-left .monthly-left-up .monthly-station {
+            padding-left: 20px;
+            background-size: 11px 14px;
+            background-position: left;
+            background-repeat: no-repeat;
+            font-size: 12px;
+            color: #999;
+            margin: 2px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+            width: 240px;
+        }
+
+        .monthly-item .monthly-left .monthly-left-up .monthly-shop {
+            display: inline-block;
+            padding-left: 20px;
+            background-size: 12px 12px;
+            background-position: left;
+            background-repeat: no-repeat;
+            font-size: 12px;
+            color: #999;
+            margin: 2px 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 240px;
+            text-decoration: none;
+        }
+
+    /*右边内容*/
+    .monthly-item .monthly-right {
+        float: left;
+        position: relative;
+        width: 198px;
+        height: 100%;
+        background: #f9fafc;
+        box-sizing: border-box;
+        padding: 15px 0 0 20px;
+    }
+
+        /*价格区间*/
+        .monthly-item .monthly-right .monthly-price {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+            .monthly-item .monthly-right .monthly-price span {
+                font-size: 22px;
+                color: #ff5500;
+                font-weight: 700;
+            }
+
+        /*查看作品*/
+        .monthly-item .monthly-right .monthly-case {
+            font-size: 14px;
+            color: #ff6900;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+
+            /*右边尖角*/
+            .monthly-item .monthly-right .monthly-case:after {
+                content: "";
+                width: 7px;
+                display: inline-block;
+                height: 7px;
+                border-top: 1px solid #ff6900;
+                border-left: 1px solid #ff6900;
+                transform: rotate(135deg);
+                position: relative;
+                top: -1px;
+            }
+
+        /*免费咨询*/
+        .monthly-item .monthly-right .monthly-btn {
+            display: inline-block;
+            width: 140px;
+            height: 34px;
+            line-height: 34px;
+            background: #55557f;
+            color: #fff;
+            text-align: center;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        /*认证时长与已接单数*/
+        .monthly-item .monthly-right .monthly-count {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .monthly-item .monthly-right .monthly-experience {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+
+    blockquote,
+    body,
+    button,
+    dd,
+    fieldset,
+    form,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    input,
+    legend,
+    li,
+    ol,
+    p,
+    pre,
+    textarea,
+    th,
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    /*粉丝、关注、作品*/
+    .div1 {
+        width: 220px;
+        height: 100px;
+        float: right;
+        margin-top: -100px;
+    }
+
+    .div2 {
+        width: 60px;
+        height: 80px;
+        font-size: 15px;
+        text-align: center;
+        margin-top: 25px;
+        float: left;
+        margin-right: 10px;
+    }
+
+    .div3 {
+        width: 60px;
+        height: 20px;
+        margin-top: 10px;
+        text-align: center;
+        color: #28A745;
+    }
+</style>
+
+@foreach (var item in Model)
+{<div class="monthly-item clearfix" data-href="#" id="result" style="border:1px solid #e3e3e3;">
+        <div class="monthly-left">
+            <div class="monthly-left-up" style="height:100px;">
+                <a href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.CreatorId})"><img class="monthly-img lazy" width="75" height="75" style="border-radius:50%;" src="@item.Users.HeadUrl" /></a><br />
+                <p class="monthly-title">
+                    <span class="monthly-title-title"><a href="#" style="color:black;">@item.Users.UsersName</a></span>
+                    <span class="monthly-title-label">已认证</span>
+                </p>
+                <a href="#" class="monthly-shop" target="_blank" style="margin-top:-5px"><img src="~/image/PersonalPage/认证.png" />创世界认证</a>
+                <div class="div1">
+                    <div class="div2">
+                        关注
+                        <a target="_blank" style="text-decoration: none;" href="#">
+                            <div class="div3" style="">1@*@Html.Action("Searchfoucs", "UserManage")*@</div>
+                        </a>
+                    </div>
+                    <div class="div2">
+                        粉丝
+                        <a target="_blank" style="text-decoration: none;" href="#">
+                            <div class="div3">2</div>
+                        </a>
+                    </div>
+                    <div class="div2">
+                        作品
+                        <a target="_blank" style="text-decoration: none;" href="#">
+                            <div class="div3">@item.FinishedCount</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--擅长部分-->
+            <div class="monthly-left-down">
+                <div class="monthly-skills">
+                    <p class="monthly-skills-title">擅长</p>
+                    <p class="monthly-skills-content">
+                        <span class="monthly-skill">@item.CreateType</span>
+                        <span class="monthly-skill">@item.Users.Hobby</span>
+                    </p>
+                </div>
+                <!--创作者简介部分-->
+                <div class="monthly-intro">
+                    <p class="monthly-intro-title">介绍</p>
+                    <p class="monthly-intro-content" title="@item.Users.Hobby">@item.Users.Hobby</p>
+                </div>
+            </div>
+        </div>
+        <!--右边内容-->
+        <div class="monthly-right">
+            <p class="monthly-price">
+                <span style="font-size:14px;">￥@item.PriceRange</span>@*<span></span>*@
+            </p>
+            <span class="monthly-count">创作类型：@item.CreateType</span><br />
+            <span class="monthly-count">信誉度：@item.CreatorCredit</span><br />
+            <span class="monthly-count">好评率：@item.GoodRate</span><br />
+            <span class="monthly-count">完单量：@item.FinishedCount</span><br />
+            <a class="monthly-case" href="@Url.Action("PersonalPage","PersonalSpace",new { id=item.CreatorId})">查看Ta的作品</a>
+            <button style="width:140px;height:34px;line-height:34px;background-color:#55557f;color: #fff;text-align:center;" type="button" data-toggle="modal" data-target="#Modal">
+                私信
+            </button>
+            <button class="monthly-btn" type="button" data-toggle="modal" data-target="@string.Format("#ModelA2{0}",item.CreatorId).Trim()">
+                请他定制
+            </button>
+        </div>
+
+        @*//私信部份显示的模态框*@
+        <div class="modal fade" id="Modal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle">私信</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        请在此处输入内容
+                        <form action="@Url.Action("SendPersonalMessage","MessageManager",new { rid=item.CreatorId})" name="form1" method="post">
+                            @Html.AntiForgeryToken()
+                            <textarea rows="5" cols="60" name="content" placeholder="请在此输入咨询内容"> </textarea>
+                            <br />
+                            <button style="width:50px;height:34px;line-height:30px;background-color:#55557f;color: #fff;text-align:center;" type="button" data-dismiss="modal">关闭</button>
+                            <button style="width:50px;height:34px;line-height:30px;background-color:#55557f;color: #fff;text-align:center;" type="submit" formmethod="post">提交</button> @*onclick="document.form1.submit();"*@
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*// 提交需求部份显示的模态框*@
+        <div class="modal fade" id="@string.Format("ModelA2{0}",item.CreatorId).Trim()">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle">请他定制</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @using (Html.BeginForm("SendOrder", "OrderManage", new { name = "form2" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <p>请在下方输入你的需求</p><textarea rows="5" cols="60" name="need" placeholder="请在此输入您的需求"> </textarea>
+                            <input type="hidden" name="creatorid" value="@item.CreatorId" />
+                            <P>给订单取个名字吧</P>
+                            <input type="text" name="name" /><br />
+                            <span>交付日期：</span><input type="date" name="finishdate" /><br />
+                            <input type="text" placeholder="价格介于 @item.PriceRange 之间" name="price" /><br /><br />
+                            <button style="width:50px;height:34px;line-height:30px;background-color:#55557f;color: #fff;text-align:center;" type="button" data-dismiss="modal">关闭</button>
+                            <button style="width:150px;height:34px;line-height:30px;background-color:#55557f;color: #fff;text-align:center;" type="submit" formmethod="post">付款并提交</button>
+                        }
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+    </div>
+}
+<script>
+    function myFunction() {
+        var x = document.getElementById("myRange").value;
+        document.getElementById("range").innerHTML = x;
+    }
+</script>

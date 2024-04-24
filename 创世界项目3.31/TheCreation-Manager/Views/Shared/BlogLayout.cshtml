@@ -1,0 +1,763 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="m.css" rel="stylesheet">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/comm.js"></script>
+</head>
+<body>
+    <header>
+        <div class="box">
+            <div class="logo"><a href="index.html"><img src="images/logo.png" alt="博客"></a></div>
+            <div class="ad_top"><a href="index.html" target="_blank">
+    <img src="~/image/blog_images/29b3ad1b72d7953e86ae738f5ff74e9a.jpg" />
+</a></div>
+            <div class="contact_icon">
+                <ul>
+                    <li><a href="http://wpa.qq.com/msgrd?v=3&uin=476847113&site=qq&menu=yes"><i class="icon_qq"></i></a></li>
+                    <li><a href="tel:181" title="电话：181"><i class="icon_tel"></i></a></li>
+                    <li><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=476847113@qq.com" target="_blank"><i class="icon_email"></i></a></li>
+                    <li><i class="icon_weixin"><img src="images/wx.png" alt="微信"></i></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <nav>
+                <ul id="starlist">
+                    <li><a href="index.html">网站首页</a></li>
+                    <li><a href="blog.html">个人博客模板</a></li>
+                    <li class="menu">
+                        <a href="1.html">学无止境</a>
+                        <ul class="sub">
+                            <li><a href="2.html">程序人生</a></li>
+                            <li><a href="3.html">Web前端</a></li>
+                            <li><a href="https://www.cax8.com/study/web/">网站建设</a></li>
+                            <li><a href="https://www.cax8.com/study/diguocms/">帝国cms</a></li>
+                        </ul><span></span>
+                    </li>
+                    <li><a href="https://www.cax8.com/e/action/ListInfo/?classid=13">我的相册</a></li>
+                    <li><a href="https://www.cax8.com/videos/">精彩视频</a></li>
+                    <li><a href="https://www.cax8.com/about/">关于我</a></li>
+
+                </ul>
+                <h2 id="mnavh"><span class="navicon"></span></h2>
+                <div class="is-search"> <i></i> </div>
+                <div class="search-page">
+                    <div class="search_box">
+                        <div class="go-left"></div>
+                        <div class="search">
+                            <form action="https://www.cax8.com/e/search/index.php" method="post" name="searchform" id="searchform">
+                                <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);"
+                                       onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}"
+                                       type="text">
+                                <input name="show" value="title" type="hidden">
+                                <input name="tempid" value="1" type="hidden">
+                                <select name="tbname">
+                                    <option value="news">博客</option>
+                                    <option value="photo">相册</option>
+                                    <option value="movie">视频</option>
+                                </select>
+                                <input name="Submit" class="input_submit" value="搜索" type="submit">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--search end-->
+            </nav>
+        </div>
+    </header>
+    <div class="ph_margin"></div>
+    <!-- banner -->
+    <div class="banner_box">
+        <ul class="banner">
+            <li>
+                <a href="https://www.cax8.com/share/blog/241.html" target="_blank">
+                    <img src="images/99c78f9bb33d465a9fcc2f315332b2dc.jpg"
+                         alt="个人博客模板">
+                    <section>
+                        <span>时尚个人博客</span>
+                        <p>2021 响应式个人博客模板《初见》</p>
+                    </section>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.cax8.com/share/blog/37.html" target="_blank">
+                    <img src="images/756d3c2dde4b347eef9540a224d8965a.jpg"
+                         alt="个人博客模板">
+                    <section>
+                        <span>小清新</span>
+                        <p>响应式个人博客模板《今夕何夕》</p>
+                    </section>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.cax8.com/share/blog/42.html" target="_blank">
+                    <img src="images/6f5912af2d07a56fd14c52f99bc0bc4a.jpg"
+                         alt="个人博客模板">
+                    <section>
+                        <span>小清新个人博客</span>
+                        <p>响应式小清新个人博客模板《心情》</p>
+                    </section>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="box">
+        <div class="featured_news">
+            <div class="featured_nav">
+                <h2 class="h_title">精选文章</h2>
+                <ul id="tab">
+                    <li class="tab-current"><a href="javascript::">程序人生</a></li>
+                    <li><a href="javascript::">Web前端</a></li>
+                    <li><a href="javascript::">网站建设</a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <div id="tab-content">
+
+                <section class="tab-box">
+                    <div class="f_news_pic">
+                        <i><img src="images/cbabd37a32e0badbd1fc0cf1bcdab000.jpg" alt="个人博客建站初衷"></i>
+                        <div class="f_news_pic_box">
+                            <a href="https://www.cax8.com/study/bj/" target="_blank" class="f_news_tag">程序人生</a>
+                            <p class="f_news_title"><a href="https://www.cax8.com/study/bj/126.html" target="_blank">个人博客建站初衷</a></p>
+                            <p class="f_news_info"><span>2020-06-22</span><span>436</span></p>
+                        </div>
+                    </div>
+                    <ul class="f_news_list">
+                        <li>
+                            <a href="https://www.cax8.com/study/bj/122.html" target="_blank">
+                                <i>
+                                    <img src="images/2cbf93589665ee2709bc556bf2fa774d.png"
+                                         alt="7年，一个80后女站长与阿里云携手创业的真实故事">
+                                </i>
+                                <p>7年，一个80后女站长与阿里云携手创业的真实故事</p>
+                                <span>2019-06-17</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cax8.com/study/bj/121.html" target="_blank">
+                                <i>
+                                    <img src="images/2e92b7f45922dc9c2bb92dd47ea1f639.jpg"
+                                         alt="【告别2018】耕耘才有所得，付出才有收获">
+                                </i>
+                                <p>【告别2018】耕耘才有所得，付出才有收获</p>
+                                <span>2018-12-31</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cax8.com/study/bj/117.html" target="_blank">
+                                <i>
+                                    <img src="images/25f340b85da6f9edf1fcfe722d2ecbf4.jpg"
+                                         alt="个人博客，我为什么要用帝国cms？">
+                                </i>
+                                <p>个人博客，我为什么要用帝国cms？</p>
+                                <span>2018-06-18</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section class="tab-box">
+                    <div class="f_news_pic">
+                        <i><img src="images/183914a4d8cb258dae5fc8e89d8043d5.jpg" alt="网页前端设计快速入门技巧"></i>
+                        <div class="f_news_pic_box">
+                            <a href="https://www.cax8.com/study/html/" target="_blank" class="f_news_tag">Web前端</a>
+                            <p class="f_news_title"><a href="https://www.cax8.com/study/html/192.html" target="_blank">网页前端设计快速入门技巧</a></p>
+                            <p class="f_news_info"><span>2019-10-09</span><span>1148</span></p>
+                        </div>
+                    </div>
+                    <ul class="f_news_list">
+                        <li>
+                            <a href="https://www.cax8.com/study/html/16.html" target="_blank">
+                                <i>
+                                    <img src="images/small3d18d23339894cc24d737120f41112391622439185.jpg"
+                                         alt="别让这些闹心的套路，毁了你的网页设计">
+                                </i>
+                                <p>别让这些闹心的套路，毁了你的网页设计</p>
+                                <span>2018-03-25</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cax8.com/study/html/17.html" target="_blank">
+                                <i>
+                                    <img src="images/d2f0dba054844b75e13c57750d1d963f.jpg"
+                                         alt="十条设计原则教你学会如何设计网页布局!">
+                                </i>
+                                <p>十条设计原则教你学会如何设计网页布局!</p>
+                                <span>2018-03-20</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cax8.com/study/html/18.html" target="_blank">
+                                <i>
+                                    <img src="images/small66249269bd6a5854d5aaa7a5b1d4ef4e1622439275.png"
+                                         alt="6条网页设计配色原则,让你秒变配色高手">
+                                </i>
+                                <p>6条网页设计配色原则,让你秒变配色高手</p>
+                                <span>2018-03-14</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section class="tab-box">
+                    <div class="f_news_pic">
+                        <i><img src="images/20ae39a662dfae3a36627a827dd84b3b.png" alt="适合纯小白的个人博客搭建流程"></i>
+                        <div class="f_news_pic_box">
+                            <a href="https://www.cax8.com/study/web/" target="_blank" class="f_news_tag">网站建设</a>
+                            <p class="f_news_title"><a href="https://www.cax8.com/study/web/148.html" target="_blank">适合纯小白的个人博客搭建流程</a></p>
+                            <p class="f_news_info"><span>2019-09-24</span><span>2364</span></p>
+                        </div>
+                    </div>
+                    <ul class="f_news_list">
+                        <li>
+                            <a href="https://www.cax8.com/study/web/145.html" target="_blank">
+                                <i>
+                                    <img src="images/small227c5c53d9633b5582717c3118bb81ec1622342209.png"
+                                         alt="个人博客网站是否应该公安备案？">
+                                </i>
+                                <p>个人博客网站是否应该公安备案？</p>
+                                <span>2020-01-07</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cax8.com/study/web/144.html" target="_blank">
+                                <i>
+                                    <img src="images/smallb1b43f32ca962d73382ed0a71542a31c.png"
+                                         alt="个人博客如何部署阿里云免费的https安全证书？">
+                                </i>
+                                <p>个人博客如何部署阿里云免费的https安全证书？</p>
+                                <span>2019-10-04</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cax8.com/study/web/138.html" target="_blank">
+                                <i>
+                                    <img src="images/83b3d885400fe705326cb30a1dfe77be.png"
+                                         alt="我的个人博客之——阿里云空间选择">
+                                </i>
+                                <p>我的个人博客之——阿里云空间选择</p>
+                                <span>2014-01-18</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+        <!--featured_news-->
+        <div class="mycard">
+            <section>
+                <p class="mycard_title">个人名片</p>
+                <p class="mycard_title_en">my</p>
+                <p class="mycard_title_en">profile</p>
+                <div class="ewm"><img src="images/wx.png" alt="微信"></div>
+                <i><img src="/skin/html/images/avatar.png" alt="头像"></i>
+                <ul>
+                    <li><span>name</span>杨青青</li>
+                    <li><span>job</span>前端设计师、程序员</li>
+                    <li><span>web</span><a href="http://www.cax8.com/" target="_blank">www.cax8.com</a></li>
+                    <li><span>add</span>天津市滨海新区</li>
+                </ul>
+            </section>
+        </div>
+        <div class="clear"></div>
+        <div class="featured_pics">
+            <ul>
+
+                <li>
+                    <a href="https://www.cax8.com/e/action/ShowInfo.php?classid=13&id=11" target="_blank">
+                        <i>
+                            <img src="images/b713654784ec9dcb6b629c62062052f8.png"
+                                 alt="中国风 / 古典元素">
+                        </i>
+                        <section>
+                            <p>中国风 / 古典元素</p>
+                            <span>12</span>
+                        </section>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://www.cax8.com/e/action/ShowInfo.php?classid=13&id=10" target="_blank">
+                        <i>
+                            <img src="images/small1f35d194bd372e5af9ade1a6960e17c71622960833.jpg"
+                                 alt="唯美图片 / 文章配图">
+                        </i>
+                        <section>
+                            <p>唯美图片 / 文章配图</p>
+                            <span>12</span>
+                        </section>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://www.cax8.com/e/action/ShowInfo.php?classid=13&id=6" target="_blank">
+                        <i>
+                            <img src="images/aca42be47c2af990727dd4b2df0b118f.jpg"
+                                 alt="曾经的杨青青个人博客">
+                        </i>
+                        <section>
+                            <p>曾经的杨青青个人博客</p>
+                            <span>13</span>
+                        </section>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://www.cax8.com/e/action/ShowInfo.php?classid=13&id=5" target="_blank">
+                        <i>
+                            <img src="images/3763ecd580be571441f6108cc0fc185b.jpg"
+                                 alt="个人博客十年历史">
+                        </i>
+                        <section>
+                            <p>个人博客十年历史</p>
+                            <span>8</span>
+                        </section>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://www.cax8.com/e/action/ShowInfo.php?classid=13&id=9" target="_blank">
+                        <i>
+                            <img src="images/6af098f3711aa08bf5cbc054539b5698.png"
+                                 alt="《专题》个人博客|资讯|门户网站">
+                        </i>
+                        <section>
+                            <p>《专题》个人博客|资讯|门户网站</p>
+                            <span>6</span>
+                        </section>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="blogs">
+            <h2 class="h_title"><span class="icon_more"><a href="/all/" target="_blank">查看更多</a></span>最新文章</h2>
+            <ul>
+
+                <li class="blogs_list">
+                    <a href="https://www.cax8.com/study/bj/258.html" target="_blank">
+                        <i>
+                            <img src="images/smalleb868f1614af383141207d9d5cc895f8.jpg"
+                                 alt="我为什么坚持独立博客">
+                        </i>
+                        <h2><span>转载</span>我为什么坚持独立博客</h2>
+                    </a>
+                    <p>我写博客，已经大概17年了，坚持独立博客，也已经有大概14年了，直到今天，我仍然坚持在自己的独立博客中写文章，能坚持这么久，也算是一项成就了吧。</p>
+                    <div class="blogs_base"><span class="blogs_time">2021-06-06</span><span class="blogs_onclick">1102</span></div>
+                    <a href="https://www.cax8.com/study/bj/258.html" target="_blank" class="read_more">阅读更多</a>
+                </li>
+
+                <li class="blogs_list">
+                    <a href="https://www.cax8.com/study/html/257.html" target="_blank">
+                        <i>
+                            <img src="images/smallead480954be98754d4c5ccb3c031d85f.png"
+                                 alt="HTML5标签使用的常见误区">
+                        </i>
+                        <h2>HTML5标签使用的常见误区</h2>
+                    </a>
+                    <p>最近组内进行HTML5标签的学习，方法呢就是大家每人挑选几个标签，自己先去学习，然后给大家作讲解。这个过程大家还是挺有收获的。但是现在HTML5还处在草案阶段，有些新的标签元素的解释也是经常有变化</p>
+                    <div class="blogs_base"><span class="blogs_time">2021-06-06</span><span class="blogs_onclick">1019</span></div>
+                    <a href="https://www.cax8.com/study/html/257.html" target="_blank" class="read_more">阅读更多</a>
+                </li>
+
+                <li class="blogs_list">
+                    <a href="https://www.cax8.com/study/html/256.html" target="_blank">
+                        <i>
+                            <img src="images/small6cd839ef5ca264cfb3d383ffec8cbe761622956826.png"
+                                 alt="Web前端：11个让你代码整洁的原则">
+                        </i>
+                        <h2>Web前端：11个让你代码整洁的原则</h2>
+                    </a>
+                    <p>写Web页面就像我们建设房子一样，地基牢固，房子才不会倒。同样的，我们制作Web页面也一样，一个良好的HTML结构是制作一个美丽的网站的开始，同样的，良好的CSS只存在同样良好的HTML中，所以一个干净的，语义的HTML的优点很多，那么平时制作中，我们做到了这一点吗？</p>
+                    <div class="blogs_base"><span class="blogs_time">2021-06-06</span><span class="blogs_onclick">1603</span></div>
+                    <a href="https://www.cax8.com/study/html/256.html" target="_blank" class="read_more">阅读更多</a>
+                </li>
+
+                <li class="blogs_list">
+                    <a href="https://www.cax8.com/study/html/255.html" target="_blank">
+                        <i>
+                            <img src="images/smallc7cb8e727ed9671ca7826105909467af.png"
+                                 alt="前端工程师的价值体现在哪里？">
+                        </i>
+                        <h2>前端工程师的价值体现在哪里？</h2>
+                    </a>
+                    <p>这是一个很老的话题“前端工程师的价值体现在哪里？”。有人说：“前端工程师之于网站的价值犹如化妆师之于明星的价值。”一位好的Web前端开发工程师在知识体系上既要有广度，又要有深度。</p>
+                    <div class="blogs_base"><span class="blogs_time">2021-06-06</span><span class="blogs_onclick">394</span></div>
+                    <a href="https://www.cax8.com/study/html/255.html" target="_blank" class="read_more">阅读更多</a>
+                </li>
+
+                <li class="blogs_list">
+                    <a href="https://www.cax8.com/study/html/254.html" target="_blank">
+                        <i>
+                            <img src="images/smallfd78d2045ca39a70fcd1999f10a0dc871622956138.jpg"
+                                 alt="如何成为一名优秀的web前端工程师（前端攻城师）？">
+                        </i>
+                        <h2><span>转载</span>如何成为一名优秀的web前端工程师（前端攻城师）？</h2>
+                    </a>
+                    <p>我所遇到的前端程序员分两种：第一种一直在问：如何学习前端？第二种总说：前端很简单，就那么一点东西。我从没有听到有人问：如何做一名优秀、甚至卓越的WEB前端工程师。何为：前端工程</p>
+                    <div class="blogs_base"><span class="blogs_time">2021-06-06</span><span class="blogs_onclick">998</span></div>
+                    <a href="https://www.cax8.com/study/html/254.html" target="_blank" class="read_more">阅读更多</a>
+                </li>
+
+                <li class="blogs_list">
+                    <a href="https://www.cax8.com/study/html/253.html" target="_blank">
+                        <i>
+                            <img src="images/small52474c24868b03693896f45abdca21671622956020.png"
+                                 alt="使用CSS的类名交集复合选择器">
+                        </i>
+                        <h2>使用CSS的类名交集复合选择器</h2>
+                    </a>
+                    <p>首先先看一下基本定义：复合选择器就是两个或多个基本选择器，通过不同方式连接而成的选择器，主要包括&ldquo;交集&rdquo;选择器、&ldquo;并集&rdquo;选择器、&ldquo;后代&rdquo;</p>
+                    <div class="blogs_base"><span class="blogs_time">2021-06-06</span><span class="blogs_onclick">1250</span></div>
+                    <a href="https://www.cax8.com/study/html/253.html" target="_blank" class="read_more">阅读更多</a>
+                </li>
+
+                <li class="blogs_list">
+                    <a href="https://www.cax8.com/study/html/252.html" target="_blank">
+                        <i>
+                            <img src="images/small30c87f4219fed9283ff6e52974a757d01622955460.jpg"
+                                 alt="编写高效的JavaScript程序">
+                        </i>
+                        <h2>编写高效的JavaScript程序</h2>
+                    </a>
+                    <p>
+                        JavaScript引擎包括Google
+                        V8（Chrome，Node）都是专为快速执行大型JavaScript程序而设计的。在开发过程中，如果你在乎内存使用率和性能情况，那么你应该会关心在用户的浏览器中JavaScript引擎背后是怎么样的。无论是V8、SpiderMonkey
+                        (Firefox)、Carakan (Opera)、Chakra (IE) 还是其他，有了它们可以帮助你更好的优化应用程序。
+                    </p>
+                    <div class="blogs_base"><span class="blogs_time">2021-06-06</span><span class="blogs_onclick">1063</span></div>
+                    <a href="https://www.cax8.com/study/html/252.html" target="_blank" class="read_more">阅读更多</a>
+                </li>
+
+                <li class="blogs_list">
+                    <a href="https://www.cax8.com/study/html/251.html" target="_blank">
+                        <i>
+                            <img src="images/small917b4c7eefcfc6f4cacb093b9d42c3d91622955200.png"
+                                 alt="前端开发之面向对象">
+                        </i>
+                        <h2>前端开发之面向对象</h2>
+                    </a>
+                    <p>
+                        面向对象的英文全称叫做Object Oriented，简称OO。OO其实包括OOA(Object Oriented Analysis，面向对象分析)、OOD(Object Oriented
+                        Design，面向对象设计)和OOP(Object Oriented Programming，面向对象的程序设计)。
+                    </p>
+                    <div class="blogs_base"><span class="blogs_time">2021-06-06</span><span class="blogs_onclick">1847</span></div>
+                    <a href="https://www.cax8.com/study/html/251.html" target="_blank" class="read_more">阅读更多</a>
+                </li>
+
+                <li class="blogs_list">
+                    <a href="https://www.cax8.com/study/html/250.html" target="_blank">
+                        <i>
+                            <img src="images/228622ae5187ed9031b9a15e7217f64a.gif"
+                                 alt="写给程序猿们的交互设计">
+                        </i>
+                        <h2>写给程序猿们的交互设计</h2>
+                    </a>
+                    <p>
+                        看到此文时恍惚回到自己学习网页的时候，那时候只知有编程，不知有设计。各个论坛大部分时候讨论的也是如何用 Frame 实现页面的分区，如何做出圆角，以及写一大段 javascript 代码或者做个 flash
+                        只为让页面看起来更眩一点。
+                    </p>
+                    <div class="blogs_base"><span class="blogs_time">2021-06-06</span><span class="blogs_onclick">1927</span></div>
+                    <a href="https://www.cax8.com/study/html/250.html" target="_blank" class="read_more">阅读更多</a>
+                </li>
+
+                <li class="blogs_list">
+                    <a href="https://www.cax8.com/study/html/249.html" target="_blank">
+                        <i>
+                            <img src="images/dcd9b39bfa01d0e9999bc0967dff064a.jpg"
+                                 alt="你知道吗？Web的26项基本概念和技术">
+                        </i>
+                        <h2>你知道吗？Web的26项基本概念和技术</h2>
+                    </a>
+                    <p>Web开发是比较费神的，需要掌握很多很多的东西，特别是从事前端开发的朋友，需要通十行才行。今天，本文向初学者介绍一些Web开发中的基本概念和用到的技术，从A到Z总共26项，每项对应一个概念或者技术。</p>
+                    <div class="blogs_base"><span class="blogs_time">2021-06-06</span><span class="blogs_onclick">1430</span></div>
+                    <a href="https://www.cax8.com/study/html/249.html" target="_blank" class="read_more">阅读更多</a>
+                </li>
+
+                <li class="blogs_list">
+                    <a href="https://www.cax8.com/study/html/248.html" target="_blank">
+                        <i>
+                            <img src="images/small38ef3009568867ef0893f77701ce4f621622954626.png"
+                                 alt="响应式设计的现状与趋势">
+                        </i>
+                        <h2>响应式设计的现状与趋势</h2>
+                    </a>
+                    <p>从2012年开始到2014年，各大家对Web设计的趋势预测中，都提到响应式设计；2015年网页设计趋势预测中，响应式仍在继续。这个经历了几年依然大热的响应式，在过去的几年里，快速巩固了自己的地位，并掀起了一股网页设计新标准的浪潮。这里本人基于一些资料文献及自己的陋见，谈谈响应式设计的一些现状和趋势。</p>
+                    <div class="blogs_base"><span class="blogs_time">2021-06-06</span><span class="blogs_onclick">1429</span></div>
+                    <a href="https://www.cax8.com/study/html/248.html" target="_blank" class="read_more">阅读更多</a>
+                </li>
+
+                <li class="blogs_list">
+                    <a href="https://www.cax8.com/study/html/247.html" target="_blank">
+                        <i>
+                            <img src="images/small2b6adf785f4e9a69688a7ebcd9ad8ae01622954474.png"
+                                 alt="一个前端的自我修养">
+                        </i>
+                        <h2><span>转载</span>一个前端的自我修养</h2>
+                    </a>
+                    <p>前端其实是个特别苦逼的职业，因为前端技术一直革命的特别快，新技术、新技巧在不断地被发明出来。之前我有一个朋友，他讲说他对自己的认知是了解前端、熟悉前端、精通前端、熟悉前端、不懂前端。为什么呢，他说当他觉得自己对前端所有的东西觉得无所不知，无所不能的时候，忽然看到了一段代码，他完全无法理解，于是整个世界就崩塌了，从此再也不敢说自己会前端。</p>
+                    <div class="blogs_base"><span class="blogs_time">2021-06-06</span><span class="blogs_onclick">771</span></div>
+                    <a href="https://www.cax8.com/study/html/247.html" target="_blank" class="read_more">阅读更多</a>
+                </li>
+
+                <li class="blogs_list">
+                    <a href="https://www.cax8.com/study/bj/243.html" target="_blank">
+                        <i>
+                            <img src="images/smalldada51e61bb005b4ea8796caf75fecef.png"
+                                 alt="一个程序员的理想主义">
+                        </i>
+                        <h2><span>转载</span>一个程序员的理想主义</h2>
+                    </a>
+                    <p>我是一个程序员，也是一个理想主义者。作为一个五年多的从业者，我回想起当初跨入这一行的初衷，是因为这里是理想主义者的净土。</p>
+                    <div class="blogs_base"><span class="blogs_time">2021-06-06</span><span class="blogs_onclick">857</span></div>
+                    <a href="https://www.cax8.com/study/bj/243.html" target="_blank" class="read_more">阅读更多</a>
+                </li>
+
+                <li class="blogs_list">
+                    <a href="https://www.cax8.com/share/blog/241.html" target="_blank">
+                        <i>
+                            <img src="images/small8756d3edc05efb4e4f95df12718f14aa1622595902.jpg"
+                                 alt="<font color='C20160'>html5响应式个人博客模板《初见》</font>">
+                        </i>
+                        <h2>
+                            <span>原创</span>
+                            <font color='C20160'>html5响应式个人博客模板《初见》</font>
+                        </h2>
+                    </a>
+                    <p>《初见》响应式个人博客模板，初见惊艳，再见依然。集博客，相册，视频，个人简历，自带seo优化功能，自适应电脑，平板，手机,专为个人定制的个人博客模板。</p>
+                    <div class="blogs_base"><span class="blogs_time">2021-06-02</span><span class="blogs_onclick">1629</span></div>
+                    <a href="https://www.cax8.com/share/blog/241.html" target="_blank" class="read_more">阅读更多</a>
+                </li>
+            </ul>
+        </div>
+        <aside class="rbox">
+            <div class="isgood_news">
+                <h2 class="h_title">站长推荐</h2>
+                <ul>
+                    <li>
+                        <a href="https://www.cax8.com/share/blog/241.html" title="html5响应式个人博客模板《初见》" target="_blank">
+                            <i>
+                                <img src="images/small8756d3edc05efb4e4f95df12718f14aa1622595902.jpg"
+                                     alt="html5响应式个人博客模板《初见》">
+                            </i><em>1</em>
+                            <p>html5响应式个人博客模板《初见》</p>
+                            <span class="star5"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cax8.com/share/blog/38.html" title="个人博客 / 资讯 / 门户 网站模板《专题》" target="_blank">
+                            <i>
+                                <img src="images/2c19005aff28e3a3da6a3228696e7ea6.jpg" alt="个人博客 / 资讯 / 门户 网站模板《专题》">
+                            </i><em>2</em>
+                            <p>个人博客 / 资讯 / 门户 网站模板《专题》</p>
+                            <span class="star5"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cax8.com/share/blog/37.html" title="响应式个人博客模板《今夕何夕》" target="_blank">
+                            <i>
+                                <img src="images/6a7c45bee0faad542cb77dd0c1949379.jpg"
+                                     alt="响应式个人博客模板《今夕何夕》">
+                            </i><em>3</em>
+                            <p>响应式个人博客模板《今夕何夕》</p>
+                            <span class="star5"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cax8.com/study/web/148.html" title="适合纯小白的个人博客搭建流程" target="_blank">
+                            <i>
+                                <img src="images/20ae39a662dfae3a36627a827dd84b3b.png"
+                                     alt="适合纯小白的个人博客搭建流程">
+                            </i><em>4</em>
+                            <p>适合纯小白的个人博客搭建流程</p>
+                            <span class="star5"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cax8.com/study/bj/122.html" title="7年，一个80后女站长与阿里云携手创业的真实故事" target="_blank">
+                            <i>
+                                <img src="images/2cbf93589665ee2709bc556bf2fa774d.png" alt="7年，一个80后女站长与阿里云携手创业的真实故事">
+                            </i><em>5</em>
+                            <p>7年，一个80后女站长与阿里云携手创业的真实故事</p>
+                            <span class="star5"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cax8.com/study/web/138.html" title="我的个人博客之——阿里云空间选择" target="_blank">
+                            <i>
+                                <img src="images/83b3d885400fe705326cb30a1dfe77be.png"
+                                     alt="我的个人博客之——阿里云空间选择">
+                            </i><em>6</em>
+                            <p>我的个人博客之——阿里云空间选择</p>
+                            <span class="star5"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ad_r">
+                <a href="https://www.cax8.com/share/blog/241.html" target="_blank">
+                    <img src="images/4ab94e8fffef1ee545e72c4466ad0f8c.png"
+                         alt="《初见》响应式个人博客模板">
+                </a>
+            </div>
+            <div class="hot_news">
+                <h2 class="h_title">人气点击</h2>
+                <ol start="1">
+                    <li>
+                        <a href="https://www.cax8.com/study/web/148.html" title="适合纯小白的个人博客搭建流程" target="_blank">
+                            <p>适合纯小白的个人博客搭建流程</p>
+                        </a><span>2364</span>
+                    </li>
+                    <li>
+                        <a href="https://www.cax8.com/study/bj/110.html" title="个人博客从简不繁" target="_blank">
+                            <p>个人博客从简不繁</p>
+                        </a><span>2225</span>
+                    </li>
+                    <li>
+                        <a href="https://www.cax8.com/study/bj/4.html" title="个人博客，属于我的小世界！" target="_blank">
+                            <p>个人博客，属于我的小世界！</p>
+                        </a><span>2108</span>
+                    </li>
+                    <li>
+                        <a href="https://www.cax8.com/study/bj/150.html" title="分享我的个人博客访问量如何做到IP从10到2000的(图文)" target="_blank">
+                            <p>分享我的个人博客访问量如何做到IP从10到2000的(图文)</p>
+                        </a><span>1999</span>
+                    </li>
+                    <li>
+                        <a href="https://www.cax8.com/study/bj/151.html" title="【匆匆那些年】总结个人博客经历的这四年…" target="_blank">
+                            <p>【匆匆那些年】总结个人博客经历的这四年…</p>
+                        </a><span>1988</span>
+                    </li>
+                    <li>
+                        <a href="https://www.cax8.com/study/bj/55.html" title="一个SEO站长分享个人博客产品网赚建站经历全过程" target="_blank">
+                            <p>一个SEO站长分享个人博客产品网赚建站经历全过程</p>
+                        </a><span>1976</span>
+                    </li>
+                    <li>
+                        <a href="https://www.cax8.com/study/bj/117.html" title="个人博客，我为什么要用帝国cms？" target="_blank">
+                            <p>个人博客，我为什么要用帝国cms？</p>
+                        </a><span>1974</span>
+                    </li>
+                    <li>
+                        <a href="https://www.cax8.com/study/web/144.html" title="个人博客如何部署阿里云免费的https安全证书？" target="_blank">
+                            <p>个人博客如何部署阿里云免费的https安全证书？</p>
+                        </a><span>1947</span>
+                    </li>
+                    <li>
+                        <a href="https://www.cax8.com/study/html/163.html" title="如何在同一页面设置不同文字链接效果的样式" target="_blank">
+                            <p>如何在同一页面设置不同文字链接效果的样式</p>
+                        </a><span>1938</span>
+                    </li>
+                    <li>
+                        <a href="https://www.cax8.com/study/html/250.html" title="写给程序猿们的交互设计" target="_blank">
+                            <p>写给程序猿们的交互设计</p>
+                        </a><span>1927</span>
+                    </li>
+                </ol>
+            </div>
+            <div class="ad_r">
+                <a href="https://www.cax8.com/share/blog/241.html" target="_blank">
+                    <img src="images/92ea18fb98d7b4c820249b575b68eb30.png"
+                         alt="个人博客模板">
+                </a>
+            </div>
+            <div class="tagsclous">
+                <h2 class="h_title">标签云</h2>
+                <ul>
+                    <a href="/tag/duli.html" target="_blank">独立</a>
+                    <a href="/tag/xinqing.html" target="_blank">心情</a>
+                    <a href="/tag/wenjian.html" target="_blank">文件</a>
+                    <a href="/tag/yangshi.html" target="_blank">样式</a>
+                    <a href="/tag/danqie.html" target="_blank">胆怯</a>
+                    <a href="/tag/secai.html" target="_blank">色彩</a>
+                    <a href="/tag/bokerensheng.html" target="_blank">博客人生</a>
+                    <a href="/tag/gainian.html" target="_blank">概念</a>
+                    <a href="/tag/jiqiao.html" target="_blank">技巧</a>
+                    <a href="/tag/liulan.html" target="_blank">浏览</a>
+                    <a href="/tag/gongneng.html" target="_blank">功能</a>
+                    <a href="/tag/xinlingjitang.html" target="_blank">心灵鸡汤</a>
+                    <a href="/tag/huodong.html" target="_blank">活动</a>
+                    <a href="/tag/ceshi.html" target="_blank">测试</a>
+                    <a href="/tag/mingming.html" target="_blank">命名</a>
+                    <a href="/tag/peise.html" target="_blank">配色</a>
+                    <a href="/tag/daohang.html" target="_blank">导航</a>
+                    <a href="/tag/chengxu.html" target="_blank">程序</a>
+                    <a href="/tag/pinglun.html" target="_blank">评论</a>
+                    <a href="/tag/liulanqi.html" target="_blank">浏览器</a>
+                    <a href="/tag/biancheng.html" target="_blank">编程</a>
+                    <a href="/tag/zhengshu.html" target="_blank">证书</a>
+                    <a href="/tag/gantongshenshou.html" target="_blank">感同身受</a>
+                    <a href="/tag/zhongli.html" target="_blank">整理</a>
+                    <a href="/tag/gudian.html" target="_blank">古典</a>
+                    <a href="/tag/shenghuo.html" target="_blank">生活</a>
+                    <a href="/tag/qixiqingrenjie.html" target="_blank">七夕情人节</a>
+                    <a href="/tag/aiqing.html" target="_blank">爱情</a>
+                    <a href="/tag/huohu.html" target="_blank">火狐</a>
+                    <a href="/tag/moihao.html" target="_blank">美好</a>
+                </ul>
+            </div>
+            <div class="emial_box">
+                <p>您可以通过以下方式联系我们</p>
+                <p>（<b>提议</b>、<b>投诉</b>、<b>合作</b>推荐此方式）</p>
+                <p>发送邮件Email到</p>
+                <p><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=476847113@qq.com" target="_blank">dancesmiling@qq.com</a></p>
+            </div>
+        </aside>
+        <div class="clear"></div>
+        <div class="links">
+            <h2 class="h_title">友情链接</h2>
+            <ul>
+                <li><a href="https://www.qingqingblog.com" target="_blank">个人博客</a></li>
+                <li><a href="https://www.tdouplus.com/" target="_blank">土豆码庄</a></li>
+                <li><a href="https://www.jiangdefu.com/" target="_blank">蒋德富</a></li>
+                <li><a href="https://www.wenyuanblog.com/" target="_blank">文渊博客</a></li>
+                <li><a href="http://menhu.ip3q.com/" target="_blank">青于蓝门户</a></li>
+                <li><a href="https://www.3dst.cn/" target="_blank">阅读文章网</a></li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <div class="box">
+            <ul class="footer_nav">
+                <li><a href="https://www.cax8.com/sitemap.xml" target="_blank">网站地图</a></li>
+                <li><a href="https://www.cax8.com/all/" target="_blank">所有文章</a></li>
+                <li><a href="https://www.cax8.com/tags/" target="_blank">标签合集</a></li>
+                <li><a href="https://tongji.baidu.com/web/welcome/ico?s=63b07016b8d2f9999d0c2be37cca2a0f" target="_blank">访问统计</a></li>
+            </ul>
+            <div class="guanzhu_img">
+                <i><img src="images/wx.png" alt="微信">微信号</i>
+                <i><img src="images/wxgzh.jpg" alt="微信公众号">微信公众号</i>
+            </div>
+            <div class="copyright">
+                <p>A个人博客网站 版权所有 </p>
+                <p>
+                    Copyright © <a href="http:s//www.qingqingblog.com" target="_blank">www.qingqingblog.com</a> All Rights
+                    Reserved.
+                </p>
+                <p>
+                    备案号：<a href="https://beian.miit.gov.cn/" target="_blank">津ICP备20005778号-1</a><i class="ga">
+                        <img src="https://www.cax8.com/skin/html/images/ga.png"
+                             alt="公安备案号">
+                    </i>津公网安备 12011602000448 号
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="#" title="返回顶部" class="icon-top"></a>
+    <script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?63b07016b8d2f9999d0c2be37cca2a0f";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+    </script>
+</body>
+</html>
+

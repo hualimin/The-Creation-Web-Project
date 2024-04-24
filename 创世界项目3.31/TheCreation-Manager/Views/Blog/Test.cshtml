@@ -1,0 +1,160 @@
+﻿
+@{
+   // Layout = null;
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/BlogLayout1.cshtml";
+}
+
+<main class="main" role="main">
+    <h2>Test</h2>
+
+    <div class="post istop cate1 auth1">
+        <h2><span>置顶推荐</span> <a href="/210/a/ziyuan/5.html" title="如何让自己的网站更有质量？AB模板王有妙招">如何让自己的网站更有质量？AB模板王有妙招</a></h2>
+    </div>
+
+    <article class="post cate1  auth1">
+
+        <h1>如何让自己的网站更有质量？AB模板王有妙招</h1>
+        <div class="postmeta article-meta"> <span><i class="fa fa-calendar"></i> 日期：2021/6/18 19:58:24 </span> <span><i class="fa fa-book"></i> 栏目：<a href="" title="资源分享" target="_blank">资源分享</a></span> <span><i class="fa fa-fire"></i> 浏览：2 次 </span> </div>
+        <div class="entry">
+            <p><img src="/image/BlogContent_Img/20210618/6375964306856239542082209.jpg" title="1-1FFQ93934U8.jpg" alt="1-1FFQ93934U8.jpg" width="617" height="auto" style="height: auto;"></p><p>
+                <br>
+                随着互联网的不断发展，对网站的要求越来越高，如何提高网站的质量，让自己在这个竞争激烈的市场中站稳自己的脚步呢?今天，AB模板王汇总了一些方式，希望对大家有帮助。
+            </p><p>
+                &nbsp;
+            </p><p>
+                第一、建设网站前的市场分析
+            </p><p>
+                AB模板王告诉大家，在建设网站之前，要好好分析一下相关行业的市场是怎样的，然后结合自身的条件分析，给网站制定一个合理的规划。
+            </p><p>
+                &nbsp;
+            </p><p>
+                第二、选择一个独立稳定的服务器
+            </p><p>
+                有的站长为了节约成本，使用了一个低廉的服务器，殊不知这样的服务器极不稳定，会导致用户迟迟打不开网页，他们是没有时间慢慢等待的，只会快速离开网站，增加网站的跳出率。
+            </p><p>
+                &nbsp;
+            </p><p>
+                网站在刚刚建立的时候，就要到正规公司购买一个独立稳定的服务器，保证网站的正常运营速度，才会受到用户的亲睐。
+            </p><p>
+                &nbsp;
+            </p><p>
+                第三、网页设计要简单明了
+            </p><p>
+                有的站长为了吸引用户的眼球，把网站设计得花枝招展，其实这样犯了一个严重的错误，用户进入网站之后感到眼花缭乱，很难找到自己需要的东西，他们只会立刻关闭网站，网站的跳出率会随之增多。
+            </p><p>
+                &nbsp;
+            </p><p>
+                网站的结构尽量简洁一些，做到层次分明、中心明确、色调搭配合理等等，给用户舒服的感觉，才能留住更多的有效客户。
+            </p><p>
+                &nbsp;
+            </p><p>
+                第四、网站内容的规划
+            </p><p>
+                大家都知道“内容为王”，网站的内容是重中之重，AB模板王建议，可以从一些报纸杂志、多媒体或是生活中寻找素材，既要使文章有价值，又要能吸引用户的眼球，做好了这一点，网站的流量才会越来越多。
+            </p><p>
+                &nbsp;
+            </p><p>
+                切记，千万不要去采集别人的文章，这样的文章重复度太高，没有什么价值，对网站没有任何帮助，还会让搜索引擎觉得你的网站是一个垃圾站，导致网站的排名降低。
+            </p><p>
+                &nbsp;
+            </p><p>
+                AB模板王介绍了提高网站质量的四个方法，大家要引起重视了，并不断努力，不断创新，肯定会取得显著的效果。
+            </p><p><br></p>
+        </div>
+
+        <div class="post-nav">
+            <div class="nav-left">上一篇：没有了 </div>
+            <div class="nav-right">下一篇：没有了 </div>
+        </div>
+        <div class="post-copyright">
+            <p>内容版权声明：除非注明，否则皆为本站原创文章。</p>
+            <p>转载注明出处：<a href="///Blog/BlogDetail/" title="如何让自己的网站更有质量？AB模板王有妙招" target="_blank">http://120.12.546/Blog/BlogDetail/</a></p>
+        </div>
+        <section class="related">
+            <h3>相关推荐</h3>
+            <ul>
+                <li><i>2017-07-08</i><span class="top">1</span><a href="/210/a/ziyuan/5.html" target="_blank" title="如何让自己的网站更有质量？AB模板王有">如何让自己的网站更有质量？AB模板王有</a></li>
+
+            </ul>
+        </section>
+
+
+    </article>
+
+
+    @*<article class="post cate1 auth1">
+            <div id="show">
+                <span>小明：</span>
+                <p>我发了个评论</p>
+                <small>2021-2-18  <i class="fa fa-location-arrow"></i> 江西-南昌-江西师范大学</small>
+            </div>
+            <input name="content" id="content" />
+            <button id="tijiao">提交</button>
+        </article>*@
+
+    <main class="main" role="main">
+
+        <article class="post cate1 auth1">
+            <h2>评论内容</h2>
+            <input name="content" id="content" />
+            <button id="tijiao">提交</button>
+            <div id="show">
+                @Html.Action("GetComments", "Blog", new { id = 3 })
+            </div>
+
+        </article>
+
+    </main>
+
+
+
+</main>
+    
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $('#tijiao').on('click', function () {
+            var content = $('#content').val();
+            console.log(content);
+
+            $.ajax({
+                url: "/Blog/Test1",
+                type: "post",
+                data: {
+                    content: content,
+                    id:3,
+                },
+                success: function (data) {
+                    if (data == "评论删除失败！") {
+                        alert("评论删除失败！");
+                    }
+                    else {
+                        alert("评论成功！");
+                        $('#show').html(data);
+                        $('#content').val('');
+                    }
+                }
+            });
+
+
+            //$.ajax({
+            //    url: "/Blog/Test1",
+            //    type: "post",
+            //    data: {
+            //        content=content,
+            //    },
+            //    success: function (data) {
+            //        if (data == "success") {
+            //            alert("密码正确！");
+            //        }
+            //        else {
+            //            $('#show').html(data);
+
+            //        }
+            //    }
+            //});
+
+         });
+
+    </script>
+

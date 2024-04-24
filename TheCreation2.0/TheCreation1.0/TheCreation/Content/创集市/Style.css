@@ -1,0 +1,72 @@
+﻿@charset "utf-8";
+
+body {
+	background-color: #FCFCFC;
+}
+
+dl,
+dd {
+	margin: 0;
+}
+
+#kinds {
+	width: 850px;
+	background: rgba(255, 255, 255, 0.8);
+	kinds-shadow: 0 0 10px rgba(73, 66, 66, .1);
+	margin: 50px auto;
+	border: 1px solid #E5E5E5;
+}
+
+#kinds dl {
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px dashed #dadada;
+	margin: 0 20px;
+}
+
+#kinds dt {
+	float: left;
+	color: #8a8a8a;
+}
+
+#kinds dd {
+	float: left;
+	color: #252525;
+	margin: 0 10px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+#kinds dd.active {
+	color: #00b38a;
+	font-weight: bold;
+}
+
+#kinds dl.select {
+	background: #efefef;
+	margin: 0;
+	padding: 0 20px;
+}
+
+#kinds dl.select dd {
+	border: 1px solid #00b38a;
+	height: 25px;
+	line-height: 25px;
+	margin-top: 13px;
+	padding: 0 2px 0 10px;
+	border-radius: 3px;
+	background-color: #fff;
+}
+
+#kinds dl.select dd span {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	text-align: center;
+	line-height: 20px;
+	background: #00b38a;
+	color: #fff;
+	margin-left: 10px;
+	cursor: pointer;
+	border-radius: 5px;
+}

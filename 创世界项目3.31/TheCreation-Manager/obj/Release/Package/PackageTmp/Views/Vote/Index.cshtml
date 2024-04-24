@@ -1,0 +1,74 @@
+﻿@using TheCreation_Manager.Models
+@model VoteDisplayViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h2>投票总览</h2>
+        <h4>普通投票</h4>
+        <ul>
+                @foreach (var item in Model.normal_vote)
+                {
+                    <li>
+                         <a href="@Url.Action("Normal_Vote_Dtail","Vote",new { id=item.VoteId})">
+                        <h7>@item.Title</h7><br />
+                        <img src="@item.ImgUrl" />
+                        <p>@item.Content</p>
+                        <span>发起时间：@item.BeginDate</span><br />
+                        <span>截止时间：@item.EndDate</span>
+                    </a>
+                    </li>                 
+                }
+            <li><a href="#">2</a></li>
+        </ul>
+        <hr />
+        <h4>用户投票</h4>
+        <ul>
+            @foreach (var item in Model.user_vote)
+            {
+                <li>
+                    <a href="@Url.Action("User_Vote_Dtail","Vote",new { id=item.VoteId})">
+                        <h7>@item.Title</h7><br />
+                        <img src="@item.ImgUrl" />
+                        <p>@item.Content</p>
+                        <span>发起时间：@item.BeginDate</span><br />
+                        <span>截止时间：@item.EndDate</span>
+                    </a>                  
+                </li>
+            }
+        </ul>
+
+        <hr />
+        <h4>作品投票</h4>
+        <ul>
+            @foreach (var item in Model.work_vote)
+            {
+                <li>
+                     <a href="@Url.Action("Work_Vote_Dtail","Vote",new { id=item.VoteId})">
+                    <h7>@item.Title</h7><br />
+                    <img src="@item.ImgUrl" />
+                    <p>@item.Content</p>
+                    <span>发起时间：@item.BeginDate</span><br />
+                    <span>截止时间：@item.EndDate</span>
+                </a>
+                </li>
+            }
+        </ul>
+
+    </div>
+
+    <div>
+
+    </div>
+</body>
+</html>

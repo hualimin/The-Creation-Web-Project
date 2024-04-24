@@ -1,0 +1,343 @@
+﻿@model IEnumerable<Models.Users>
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/css/public.css" media="all">
+</head>
+<body>
+    <div class="layuimini-container">
+        <div class="layuimini-main">
+
+            <fieldset class="table-search-fieldset">
+                <legend>搜索信息</legend>
+                <div style="margin: 10px 10px 10px 10px">
+                    <form class="layui-form layui-form-pane" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">用户昵称</label>
+                                <div class="layui-input-inline">
+                                    <input id="search_name" type="text" name="username" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">用户性别</label>
+                                <div class="layui-input-inline">
+                                    <input id="search_sex" type="text" name="sex" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">用户爱好</label>
+                                <div class="layui-input-inline">
+                                    <input id="search_hobby" type="text" name="city" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">用户状态</label>
+                                <div class="layui-input-inline">
+                                    <input id="search_state" type="text" name="classify" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <button type="submit" class="layui-btn layui-btn-primary" lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </fieldset>
+
+            <style type="text/css">
+                .layui-table-cell{
+                    text-align:center;
+                    height:auto;
+                    white-space:normal;
+                }
+                .layui-table omg{
+                    max-width:50px;
+                }
+            </style>
+
+            <script type="text/html" id="imgtmp">
+                <img src="{{d.HeadUrl}}" width="50" height="50" border:1px solid red;" />
+            </script>
+
+            <script type="text/html" id="toolbarDemo">
+                <div class="layui-btn-container">
+                    <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加 </button>
+                </div>
+            </script>
+
+            <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+            <script type="text/html" id="currentTableBar">
+                <a class="layui-btn layui-btn-xs layui-btn data-count-edit" lay-event="edit">编辑</a>
+                <a class="layui-btn layui-btn-xs layui-btn-warm data-count-freeze" lay-event="freeze">
+                    {{#  if(d.State == '冻结  '){ }}
+                    解冻
+                    {{#  }else{ }}
+                    冻结
+                    {{# } }}
+                </a>
+            </script>
+        </div>
+    </div>
+
+    <script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+    @*<script type="text/javascript">
+            $("#delete").click(function () {
+                $.ajax({
+                    url: "@Url.Action("HaHa","Home")",
+                    async: false,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+            });
+
+        </script>*@
+
+
+<script>
+    function formatUnixtimestamp(unixtimestamp) {
+        if (unixtimestamp == null) return "未交付";
+        var timestamp = unixtimestamp;
+        var date = new Date(parseInt(timestamp.replace("/Date(", "").replace(")/", ""), 10));
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
+        h = (date.getHours() < 10 ? '0' + (date.getHours()) : date.getHours()) + ':';
+        m = (date.getMinutes() < 10 ? '0' + (date.getMinutes()) : date.getMinutes()) + ':';
+        s = (date.getSeconds() < 10 ? '0' + (date.getSeconds()) : date.getSeconds());
+        var NewDtime = Y + M + D + h + m + s;
+        return NewDtime;
+    }
+
+    layui.use(['form', 'table'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table;
+
+
+        table.render({
+            elem: '#currentTableId',
+            url: '@Url.Content("/Admin/GetUsersTable")',
+            toolbar: '#toolbarDemo',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            cols: [[
+                { field: 'UsersId', width: 100, title: 'ID', sort: true, style: "height:110px;"},
+                { field: 'UsersName', width: 80, title: '昵称' },
+                { field: 'HeadUrl', title: '用户头像', templet: "#imgtmp", width: 135},
+                { field: 'Sex', width: 80, title: '性别', sort: true, align: "center" },
+                { field: 'UsersLevel', width: 130, title: '用户等级', sort: true },
+                { field: 'Credit', width: 100, title: '信誉度', sort: true },
+                { field: 'OrderCount', width:100, title: '下单数', sort: true },
+                { field: 'ChargebackCount', width: 100, title: '退单数', sort: true },
+                { field: 'Hobby', width: 130, title: '爱好' },
+                {
+                    field: 'State', width: 80, title: '状态', sort: true
+                    , templet: function (d) {
+                        if (0) {
+                            return '<div><a href="/detail/{{d.id}}" class="layui-table-link">{{d.State}}</a></div>'
+                        }
+                        else {
+                            return d.State
+                        }
+                    }
+                },
+                {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 15,
+            page: true,
+            skin: 'line'
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var result = JSON.stringify(data.field);
+
+            var index = layer.msg('查询中，请稍后...', { icon: 16, time: false, shade: 0 });
+            setTimeout(function () {
+                table.reload('currentTableId', {
+                    url: '/User/serach_users'
+                    // ,methods:"post"
+                    , where: {
+                        name: $('#search_name').val(),
+                        sex: $('#search_sex').val(),
+                        hobby: $('#search_hobby').val(),
+                        state: $('#search_state').val()
+                    }, page: {
+                        curr: 1 // 重载后从第一页开始
+                    }
+                });
+                layer.close(index);
+            }, 800)
+
+
+            return false;
+        });
+
+        /**
+         * toolbar监听事件
+         */
+        table.on('toolbar(currentTableFilter)', function (obj) {
+            if (obj.event === 'add') {  //if (obj.event === 'adUrlr★ Contentl') { // 监听添Urlrl操作
+                var index = layer.open({
+                    title: '添加用户',
+                    type: 2,
+                    shade: 0.2,
+                    maxmin: true,
+                    shadeClose: true,
+                    area: ['100%', '100%'],
+                    content: '/User/add_users',
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+            } else if (obj.event === 'delete') {  // 监听删除操作
+                var checkStatus = table.checkStatus('currentTableId')
+                    , data = checkStatus.data;
+               // layer.alert(JSON.stringify(data));
+                 $.ajax({
+                        url: "@Url.Action("delete_users", "User")",
+                        async: false,
+                        data: {
+                            idlist: JSON.stringify(data)
+                        },
+                        type: 'post',
+                        success: function (data) {
+                            layer.msg(data);
+                        }
+                    });
+            }
+        });
+
+        //监听表格复选框选择
+        table.on('checkbox(currentTableFilter)', function (obj) {
+            console.log(obj)
+        });
+
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'edit') {
+
+                var index = layer.open({
+                    title: '编辑用户',
+                    type: 2,
+                    shade: 0.2,
+                    maxmin: true,
+                    shadeClose: true,
+                    area: ['100%', '100%'],
+                    content: '/User/alter_users/' + data.UsersId,  //跳转到对应的编辑页面
+
+                    success: function (layero, index) {
+                        var body = layer.getChildFrame('body', index);//少了这个是不能从父页面向子页面传值的
+
+                        //获取子页面的元素，进行数据渲染  对弹出的修改页面输入框赋初始值
+                        body.contents().find("#UsersId").val(data.UsersId);
+                        body.contents().find("#UsersLevel").val(data.UsersLevel);
+                        body.contents().find("#Exp").val(data.Exp);
+                        body.contents().find("#Credit").val(data.Credit);
+                        body.contents().find("#OrderCount").val(data.OrderCount);
+                        body.contents().find("#ChargebackCount").val(data.ChargebackCount);
+                        let id = '#isValid' + data.isValid;
+                        body.contents().find(id).prop("checked", true);//这是子页面的单选按钮，让其选中
+
+                    },
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+                return false;
+            } else if (obj.event === 'delete') {
+                layer.confirm('真的删除行么', function (index) {
+                    //获取单行删除时，选中的用户id
+                    console.log(obj.data.UsersId, obj.data.State);
+                    $.ajax({
+                        url: "@Url.Action("delete_user", "User")",
+                        async: false,
+                        data: {
+                            id: obj.data.UsersId
+                        },
+                        type: 'post',
+                        success: function (data) {
+                            layer.msg(data);
+                        }
+                    });
+                    obj.del();
+                    layer.close(index);
+                });
+            }
+            else if (obj.event === 'freeze') {
+                console.log(obj.data.State);
+                if (obj.data.State == '正常  ') {
+                   $.ajax({
+                        url: "@Url.Action("Freeze", "User")",
+                        async: false,
+                        data: {
+                            id: obj.data.UsersId
+                        },
+                        type: 'post',
+                       success: function (data) {
+                           if (data == "success") {
+                               layer.msg("成功冻结" + obj.data.UsersId);
+                               obj.update({
+                                   State: "冻结"
+                               });
+                           }
+                           else {
+                               layer.msg(data);
+                           }
+                        }
+                    });
+
+                }
+                else if (obj.data.State == '冻结  ') {
+                    $.ajax({
+                        url: "@Url.Action("UnFreeze", "User")",
+                        async: false,
+                        data: {
+                            id: obj.data.UsersId
+                        },
+                        type: 'post',
+                       success: function (data) {
+                           if (data == "success") {
+                               layer.msg("成功解冻" + obj.data.UsersId);
+                               obj.update({
+                                   State: "正常"
+                               });
+                           }
+                           else {
+                               layer.msg(data);
+                           }
+                        }
+                    });
+                    
+                   
+                }
+                //layer.msg("解冻" + obj.data.State);
+            }
+        });
+
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+﻿
+<style>
+    .demo-container {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 1em;
+        margin-bottom: 15px;
+        border: 1px solid #e2e2e2;
+        overflow: hidden;
+    }
+
+    .thumb-image {
+        width: 200px;
+        padding: 5px;
+        margin-left: 10px;
+        display: block;
+        border: 1px solid #ccc;
+        float: left;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
+<blockquote class="layui-elem-quote">
+    投票内容填写
+</blockquote>
+<form action="@Url.Action("AddNormalVote","Activity")" name="formA1" class="layui-form" style="margin: 0 auto;max-width: 560px; padding-top: 40px; " method="post" enctype="multipart/form-data">
+    @*<form class="layui-form" style="margin: 0 auto;max-width: 560px; padding-top: 40px; " method="post" enctype="multipart/form-data">*@
+    <div class="layui-form-item">
+        <label class="layui-form-label">投票主题:</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="请填写投票主题" class="layui-input" name="title" lay-verify="required" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">截止日期:</label>
+        <div class="layui-input-block">
+            <input type="text" name="date2" id="date2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">上传图片:</label>
+        <div class="layui-input-block">
+            <div id="wrapper">
+                <input id="fileUpload" name="nor_voteimg" type="file" /><br />
+                <div id="image-holder"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">详细介绍:</label>
+        <div class="layui-input-block">
+            <textarea placeholder="投票介绍" value="" name="nor_vote_content" class="layui-textarea" lay-verify="required"></textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            @*<button class="layui-btn" lay-submit lay-filter="demo">
+                    &emsp;确定&emsp;
+                </button>*@
+            <button class="layui-btn" lay-submit type="submit">
+                &emsp;确定&emsp;
+            </button>
+        </div>
+    </div>
+
+</form>
+
+<blockquote class="layui-elem-quote">
+    添加投票选项
+</blockquote>
+<form action="@Url.Action("AddNormalVoted","Activity")" name="formA2" class="layui-form" style="margin: 0 auto;max-width: 560px; padding-top: 40px; " method="post" enctype="multipart/form-data">
+    @*<form class="layui-form" style="margin: 0 auto;max-width: 560px; padding-top: 40px; " method="post" enctype="multipart/form-data">*@
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">投票ID:</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="请填写投票ID" class="layui-input" name="voteId" id="voteId" lay-verify="required|number" />
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">选项:</label>
+        <div class="layui-input-block">
+            <textarea placeholder="选项介绍" value="" class="layui-textarea" name="content1" lay-verify="required"></textarea>
+            图片：<div id="wrapper">
+                <input id="fileUpload1" type="file" name="votedfile1" /><br />
+                <div id="image-holder1"> </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit type="submit">
+                &emsp;确定&emsp;
+            </button>
+        </div>
+    </div>
+
+
+</form>
+
+

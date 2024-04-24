@@ -1,0 +1,45 @@
+﻿.aui-nav-list-box {
+	overflow: hidden;
+	zoom: 1;
+	border-bottom: none;
+	z-index: 110;
+	background: #fff;
+	width: 805px;
+	display: block;
+	border-top: solid 1px #d1d1d1;
+	border-left: solid 1px #d1d1d1;
+	margin: 0 auto;
+}
+
+.aui-nav-list-box ul li a {
+	color: #000;
+}
+
+.aui-nav-list-box ul li {
+	float: left;
+	color: #000;
+	height: 45px;
+	cursor: pointer;
+	line-height: 45px;
+	width:200px;
+	text-align: center;
+	font-size: 14px;
+	border-right: solid 1px #d1d1d1;
+	border-bottom:solid 1px #d1d1d1;
+}
+
+.aui-nav-list-box ul .aui-current {
+	color:  #009E94;
+	background: #f7f7f7;
+	border-bottom: solid 2px  #009E94;
+	font-weight: bold;
+}
+
+.aui-nav-list-box ul .aui-current a {
+	color:  #009E94;
+}
+
+
+.aui-nav-list-item {
+	display: none;
+}

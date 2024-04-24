@@ -1,0 +1,164 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Models.Production>
+@{
+    ViewBag.Title = "BookTypePageShow";
+    Layout = null;
+
+}
+<style type="text/css">
+    .pagination-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center
+    }
+
+        .pagination-container li {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 39px;
+            height: 39px;
+            border-radius: 50%;
+            border: 1px solid #e1e1e1;
+            margin: 5px;
+            transition: all .2s
+        }
+
+            .pagination-container li:hover {
+                color: red;
+            }
+
+    .works-img {
+        display: inline-block;
+        max-width: 100%;
+        cursor: pointer;
+        opacity: .8;
+        transition: all .3s ease-out;
+        width: 300px;
+        height: 380px;
+    }
+
+        .works-img:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+    .media-item .btn-addcart {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 1.7;
+        color: #fff;
+        display: block;
+        text-align: center;
+        vertical-align: middle;
+        width: 87%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 17px 15px;
+        background: rgba(0, 0, 0, .5);
+        transform: translateY(110%);
+        transition: all .3s;
+    }
+
+        .media-item .btn-addcart:hover {
+            color: #e40914
+        }
+
+    .media-item:hover .btn-addcart {
+        transform: translateX(0);
+        overflow: hidden;
+    }
+
+    .media-item {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+
+    .meta-info {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .meta-info .imdb {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 1.2;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 11px
+        }
+
+            .meta-info .imdb .value {
+                font-weight: 400;
+                width: 40px;
+                height: 22px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center center;
+                padding-top: 4px;
+                margin-bottom: 4px;
+                background: rgba(0, 0, 0, .5);
+            }
+
+        .meta-info .label {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #fff;
+            text-align: center;
+            background: #007fbf;
+            padding: 2px 11px
+        }
+</style>
+@*内容部分*@
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="media-item col-4">
+            <a href="@Url.Action("WorkDetails","Production",new { id=item.ProductionId})"><img class="works-img" src="@item.ImgUrl" /></a>
+            <div class="meta-info">
+                <div class="imdb">
+                    <span class="value">@item.ProductionType</span>
+                </div>
+                <div class="label">
+                    @item.ProductionName
+                </div>
+            </div>
+            <a class="btn-addcart" href="@Url.Action(" WorkDetails","Production",new { id=item.ProductionId})">@item.ProductionName</a>
+        </div>
+    }
+</div>
+<br />
+@*下部页数显示部分*@
+<ul class="pagination-container">
+    <li>
+        @Html.PagedListPager(Model, page => Url.Action("PTypeShow", "Production", new { page, currentFilter = ViewBag.CurrentFilter }),
+        PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+        new AjaxOptions
+        {
+            HttpMethod = "GET",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "Div1"
+
+        }))
+
+    </li>
+</ul>
+

@@ -1,0 +1,607 @@
+﻿@charset "utf-8";
+
+body {
+    word-wrap: break-word;
+    font: 12px/200% "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体";
+    color: #868686;
+    background-color: #ededed;
+}
+
+img,
+a img,
+html,
+body {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+em {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+b,
+strong {
+    font-style: normal;
+    font-size: 100%;
+    font-weight: bold;
+}
+
+abbr,
+acronym {
+    border: 0;
+    font-variant: normal;
+}
+
+del,
+ins {
+    text-decoration: none;
+}
+
+[hidefocus] {
+    outline: 0;
+}
+
+/*链接*/
+a {
+    cursor: pointer;
+    outline: 0;
+    star: expression(this.onFocus=this.blur());
+}
+
+    a,
+    a:hover {
+        text-decoration: none;
+    }
+
+a,
+.m-pager a:hover,
+.m-pager-idx .num {
+    color: #999;
+}
+
+/*作品内部盒子*/
+.box2:after {
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    content: '.';
+}
+
+.box2 {
+    zoom: 1;
+}
+
+a,
+.hdimg img,
+.m-sch .txt,
+.m-sch {
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+    .m-sch a {
+        -webkit-transition: all 0s ease;
+        -moz-transition: all 0s ease;
+        -o-transition: all 0s ease;
+        transition: all 0s ease;
+    }
+
+.hdimg:hover img,
+.m-post .img:hover img {
+    opacity: .7;
+    filter: alpha(opacity=70);
+}
+/*导航*/
+.m-nav {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.m-pager .dot {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+/*发布按钮*/
+button {
+    float: right;
+    width: 78px;
+    height: 24px;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.s-fc1 {
+    color: #fff;
+}
+
+.s-bg1 {
+    background: #53c4cb;
+}
+
+.s-bd1 {
+    border-color: #53c4cb;
+}
+/*作品内容*/
+.g-hd {
+    width: 700px;
+    margin: 0 auto 50px;
+}
+
+.g-hd,
+.g-ft,
+.m-pager {
+    text-align: center;
+}
+
+.g-ft {
+    margin-top: 100px;
+}
+
+/* 创作者头像 */
+.m-ttl img {
+    vertical-align: middle;
+}
+
+.m-ttl .hdimg img {
+    width: 80px;
+    height: 80px;
+}
+
+/*创作者昵称*/
+.m-ttl .ttl {
+    margin-top: 20px;
+    font-size: 24px;
+    line-height: 34px;
+    letter-spacing: 1px;
+}
+/*个人信息*/
+.m-about {
+    width: 500px;
+    margin: 40px auto 0;
+    line-height: 22px;
+}
+/*导航内容*/
+.m-nav,
+.m-nav li,
+.m-nav a,
+.m-nav .sep {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+.m-nav {
+    margin-top: 30px;
+    padding: 3px 15px;
+    border: 2px solid #7acece;
+}
+
+    .m-nav .sep {
+        padding: 0 8px;
+    }
+
+/*搜索框*/
+.m-sch {
+    position: relative;
+    width: 24px;
+    *width: auto;
+}
+
+input {
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    font-family: inherit;
+    outline: 0;
+}
+
+input {
+    font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体";
+    font-size: 12px;
+    color: #999;
+}
+
+.m-sch a {
+    position: relative;
+    z-index: 1;
+}
+
+.m-sch .form {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.m-sch .txt {
+    width: 0;
+    visibility: hidden;
+    height: 20px;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    background: none;
+    line-height: 20px;
+}
+
+
+
+/*内容盒子*/
+.m-postdtl {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.m-detail {
+    margin-bottom: 50px;
+}
+
+    .m-detail .ttl {
+        margin: 0 0 13px;
+        text-align: center;
+    }
+
+    .m-detail .ctc ul,
+    .m-detail .ctc ol {
+        padding: 0 0 0 25px;
+    }
+
+        .m-detail .ctc ul li {
+            list-style: disc outside;
+        }
+
+        .m-detail .ctc ol li {
+            list-style: decimal outside;
+        }
+
+    .m-detail .ctc blockquote {
+        border-left: solid 1px #ddd;
+        padding-left: 10px;
+    }
+
+    .m-detail .ctc p,
+    .m-detail .ctc ul,
+    .m-detail .ctc ol,
+    .m-detail .ctc .text {
+        margin: 0 0 24px;
+    }
+
+    /* 作品内容里面的图片*/
+    .m-detail img {
+        max-width: 100% !important;
+        _width: 100%;
+        margin-bottom: 16px;
+        vertical-align: middle;
+    }
+
+    /*作品标签*/
+    .m-detail .info {
+        border-top: 1px solid #ccc;
+        padding: 14px 0 0;
+    }
+
+        .m-detail .info a {
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .m-detail .info .tags {
+            margin-right: 18px;
+        }
+
+/*上一篇下一篇*/
+.m-pager {
+    line-height: 16px;
+}
+
+.m-pager-idx {
+    margin-top: 30px;
+    padding: 0 10px;
+}
+
+    .m-pager-idx .num {
+        float: right;
+        font-size: 11px;
+    }
+
+.m-pager a,
+.m-pager .dot {
+    display: inline-block;
+}
+
+.m-pager a {
+    margin: 0 13px;
+}
+
+.m-pager .dot {
+    width: 16px;
+    height: 16px;
+    background: #bbb;
+}
+
+.m-pager .prev .dot {
+    margin-left: 12px;
+}
+
+.m-pager .next .dot {
+    margin-right: 12px;
+}
+
+/*尾部*/
+.m-cprt,
+.m-cprt a {
+    font-size: 11px;
+    color: #bbb;
+}
+
+/*内页评论和热度*/
+.m-cmthot {
+    margin-top: 70px;
+    color: #666;
+}
+
+    .m-cmthot a,
+    .m-cmthot a:hover {
+        color: #999;
+    }
+
+        .m-cmthot a:hover {
+            text-decoration: underline;
+        }
+
+    .m-cmthot .nctitle {
+        margin-bottom: 8px;
+    }
+
+.m-cmt,
+.m-hot {
+    padding: 10px 0;
+    width: 700px;
+    margin: 0 auto 50px;
+}
+
+    .m-hot .avatar {
+        float: left;
+        width: 20px;
+        height: 20px;
+        border: 0;
+        margin: 0;
+    }
+
+/*加载内容*/
+.notes {
+    margin: 0;
+    padding: 0;
+    line-height: 20px;
+    font-size: 12px;
+    zoom: 1;
+}
+
+    .notes:after {
+        clear: both;
+        content: '.';
+        display: block;
+        height: 0;
+        visibility: hidden;
+        overflow: hidden;
+    }
+
+    .notes .clear {
+        clear: both;
+        height: 0;
+        overflow: hidden;
+    }
+/*热度*/
+.m-hot .action {
+    float: left;
+    width: 470px;
+    padding-left: 10px;
+}
+
+.m-hot .note {
+    list-style: none;
+    margin: 0;
+    float: left;
+    width: 100%;
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+}
+
+.m-ttl .hdimg img {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+/* 导航栏颜色 */
+.m-nav,
+.m-nav a,
+.m-sch .txt {
+    color: #000000;
+}
+
+    /* 鼠标点击颜色 */
+    a:hover,
+    .m-nav a:hover,
+    .m-cprt a:hover,
+    .m-post .ttl a:hover,
+    .m-detail .ctc .ttl a:hover,
+    .m-detail .ctc a {
+        color: #53c4cb;
+    }
+
+.m-nav {
+    border-color: #55557f;
+}
+
+.m-pager a:hover .dot,
+.m-pager a.hover .dot {
+    background: #53c4cb;
+}
+
+/* 博客名称颜色 */
+.m-ttl a,
+.m-ttl a:hover {
+    color: #000000;
+}
+/*搜索框变动*/
+.m-schshow {
+    width: 70px;
+}
+
+    .m-schshow .txt {
+        width: 60px;
+        visibility: visible;
+    }
+/*发表评论*/
+/*整个评论框位置*/
+.bcmtadd {
+    position: relative;
+    margin: 0 0 30px;
+    zoom: 1;
+}
+/*评论框内容颜色*/
+.s-fc0 {
+    color: #666;
+}
+
+/*评论框背景颜色*/
+.s-bg0 {
+    background: #fff;
+}
+/*评论框边框颜色*/
+.s-bd0 {
+    border-color: #ccc;
+}
+/*评论框样式*/
+.bcmtipt {
+    border-style: solid;
+    border-width: 1px;
+    margin: 0 0 10px;
+    padding: 3px 5px;
+}
+/*评论框所占宽度*/
+.bcmtiptc {
+    width: 100%;
+}
+    /*评论框所占高度*/
+    .bcmtiptc .editdiv {
+        width: 100%;
+        height: 130px;
+        border: 0;
+        outline: 0;
+        resize: none;
+        background: none;
+        line-height: 19px;
+        font-size: 12px;
+    }
+/*发布按钮*/
+.bcmtbtn button {
+    float: right;
+    width: 78px;
+    height: 24px;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.bcmtbtn .txt {
+    height: 24px;
+    margin: 0 120px 0 0;
+    overflow: hidden;
+    line-height: 24px;
+}
+
+.clearfix {
+    zoom: 1;
+}
+/*回复内容*/
+.bcmtlst li {
+    float: left;
+    width: 100%;
+    border-style: solid;
+    border-width: 1px 0 0;
+    border-color: #ccc;
+    width: 700px;
+}
+
+.bcmtlsta {
+    padding: 10px 0px;
+    width: 100%;
+}
+/*头像大小*/
+.bcmtlstb, .bcmtlstb img {
+    float: left;
+    width: 20px;
+    height: 20px;
+    border: 0;
+}
+
+.bcmt a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.bcmtlstc {
+    float: right;
+    width: 100%;
+    margin-left: -20px;
+}
+
+.bcmtlstd {
+    margin-left: 30px;
+}
+
+.bcmtlste {
+    position: relative;
+    zoom: 1;
+}
+
+.bcmtlstj {
+    width: 100%;
+    overflow: hidden;
+    line-height: 19px;
+    word-wrap: break-word;
+}
+
+.bcmtlsth {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.s-bd2 {
+    width: 700px;
+    margin-left: -40px;
+}
+
+.bcmtlsti {
+    width: 95%;
+}

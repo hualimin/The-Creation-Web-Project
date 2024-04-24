@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TestUpFile</title>
+
+</head>
+<body>
+    <div> 
+        <form action="@Url.Action("TestUp1File","Activity")"  enctype="multipart/form-data" method="post">
+            上传文件：<input type="file" name="nor_voteimg"/>
+            <button type="submit">
+                提交
+            </button>
+        </form>
+        
+    </div>
+</body>
+</html>

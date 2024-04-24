@@ -1,0 +1,456 @@
+﻿
+@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>table下拉选择器</title>
+    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../lib/jq-module/zyupload/zyupload-1.0.0.min.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+    <link rel="stylesheet" href="../js/lay-module/step-lay/step.css" media="all">
+</head>
+<body>
+    <script type="text/html" id="imgtmp">
+        <img src="{{d.HeadUrl}}" width="50" height="50" border:1px solid red;" />
+    </script>
+    <script type="text/html" id="imgtmp1">
+        <img src="{{d.ImgUrl}}" width="50" height="50" border:1px solid red;" />
+    </script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+    <script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+    <script src="../lib/jq-module/zyupload/zyupload-1.0.0.min.js" charset="utf-8"></script>
+
+    <div class="layuimini-container">
+        <div class="layuimini-main">
+
+            <div class="layui-tab">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">普通投票</li>
+                    <li>用户投票</li>
+                    <li>作品投票</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        @Html.Action("NormalChoose", "Activity")
+                    </div>
+                    <div class="layui-tab-item">
+                        @Html.Action("UserChoose", "Activity")
+                    </div>
+                    <div class="layui-tab-item">
+                        @Html.Action("ProductionChoose", "Activity")
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <style type="text/css">
+        .layui-table-cell {
+            text-align: center;
+            height: auto;
+            white-space: normal;
+        }
+
+        .layui-table omg {
+            max-width: 50px;
+        }
+    </style>
+
+
+    <script type="text/javascript">
+        //上传图片
+        //NormalVote封面
+        $(function () {
+            // 初始化插件
+            $("#zyupload1").zyUpload({
+                width: "650px",                 // 宽度
+                height: "400px",                 // 宽度
+                itemWidth: "140px",                 // 文件项的宽度
+                itemHeight: "115px",                 // 文件项的高度
+                url: "/Activity/UploadImg",  // 上传文件的路径
+                fileType: ["jpg", "png", "txt", "js", "exe"],// 上传文件的类型
+                fileSize: 51200000,                // 上传文件的大小
+                multiple: true,                    // 是否可以多个文件上传
+                dragDrop: true,                    // 是否可以拖动上传文件
+                tailor: true,                    // 是否可以裁剪图片
+                del: true,                    // 是否可以删除文件
+                finishDel: false,  				  // 是否在上传文件完成后删除预览
+                /* 外部获得的回调接口 */
+                onSelect: function (selectFiles, allFiles) {    // 选择文件的回调方法  selectFile:当前选中的文件  allFiles:还没上传的全部文件
+                    console.info("当前选择了以下文件：");
+                    console.info(selectFiles);
+                },
+                onDelete: function (file, files) {              // 删除一个文件的回调方法 file:当前删除的文件  files:删除之后的文件
+                    console.info("当前删除了此文件：");
+                    console.info(file.name);
+                },
+                onSuccess: function (file, response) {          // 文件上传成功的回调方法
+                    console.info("此文件上传成功：");
+                    console.info(file.name);
+                    console.info("此文件上传到服务器地址：");
+                    console.info(response);
+                    $("#uploadInf").append("<p>上传成功，文件地址是：" + response + "</p>");
+                },
+                onFailure: function (file, response) {          // 文件上传失败的回调方法
+                    console.info("此文件上传失败：");
+                    console.info(file.name);
+                },
+                onComplete: function (response) {           	  // 上传完成的回调方法
+                    console.info("文件上传完成");
+                    console.info(response);
+                }
+            });
+
+        });
+
+        $("#fileUpload").on('change', function () {
+
+            if (typeof (FileReader) != "undefined") {
+
+                var image_holder = $("#image-holder");
+                image_holder.empty();
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("<img />", {
+                        "src": e.target.result,
+                        "class": "thumb-image"
+                    }).appendTo(image_holder);
+
+                }
+                image_holder.show();
+                reader.readAsDataURL($(this)[0].files[0]);
+            } else {
+                alert("你的浏览器不支持FileReader.");
+            }
+        });
+
+        //$("#fileUpload").on('change', function () {
+
+        //    if (typeof (FileReader) != "undefined") {
+
+        //        var image_holder = $("#image-holder");
+        //        image_holder.empty();
+
+        //        var reader = new FileReader();
+        //        reader.onload = function (e) {
+        //            $("<img />", {
+        //                "src": e.target.result,
+        //                "class": "thumb-image"
+        //            }).appendTo(image_holder);
+
+        //        }
+        //        image_holder.show();
+        //        reader.readAsDataURL($(this)[0].files[0]);
+        //    } else {
+        //        alert("你的浏览器不支持FileReader.");
+        //    }
+        //});
+
+        $("#fileUpload1").on('change', function () {
+
+            if (typeof (FileReader) != "undefined") {
+
+                var image_holder = $("#image-holder1");
+                image_holder.empty();
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("<img />", {
+                        "src": e.target.result,
+                        "class": "thumb-image"
+                    }).appendTo(image_holder);
+
+                }
+                image_holder.show();
+                reader.readAsDataURL($(this)[0].files[0]);
+            } else {
+                alert("你的浏览器不支持FileReader.");
+            }
+        });
+
+        $("#fileUpload2").on('change', function () {
+
+            if (typeof (FileReader) != "undefined") {
+
+                var image_holder = $("#image-holder2");
+                image_holder.empty();
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("<img />", {
+                        "src": e.target.result,
+                        "class": "thumb-image"
+                    }).appendTo(image_holder);
+
+                }
+                image_holder.show();
+                reader.readAsDataURL($(this)[0].files[0]);
+            } else {
+                alert("你的浏览器不支持FileReader.");
+            }
+        });
+
+
+        $("#UserVoteUp").on('change', function () {
+
+            if (typeof (FileReader) != "undefined") {
+
+                var image_holder = $("#image-holderB1");
+                image_holder.empty();
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("<img />", {
+                        "src": e.target.result,
+                        "class": "thumb-image"
+                    }).appendTo(image_holder);
+
+                }
+                image_holder.show();
+                reader.readAsDataURL($(this)[0].files[0]);
+            } else {
+                alert("你的浏览器不支持FileReader.");
+            }
+        });
+
+        $("#ProductionVoteUp").on('change', function () {
+
+            if (typeof (FileReader) != "undefined") {
+
+                var image_holder = $("#image-holderC1");
+                image_holder.empty();
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("<img />", {
+                        "src": e.target.result,
+                        "class": "thumb-image"
+                    }).appendTo(image_holder);
+
+                }
+                image_holder.show();
+                reader.readAsDataURL($(this)[0].files[0]);
+            } else {
+                alert("你的浏览器不支持FileReader.");
+            }
+        });
+    </script>
+    <script>
+        layui.use(['table', 'form', 'tableSelect', 'form', 'step', 'laydate', 'element'], function () {
+            var $ = layui.jquery,
+                table = layui.table,
+                form = layui.form,
+                layer = layui.layer,
+                form = layui.form,
+                laydate = layui.laydate,
+                tableSelect = layui.tableSelect,
+                element = layui.element;
+             var selected = "";
+            //var selected = $("#selected").val();
+            @*form.on('select(all)', function (data) {
+                var value = data.value;
+                console.log(value)
+                $.ajax({
+                    url: "@Url.Action("GetVoteType", "Activity")",
+                    type: "post",
+                    async: false,
+                    data: {
+                        typeID: value
+                    },
+                    success: function (data) {
+                        document.getElementById("resultview").innerHTML = data;
+                    }
+                });
+
+            });*@
+
+             //监听提交
+            //普通投票
+            form.on('submit(demo)', function (data) {
+                //alert("click");
+                 $.ajax({
+                    url: "@Url.Action("AddNormalVote", "Activity")",
+                    type: "post",
+                     async: false,
+                     data: {
+                         title: data.field.title,
+                         type: "普通",
+                         content: data.field.content,
+                         date: data.field.date2,
+                         content1: data.field.content1,
+                     },
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+                return false;
+             });
+            @*//用户投票
+            form.on('submit(demo1)', function (data) {
+                var formData = new FormData();
+                //formData.append('file', $('#file')[0].files[0]);
+                //formData.append("title", "Rober"); 
+                //formData.append("filefloder", document.getElementById("UserVoteUp").files[0]);
+                //console.log(formData.get());
+                //var xhr = new XMLHttpRequest();
+
+                ////xhr.onload = function () {
+                ////    alert(xhr.responseText);
+
+                ////}
+
+                //xhr.onreadystatechange = function () {
+                //    if (xhr.readyState == 4 && xhr.status == 200) {
+                //        alert(xhr.responseText);
+                //    }
+                //}
+
+                //xhr.open("post", "/Activity/AddRefVote", true)
+                //xhr.send(formData);
+
+                 $.ajax({
+                    url: "@Url.Action("AddRefVote", "Activity")",
+                    type: "POST",
+                     async: false,
+                     data: formData,
+                    //data: {
+                    //    //select: selected,
+                    //    //title: data.field.title,
+                    //    //type: "用户",
+                    //    //content: data.field.content,
+                    //    //date: data.field.date,
+                    //    formData,
+
+                    // },
+                     contentType: false,
+                     processData: false,
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+                return false;
+        });*@
+
+            function UpUserVote(data) {
+                alert(data);
+            }
+
+            //作品投票
+             form.on('submit(demo2)', function (data) {
+                 $.ajax({
+                    url: "@Url.Action("AddRefVote", "Activity")",
+                    type: "post",
+                    async: false,
+                    data: {
+                        select: selected,
+                        title: data.field.title,
+                        type: "作品",
+                        content: data.field.content,
+                        date: data.field.date1,
+                    },
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+                return false;
+            });
+
+            tableSelect.render({
+                elem: '#demo',
+                searchKey: 'UsersName',
+                checkedKey: 'UsersId',
+                searchPlaceholder: '自定义文字和name',
+                table: {
+                    url: '@Url.Content("/Admin/GetUsersTable")',
+                    cols: [[
+                        { type: 'checkbox' },
+                        { field: 'UsersId', width: 100, title: 'ID', sort: true, style: "height:50px;" },
+                        { field: 'UsersName', width: 100, title: '昵称' },
+                        { field: 'HeadUrl', title: '用户头像', templet: "#imgtmp", width: 135 },
+                        { field: 'Credit', width: 100, title: '信誉度', sort: true }
+                    ]]
+                },
+                done: function (elem, data) {
+                    var NEWJSON = []
+                    layui.each(data.data, function (index, item) {
+                        NEWJSON.push(item.UsersName);
+                        //$('#selected').val() += item.UsersId + ',';
+                        selected += item.UsersId + ',';
+                        console.log(item.UsersId+',')
+                    })
+                    elem.val(NEWJSON.join(","));
+                    $('#selectedB1').val(selected);
+                }
+            })
+
+            @*$('#sub1').on('click', function () {
+                $.ajax({
+                    url: "@Url.Action("DealUserVoted", "Activity")",
+                    type: "post",
+                    async: false,
+                    data: {
+                        select: selected
+                    },
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+            });*@
+
+
+             tableSelect.render({
+                elem: '#demo1',
+                 searchKey: 'ProductionName',
+                 checkedKey: 'ProductionId',
+                searchPlaceholder: '自定义文字和name',
+                table: {
+                    url: '@Url.Content("/Admin/GetProductionTable")',
+                    cols: [[
+                        { type: 'checkbox' },
+                        { field: 'ProductionId', width: 100, title: 'ID', sort: true, style: "height:50px;" },
+                        { field: 'ProductionName', width: 100, title: '作品名称' },
+                        { field: 'ImgUrl', title: '作品图片', templet: "#imgtmp1", width: 135 },
+                        { field: 'HotCount', width: 100, title: '热度', sort: true }
+                    ]]
+                },
+                 done: function (elem, data) {
+                     var NEWJSON = []
+                     layui.each(data.data, function (index, item) {
+                         NEWJSON.push(item.ProductionName);
+                         selected += item.ProductionId + ',';
+                         console.log(item.ProductionId + ',')
+                     })
+                     elem.val(NEWJSON.join(","));
+                     $('#selectedC1').val(selected); 
+                 }
+             })
+            //日期
+            laydate.render({
+                elem: '#date',
+                min: Date.now()
+            });
+
+            //日期
+            laydate.render({
+                elem: '#date1',
+                min: Date.now()
+            });
+            //日期
+            laydate.render({
+                elem: '#date2',
+                min: Date.now()
+            });
+
+        });
+
+
+    </script>
+   
+
+</body>
+</html>
